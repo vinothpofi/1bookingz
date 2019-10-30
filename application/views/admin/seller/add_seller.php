@@ -345,7 +345,7 @@ $this->load->view('admin/templates/header.php');
 											echo form_input([
 												'type'        => 'text',      
 									            'name' 	      => 'phone_no',
-									            'style'   	  => 'width:295px',
+									            'style'   	  => 'width:330px',
 									            'id'          => 'phone_no',
 												'tabindex'	  => '3',
 												'class'		  => 'tipTop',
@@ -400,7 +400,7 @@ $this->load->view('admin/templates/header.php');
 							<li>
 								<div class="form_grid_12">
 									<?php										
-										echo form_label('short Business Describe ','description', 
+										echo form_label('short Business Description ','description', 
 												$commonclass);	
 								    ?>
 									<div class="form_input">
@@ -422,7 +422,7 @@ $this->load->view('admin/templates/header.php');
 							</li>
 							<li>
 								<div class="form_grid_12">
-									<label class="field_title">Real Estate number</label>
+									<label class="field_title">Real Estate License number</label>
 									<div class="form_input">
 										<input type="text" name="Real Estate number" value="" style="width:295px"  class="tipTop" original-title="Please enter your real estate number">
 									</div>
@@ -551,11 +551,11 @@ $this->load->view('admin/templates/header.php');
 											echo form_input([
 												'type'        => 'password',      
 											    'id' 	      => 'new_password',
-											    'name'		  => 'new_password',
-											    'class'   	  => 'tipTop large',
+											    'name'		  => 'new_password',											    
 											    'tabindex'	  => '10',
-											    'class'		  => 'required large tipTop',
-											    'title'		  => 'Please enter the new password'
+											    'class'		  => 'required tipTop',
+											    'title'		  => 'Please enter the new password',
+											    'style'   	  => 'width:295px'
 											]);
 										?>
 									</div>
@@ -571,10 +571,10 @@ $this->load->view('admin/templates/header.php');
 											echo form_input([
 												'type'        => 'password',      
 											    'id' 	      => 'confirm_password',
-											    'name'		  => 'confirm_password',
-											    'class'   	  => 'tipTop large',
+											    'name'		  => 'confirm_password',										    
 											    'tabindex'	  => '11',
-											    'class'		  => 'required large tipTop',
+											    'class'		  => 'required tipTop',
+											    'style'   	  => 'width:295px',
 											    'title'		  => 'Please re-type the above password'
 											]);
 										?>

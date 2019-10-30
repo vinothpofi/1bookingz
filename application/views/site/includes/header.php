@@ -438,7 +438,7 @@ $(document).ready(function(){
                                                   echo stripslashes($this->lang->line('your_trips'));
                                               } else echo "Your Trips"; ?></a>
                                       </li>
-                                      <li class="">
+                                      <!-- <li class="">
                                           <a href="<?php echo base_url(); ?>users/<?php echo $loginCheck; ?>/wishlists"><?php if ($this->lang->line('wish_list') != '') {
                                                   echo stripslashes($this->lang->line('wish_list'));
                                               } else echo "Wish List"; ?></a>
@@ -448,7 +448,7 @@ $(document).ready(function(){
                                                   echo stripslashes($this->lang->line('Wallet'));
                                               } else echo "Wallet";
                                               echo " (" . $currencySymbol . ' ' . currency_conversion('USD',$this->session->userdata('currency_type'),$userDetails->row()->referalAmount) . ")"; ?></a>
-                                      </li>
+                                      </li> -->
                                       <li class="visible-xs">
                                           <a href="<?php echo base_url(); ?>settings"><?php if ($this->lang->line('settings_edit_prof') != '') {
                                                   echo stripslashes($this->lang->line('settings_edit_prof'));
