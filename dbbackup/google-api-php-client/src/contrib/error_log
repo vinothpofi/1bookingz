@@ -1,0 +1,3 @@
+[13-Jan-2017 17:00:56 America/Chicago] PHP Fatal error:  Class 'Google_ServiceResource' not found in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/dbbackup/google-api-php-client/src/contrib/Google_BooksService.php on line 25
+[16-Jan-2017 12:41:29 America/Chicago] PHP Fatal error:  Class 'Google_ServiceResource' not found in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/dbbackup/google-api-php-client/src/contrib/Google_BooksService.php on line 25
+[18-Jan-2017 15:27:36 America/Chicago] PHP Fatal error:  Class 'Google_ServiceResource' not found in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/dbbackup/google-api-php-client/src/contrib/Google_BooksService.php on line 25
