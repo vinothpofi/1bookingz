@@ -689,9 +689,9 @@ if ($CityDetails->num_rows() > 0) {
                                 } else echo "See all"; ?> <span class="icon">></span></a> -->
                         </div>
 
-                        <div class="row card-section-bg">
-                            <div class="col-md-4">
-                                    <div class="owl-carousel owl-theme homes-carousel">
+                    <div class="card-section-bg">
+                            
+                        <div class="owl-carousel owl-theme homes-carousel">
                                 <?php foreach ($CityName[$city_name] as $CityRowss) {
                                     //print_r($CityRowss);
                                     ?>
@@ -784,213 +784,7 @@ if ($CityDetails->num_rows() > 0) {
                                     </div>
                                 <?php } ?>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                              <div class="owl-carousel owl-theme homes-carousel" >
-                                <?php foreach ($CityName[$city_name] as $CityRowss) {
-                                    //print_r($CityRowss);
-                                    ?>
-                                    <div class="item" >
-                                        <a href="<?php echo base_url(); ?>rental/<?php echo $CityRowss->seourl; ?>" target="_blank">
-                                            <?php
-                                            $base=base_url();
-                                            $img_base = realpath('images/rental/' . $CityRowss->product_image);
-                                            $url = getimagesize($img_base);
-
-                                            if (!is_array($url)) {
-                                                $img = "1"; //no
-                                            } else {
-                                                $img = "0";  //yes
-                                            }
-                                            if ($CityRowss->product_image != '' && $img == '0') { ?>
-                                                <div class="card-image"><div class="myPlace"
-                                                     style="background-image: url('<?php echo base_url(); ?>images/rental/<?php echo $CityRowss->product_image; ?>')"></div></div>
-                                            <?php } else { ?>
-                                                <div class="card-image"><div class="myPlace"
-                                                     style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div></div>
-                                            <?php } ?>
-                                            <div class="bottom">
-                                               <div class="loc" style="display: none;">
-                                               <?php
-                                                $list_value_val=language_dynamic_enable("list_value",$this->session->userdata('language_code'),$CityRowss);
-     echo ucfirst($list_value_val.' ');
-     $city_val=language_dynamic_enable("city",$this->session->userdata('language_code'),$CityRowss);
-     echo ucfirst($city_val);
-                                                        
-                                                  
-                                                  
-                                            ?> </div>
-                                                <h5><?php 
-                                                   
-                                                 $prod_tiltle=language_dynamic_enable("product_title",$this->session->userdata('language_code'),$CityRowss);
-     //echo ucfirst($city_val);
-                                                 echo ucfirst($prod_tiltle);
-                                                 // echo ucfirst($CityRowss->product_title);
-
-                                                    ?> </h5>
-                                                <?php
-                                                $avg_val = round($CityRowss->avg_val);
-                                                $num_reviewers = $CityRowss->num_reviewers;
-                                                ?>
-                                                <div class="price"><span class="number_s"><?php
-                                                        if ($CityRowss->currency != $this->session->userdata('currency_type')) {
-                                                            echo $currencySymbol;
-                                                            $currency = $CityRowss->currency;
-                                                            if ($currency_result->$currency) {
-                                                               // $price = $CityRowss->price / $currency_result->$currency;
-                                                               $price = currency_conversion($currency, $this->session->userdata('currency_type'), $CityRowss->price);
-                                                            } else {
-                                                                $price = currency_conversion($currency, $this->session->userdata('currency_type'), $CityRowss->price);
-                                                            }
-                                                            echo number_format($price, 2);
-                                                        } else {
-                                                            echo $currencySymbol;
-                                                            $price = $CityRowss->price;
-                                                            echo number_format($price, 2);
-                                                        } ?></span><?php echo $this->session->userdata('currency_type');
-                                                        ?>
-                                                         <?php if($CityRowss->instant_pay == 'Yes'){ ?><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" class="svg_instsant_pay" style="vertical-align: middle;"><g><path d="m29.8 12.6q0.4 0.5 0.1 1l-12 25.8q-0.3 0.6-1 0.6-0.1 0-0.3 0-0.4-0.2-0.6-0.5t-0.1-0.6l4.4-18.1-9 2.3q-0.1 0-0.3 0-0.4 0-0.7-0.2-0.4-0.4-0.3-0.9l4.5-18.4q0.1-0.3 0.4-0.5t0.6-0.2h7.3q0.4 0 0.7 0.2t0.3 0.7q0 0.2-0.1 0.4l-3.8 10.3 8.8-2.2q0.2 0 0.3 0 0.4 0 0.8 0.3z"></path></g></svg><?php } ?>
-                                                        <?php
-                                                            if($this->lang->line('per_night') != '') {
-                                $per= stripslashes($this->lang->line('per_night'));
-                            } else $per= "per night"; ?>
-                                                     <span style="font-size:14px;"><?php echo $per;  ?> </span> 
-                                                </div>
-                                            <div class="bottom-text">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
-                                                </p>
-                                            </div>
-                                            <div class="bottom-icons">
-                                                <span class="user-limit">8</span>
-                                            </div>
-                                                <div class="clear">
-                                                    <div class="starRatingOuter">
-                                                        <div class="starRatingInner"
-                                                             style="width: <?php echo($avg_val * 20); ?>%;"></div>
-                                                    </div>
-                                                    <span
-                                                            class="ratingCount"> <?php echo $num_reviewers . " "; ?><?php if ($this->lang->line('Reviews') != '') {
-                                                            echo stripslashes($this->lang->line('Reviews'));
-                                                        } else echo "Reviews"; ?> </span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                <?php } ?>
-                            </div>   
-                        </div>
-                        <div class="col-md-4">
-                             <div class="owl-carousel owl-theme homes-carousel">
-                                <?php foreach ($CityName[$city_name] as $CityRowss) {
-                                    //print_r($CityRowss);
-                                    ?>
-                                    <div class="item" >
-                                        <a href="<?php echo base_url(); ?>rental/<?php echo $CityRowss->seourl; ?>" target="_blank">
-                                            <?php
-                                            $base=base_url();
-                                            $img_base = realpath('images/rental/' . $CityRowss->product_image);
-                                            $url = getimagesize($img_base);
-
-                                            if (!is_array($url)) {
-                                                $img = "1"; //no
-                                            } else {
-                                                $img = "0";  //yes
-                                            }
-                                            if ($CityRowss->product_image != '' && $img == '0') { ?>
-                                                <div class="card-image"><div class="myPlace"
-                                                     style="background-image: url('<?php echo base_url(); ?>images/rental/<?php echo $CityRowss->product_image; ?>')"></div></div>
-                                            <?php } else { ?>
-                                                <div class="card-image"><div class="myPlace"
-                                                     style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div></div>
-                                            <?php } ?>
-                                            <div class="bottom">
-                                               <div class="loc" style="display: none;">
-                                               <?php
-                                                $list_value_val=language_dynamic_enable("list_value",$this->session->userdata('language_code'),$CityRowss);
-     echo ucfirst($list_value_val.' ');
-     $city_val=language_dynamic_enable("city",$this->session->userdata('language_code'),$CityRowss);
-     echo ucfirst($city_val);
-                                                        
-                                                  
-                                                  
-                                            ?> </div>
-                                                <h5><?php 
-                                                   
-                                                 $prod_tiltle=language_dynamic_enable("product_title",$this->session->userdata('language_code'),$CityRowss);
-     //echo ucfirst($city_val);
-                                                 echo ucfirst($prod_tiltle);
-                                                 // echo ucfirst($CityRowss->product_title);
-
-                                                    ?> </h5>
-                                                <?php
-                                                $avg_val = round($CityRowss->avg_val);
-                                                $num_reviewers = $CityRowss->num_reviewers;
-                                                ?>
-                                                <div class="price"><span class="number_s"><?php
-                                                        if ($CityRowss->currency != $this->session->userdata('currency_type')) {
-                                                            echo $currencySymbol;
-                                                            $currency = $CityRowss->currency;
-                                                            if ($currency_result->$currency) {
-                                                               // $price = $CityRowss->price / $currency_result->$currency;
-                                                               $price = currency_conversion($currency, $this->session->userdata('currency_type'), $CityRowss->price);
-                                                            } else {
-                                                                $price = currency_conversion($currency, $this->session->userdata('currency_type'), $CityRowss->price);
-                                                            }
-                                                            echo number_format($price, 2);
-                                                        } else {
-                                                            echo $currencySymbol;
-                                                            $price = $CityRowss->price;
-                                                            echo number_format($price, 2);
-                                                        } ?></span><?php echo $this->session->userdata('currency_type');
-                                                        ?>
-                                                         <?php if($CityRowss->instant_pay == 'Yes'){ ?><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" class="svg_instsant_pay" style="vertical-align: middle;"><g><path d="m29.8 12.6q0.4 0.5 0.1 1l-12 25.8q-0.3 0.6-1 0.6-0.1 0-0.3 0-0.4-0.2-0.6-0.5t-0.1-0.6l4.4-18.1-9 2.3q-0.1 0-0.3 0-0.4 0-0.7-0.2-0.4-0.4-0.3-0.9l4.5-18.4q0.1-0.3 0.4-0.5t0.6-0.2h7.3q0.4 0 0.7 0.2t0.3 0.7q0 0.2-0.1 0.4l-3.8 10.3 8.8-2.2q0.2 0 0.3 0 0.4 0 0.8 0.3z"></path></g></svg><?php } ?>
-                                                        <?php
-                                                            if($this->lang->line('per_night') != '') {
-                                $per= stripslashes($this->lang->line('per_night'));
-                            } else $per= "per night"; ?>
-                                                     <span style="font-size:14px;"><?php echo $per;  ?> </span> 
-                                                </div>
-                                            <div class="bottom-text">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
-                                                </p>
-                                            </div>
-                                            <div class="bottom-icons">
-                                                <span class="user-limit">9</span>
-                                            </div>
-
-                                                <div class="clear">
-                                                    <div class="starRatingOuter">
-                                                        <div class="starRatingInner"
-                                                             style="width: <?php echo($avg_val * 20); ?>%;"></div>
-                                                    </div>
-                                                    <span
-                                                            class="ratingCount"> <?php echo $num_reviewers . " "; ?><?php if ($this->lang->line('Reviews') != '') {
-                                                            echo stripslashes($this->lang->line('Reviews'));
-                                                        } else echo "Reviews"; ?> </span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-
-                        <div class="text-center loadmore-btn">
-                            <button class="theme-btn">Load More</button>
-                        </div>
-
                 </div>
-
-                        
-                
-
-
-
-
-
-
                     </div>
                 </div>
             </section>
@@ -1431,7 +1225,7 @@ $this->load->view('site/includes/footer');
                     autoplay: true
                 },
                 1000: {
-                    items: 1,
+                    items: 3,
                     nav: true,
                     loop: false,
                     margin: 16
