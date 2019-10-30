@@ -107,4 +107,4 @@ $config['manual_currency_status'] = '1';
 $config['exchange_rate_api'] = '667dc414eb1a66d9a1739df4'; 
 $config['contact_us_address'] = ''; 
 $config['message_pagination_per_page'] = '10'; 
-$config['base_url'] = 'http://192.168.0.87/1bookingz/';  ?>
+$config['base_url'] = 'http://192.168.0.84/1bookingz/';  ?>

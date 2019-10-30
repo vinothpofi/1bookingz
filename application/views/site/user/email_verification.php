@@ -201,9 +201,9 @@ if ($this->lang->line('NotVerified') != '') {
 						</div>
 					
 				<div class="panel panel-default" id="verification_list">
-					<div class="panel-heading"><?php if ($this->lang->line('verification_list') != '') {
-									   echo stripslashes($this->lang->line('verification_list'));
-								   } else echo "Verification List"; ?></div>
+					<div class="panel-heading"><?php if ($this->lang->line('License_Reg_verification') != '') {
+									   echo stripslashes($this->lang->line('License_Reg_verification'));
+								   } else echo "Real Estate License Registration Document Verification"; ?></div>
 					<div class="panel-body">
 						<!--Proof upload-->
 						<div

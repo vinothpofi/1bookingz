@@ -251,7 +251,7 @@ $this->load->view('admin/templates/header.php');
 								</div>
 							</li>
 
-							<!-- <li>
+							<?php  /* <li>
 								<div class="form_grid_12">
 									<?php										
 										echo form_label('I Am ','gender', 
@@ -287,7 +287,7 @@ $this->load->view('admin/templates/header.php');
 								    ?>
 									<div class="form_input">
 										<?php
-										/*drop down for months*/
+										//drop down for months
 										$mnth=array();
 										$mnth[''] = '--Select--';
 										for ($i=1;$i<=12;$i++)
@@ -303,7 +303,7 @@ $this->load->view('admin/templates/header.php');
 
 										echo form_dropdown('dob_month', $mnth, '', $mnthattr);
 
-										/*drop down for days*/
+										//drop down for days
 										$days=array();
 										$days[''] = '--Select--';
 										for ($i=1;$i<=31;$i++)
@@ -317,7 +317,7 @@ $this->load->view('admin/templates/header.php');
 
 										echo form_dropdown('dob_date', $days, '', $daysattr);
 
-										/*drop down for year*/
+										//drop down for year
 										$year=array();
 										$year[''] = '--Select--';
 										for ($i = 2005; $i > 1920; $i--)
@@ -333,7 +333,9 @@ $this->load->view('admin/templates/header.php');
 										?>
 									</div>
 								</div>
-							</li> -->
+							</li> 
+							 */ ?>
+							
 							<li>
 								<div class="form_grid_12">
 									<?php										
@@ -345,7 +347,7 @@ $this->load->view('admin/templates/header.php');
 											echo form_input([
 												'type'        => 'text',      
 									            'name' 	      => 'phone_no',
-									            'style'   	  => 'width:330px',
+									            'style'   	  => 'width:295px',
 									            'id'          => 'phone_no',
 												'tabindex'	  => '3',
 												'class'		  => 'tipTop',
@@ -361,17 +363,105 @@ $this->load->view('admin/templates/header.php');
 									</div>
 								</div>
 							</li>
+							
 							<li>
 							    <div class="form_grid_12">
-							    	<label class="field_title">
-							    		Business Name
-							    	</label>
+							    	<?php echo form_label('Business Name <span
+											class="req">*</span>','business_name', $commonclass);?>
 							    	<div class="form_input">
-							    		<input type="text" name="businessname" value="" style="width:295px" maxlength="15"  tabindex="2" class="tipTop" original-title="Please enter the businessname">
+										<?php
+											echo form_input([
+												'type'        => 'text',      
+									            'name' 	      => 'business_name',
+									            'style'   	  => 'width:295px',
+									            'id'          => 'business_name',
+												'required'	  => 'required',
+												'tabindex'	  => '3',
+												'class'		  => 'required tipTop',
+												'title'		  => 'Please enter business name',
+												'maxlength'	  => 100
+									        ]);
+									    ?>
 							    	</div>
 							    </div>
 							</li>
-							<!-- <li>
+							
+							<li>
+								<div class="form_grid_12">
+									<?php										
+										echo form_label('short Business Description <span
+											class="req">*</span>','description', 
+												$commonclass);	
+								    ?>
+									<div class="form_input">
+										<?php
+											
+									        $descattr = array(
+											    'name' 	      => 'business_desc',
+									            'style'   	  => 'width:295px',
+									            'tabindex'    => '5',
+												'required'	  => 'required',
+												'rows'	      => 3,
+												'class'		  => 'required tipTop',
+												'title'		  => 'Please enter your Business
+												                  details'
+											);
+											echo form_textarea($descattr);
+									    ?>
+									</div>
+								</div>
+							</li>
+							
+							<li>
+								<div class="form_grid_12">
+									<?php										
+										echo form_label('Real Estate License number <span
+											class="req">*</span>','description', 
+												$commonclass);	
+								    ?>
+									<div class="form_input">
+										<?php
+											echo form_input([
+												'type'        => 'text',      
+									            'name' 	      => 'license_number',
+									            'style'   	  => 'width:295px',
+									            'id'          => 'license_number',
+												'required'	  => 'required',
+												'tabindex'	  => '3',
+												'class'		  => 'required tipTop',
+												'title'		  => 'Please enter license number',
+												'maxlength'	  => 30
+									        ]);
+									    ?>
+									</div>
+								</div>
+							</li>
+							
+							<li>
+								<div class="form_grid_12">
+									<?php										
+										echo form_label('Business Address <span
+											class="req">*</span>','business_address', 
+												$commonclass);	
+								    ?>
+									<div class="form_input">
+										<?php
+									        $descattr = array(
+											    'name' 	      => 'business_address',
+									            'style'   	  => 'width:295px',
+									            'tabindex'    => '5',
+												'required'	  => 'required',
+												'rows'	      => 3,
+												'class'		  => 'required tipTop',
+												'title'		  => 'Please enter business address'
+											);
+											echo form_textarea($descattr);
+										?>
+									</div>
+								</div>
+							</li>
+							
+							<!--<li>
 								<div class="form_grid_12">
 									<?php										
 										echo form_label('Where You Live','s_city', 
@@ -396,47 +486,9 @@ $this->load->view('admin/templates/header.php');
 									    ?>
 									</div>
 								</div>
-							</li> -->
+							</li> 
+							
 							<li>
-								<div class="form_grid_12">
-									<?php										
-										echo form_label('short Business Description ','description', 
-												$commonclass);	
-								    ?>
-									<div class="form_input">
-										<?php
-											
-									        $descattr = array(
-											    'name' 	      => 'business description',
-									            'style'   	  => 'width:295px',
-									            'tabindex'    => '5',
-												'rows'	      => 3,
-												'class'		  => 'tipTop',
-												'title'		  => 'Please enter your Business
-												                  details'
-											);
-											echo form_textarea($descattr);
-									    ?>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="form_grid_12">
-									<label class="field_title">Real Estate License number</label>
-									<div class="form_input">
-										<input type="text" name="Real Estate number" value="" style="width:295px"  class="tipTop" original-title="Please enter your real estate number">
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="form_grid_12">
-									<label class="field_title">business address</label>
-									<div class="form_input">
-										<input type="text" name="business address" value="" style="width:295px"  class="tipTop" original-title="business address">
-									</div>
-								</div>
-							</li>
-							<!-- <li>
 								<div class="form_grid_12">
 									<?php										
 										echo form_label('Describe Yourself','description', 
@@ -457,9 +509,9 @@ $this->load->view('admin/templates/header.php');
 									    ?>
 									</div>
 								</div>
-							</li> -->
+							</li> 
 
-							<!-- <li>
+							<li>
 								<div class="form_grid_12">
 									<?php										
 										echo form_label('School','school', 
@@ -484,9 +536,9 @@ $this->load->view('admin/templates/header.php');
 									    ?>
 									</div>
 								</div>
-							</li> -->
+							</li> 
 
-							<!-- <li>
+							<li>
 								<div class="form_grid_12">
 									<?php										
 										echo form_label('Work','work', $commonclass);	
@@ -511,6 +563,7 @@ $this->load->view('admin/templates/header.php');
 									</div>
 								</div>
 							</li> -->
+							
 							<li>
 								<div class="form_grid_12">
 									<?php										
@@ -551,11 +604,11 @@ $this->load->view('admin/templates/header.php');
 											echo form_input([
 												'type'        => 'password',      
 											    'id' 	      => 'new_password',
-											    'name'		  => 'new_password',											    
+											    'name'		  => 'new_password',
+											    'class'   	  => 'tipTop large',
 											    'tabindex'	  => '10',
-											    'class'		  => 'required tipTop',
-											    'title'		  => 'Please enter the new password',
-											    'style'   	  => 'width:295px'
+											    'class'		  => 'required large tipTop',
+											    'title'		  => 'Please enter the new password'
 											]);
 										?>
 									</div>
@@ -571,10 +624,10 @@ $this->load->view('admin/templates/header.php');
 											echo form_input([
 												'type'        => 'password',      
 											    'id' 	      => 'confirm_password',
-											    'name'		  => 'confirm_password',										    
+											    'name'		  => 'confirm_password',
+											    'class'   	  => 'tipTop large',
 											    'tabindex'	  => '11',
-											    'class'		  => 'required tipTop',
-											    'style'   	  => 'width:295px',
+											    'class'		  => 'required large tipTop',
 											    'title'		  => 'Please re-type the above password'
 											]);
 										?>

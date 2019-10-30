@@ -685,7 +685,7 @@ $lang['unVerified_proof']='UnVerified Proof';
 
 $lang['experience']='EXPERIENCE'; 
 
-$lang['Become_Host']='Become a Host'; 
+$lang['Become_Host']='REAL ESTATE AGENCIES'; 
 
 $lang['create_experience']='Create Experience'; 
 

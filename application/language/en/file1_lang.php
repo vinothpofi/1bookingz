@@ -2,7 +2,7 @@
 $lang['signup']='Sign Up'; 
 $lang['header_login']='Login'; 
 $lang['footer_follow_help']='Help'; 
-$lang['list_your']='Rent your space'; 
+$lang['list_your']='Rent A Property'; 
 $lang['sign_up_with']='Sign Up With'; 
 $lang['facebook_signup']='Continue with Facebook'; 
 $lang['signup_google']='Continue  with Google'; 

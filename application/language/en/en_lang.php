@@ -2,7 +2,7 @@
 $lang['signup']='Sign Up'; 
 $lang['header_login']='Login'; 
 $lang['footer_follow_help']='Help'; 
-$lang['list_your']='Rent your space'; 
+$lang['list_your']='Rent a property'; 
 $lang['sign_up_with']='Sign Up With'; 
 $lang['facebook_signup']='Continue with Facebook'; 
 $lang['signup_google']='Continue  with Google'; 
@@ -1709,7 +1709,7 @@ $lang['unVerified_proof']='UnVerified Proof';
 
 $lang['experience']='EXPERIENCE'; 
 
-$lang['Become_Host']='Become a Host'; 
+$lang['Become_Host']='REAL ESTATE AGENCIES'; 
 
 $lang['create_experience']='Create Experience'; 
 
@@ -2381,4 +2381,8 @@ $lang['select_year']='Please Select Year';
 $lang['valid_card_no']='Please provide valid card Number'; 
 $lang['upcoming_month']='Please provide upcoming month'; 
 $lang['security_code']='Please provide security code'; 
-$lang['valid_security_code']='Please provide valid security code';  ?>
+$lang['valid_security_code']='Please provide valid security code'; 
+$lang['License_Reg_verification']='Real Estate License Registration Document Verification'; 
+
+
+?>

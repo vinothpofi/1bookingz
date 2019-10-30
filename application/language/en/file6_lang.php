@@ -352,4 +352,8 @@ $lang['select_year']='Please Select Year';
 $lang['valid_card_no']='Please provide valid card Number'; 
 $lang['upcoming_month']='Please provide upcoming month'; 
 $lang['security_code']='Please provide security code'; 
-$lang['valid_security_code']='Please provide valid security code';  ?>
+$lang['valid_security_code']='Please provide valid security code';  
+$lang['License_Reg_verification']='Real Estate License Registration Document Verification'; 
+
+
+?>
