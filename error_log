@@ -1,0 +1,66 @@
+[17-Feb-2018 13:34:26 Etc/GMT] PHP Fatal error:  Class 'MY_Controller' not found in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/Landing.php on line 13
+[17-Feb-2018 13:39:42 Etc/GMT] PHP Fatal error:  Class 'MY_Controller' not found in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/Landing.php on line 13
+[19-Feb-2018 10:55:07 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/rentals/product_detail.php on line 557
+[19-Feb-2018 16:30:13 Asia/Kolkata] PHP Fatal error:  Cannot access empty property in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/rentals/booking_confirm.php on line 69
+[19-Feb-2018 16:30:43 Asia/Kolkata] PHP Fatal error:  Cannot access empty property in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/rentals/booking_confirm.php on line 69
+[29-Mar-2018 17:39:46 Asia/Kolkata] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/site/Cms.php on line 1103
+[29-Mar-2018 17:40:48 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/user/host_conversation.php on line 1
+[30-Mar-2018 12:15:18 Asia/Kolkata] PHP Fatal error:  Call to undefined method User::send() in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/site/User.php on line 3906
+[30-Mar-2018 12:27:23 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '*' in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/site/User.php on line 3911
+[30-Mar-2018 19:03:18 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/user/dashboard-account-wallet.php on line 1
+[30-Mar-2018 19:22:32 Asia/Kolkata] PHP Fatal error:  Call to undefined method CI_Loader::checkLogin() in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/user/dashboard-account-wallet.php on line 48
+[30-Mar-2018 19:23:19 Asia/Kolkata] PHP Fatal error:  Call to undefined method CI_Loader::checkLogin() in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/user/dashboard-account-wallet.php on line 48
+[30-Mar-2018 19:30:30 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/user/dashboard-account-wallet.php on line 1
+[02-Apr-2018 11:09:37 Asia/Kolkata] PHP Fatal error:  Call to undefined method Dashboard_model::view_experience_count() in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/admin/Dashboard.php on line 1
+[02-Apr-2018 11:11:05 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:11:07 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:12:32 Asia/Kolkata] PHP Fatal error:  Call to undefined method Dashboard_model::view_experience_count() in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/admin/Dashboard.php on line 1
+[02-Apr-2018 11:14:32 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:25 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:26 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:27 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:27 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:27 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:28 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:28 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:28 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:28 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:15:28 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:17:37 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:17:39 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:19:00 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:19:00 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:23:33 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:23:34 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:25:41 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:28:31 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:28:32 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:28:32 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:28:32 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:28:33 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 1
+[02-Apr-2018 11:30:14 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 3
+[02-Apr-2018 11:30:15 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 3
+[02-Apr-2018 11:30:16 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 3
+[02-Apr-2018 11:30:16 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 3
+[02-Apr-2018 11:30:16 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 3
+[02-Apr-2018 11:30:17 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 3
+[02-Apr-2018 11:30:17 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/models/Dashboard_model.php on line 3
+[02-Apr-2018 11:33:10 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/laravarc/public_html/demo16.pofi5.com/application/views/admin/adminsettings/dashboard.php on line 1
+[02-Apr-2018 11:33:11 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/laravarc/public_html/demo16.pofi5.com/application/views/admin/adminsettings/dashboard.php on line 1
+[02-Apr-2018 11:43:31 Asia/Kolkata] PHP Fatal error:  Call to undefined method Dashboard_model::view_experience_count() in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/admin/Dashboard.php on line 218
+[02-Apr-2018 12:42:38 Asia/Kolkata] PHP Parse error:  syntax error, unexpected end of file in /home/laravarc/public_html/demo16.pofi5.com/application/controllers/site/Product.php on line 1
+[07-Apr-2018 11:43:07 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:43:12 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:43:18 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:52:14 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:52:18 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:52:28 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:52:29 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:52:31 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:52:38 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:53:39 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:53:40 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:53:49 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:53:52 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:53:53 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521
+[07-Apr-2018 11:53:55 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on null in /home/laravarc/public_html/demo16.pofi5.com/application/views/site/landing/landing.php on line 521

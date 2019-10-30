@@ -1,0 +1,61 @@
+Commission calculated based on Following Steps : 
+
+Ex : 
+SubTotl 		 : 1000
+Security Deposit 	 : 100
+Service Fee     	 : 50
+Total 		 : 1150
+
+1=> If no one is canceled means the amount will be,
+Admin 		: 50
+Host Fee  		:1100 [Including Security Deposit,Sub total]
+Note : The Security deposit Host have to give to Guest, Its Mannual Process.
+						
+2=> if the guest canceled [12%] 
+Total 		: 1150
+Admin 		: 50
+Host Fee		: 120
+Guest Fee 		: 980
+
+Guest Fee Calculated By,
+--------------------------
+For 12%[For host]
+
+=1000*12/100
+=120 [Host]
+=1000-120
+=880+100=980 [Guest][Including Security deposit]
+
+3=> if the guest canceled [100%]
+Total 		:1150
+Admin 		: 50 
+Host Fee		: 1000
+Guest Fee		: 100
+------------------------------------------------------------------------
+FIELDS EXPLANATION :
+
+1. Total Order  :
+	Total Number of booking of Host
+2. Total Amount : 
+	Including Security deposit,Admin fee,Sub Total [Including of Wallet/Coupon If Used]
+3. Total Discount (on Coupon)
+	Coupon Amount is Used.
+4. Guest Service Amount :
+	Service Fee, [Admin Fee]
+5.Cancellation Amount :
+	Cancellation Amount for host.
+6.Used Wallet Amount :
+	Wallet Amount if Used
+7. Profit Reminds :
+	Deduction of Wallet Amount,Coupon Amount From Admin Fee.
+8. Amount to host
+	Including of Cancellation Amount.
+9. Paid :
+	How much Amount Paid to Host by admin
+10. Balence :
+	How much Amount Need to give to Host.
+
+
+
+
+
