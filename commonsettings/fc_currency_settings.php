@@ -1,0 +1,23 @@
+<?php 
+$config['currency_id'] = '29'; 
+$config['currency_contid'] = 'SA'; 
+$config['currency_country_code'] = 'BR'; 
+$config['currency_country_mobile_code'] = '+55'; 
+$config['currency_name'] = 'Brazil'; 
+$config['currency_seourl'] = 'brazil'; 
+$config['currency_currency_type'] = 'BRL'; 
+$config['currency_currency_symbol'] = '0'; 
+$config['currency_shipping_cost'] = '0.00'; 
+$config['currency_shipping_tax'] = '0.00'; 
+$config['currency_meta_title'] = ''; 
+$config['currency_meta_keyword'] = ''; 
+$config['currency_meta_description'] = ''; 
+$config['currency_description'] = ''; 
+$config['currency_status'] = 'Active'; 
+$config['currency_dateAdded'] = '2017-03-10 02:12:16'; 
+$config['currency_currency_default'] = 'Yes'; 
+$config['currency_slider_image'] = '0'; 
+$config['currency_logo'] = '0'; 
+$config['currency_map'] = '0'; 
+$config['currency_thumb'] = ''; 
+$config['currency_language_code'] = '1024';  ?>

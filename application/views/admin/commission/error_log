@@ -1,0 +1,5 @@
+[14-Jan-2017 03:55:56 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/application/views/admin/commission/paypal_form.php on line 8
+[16-Jan-2017 22:17:29 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/application/views/admin/commission/paypal_form.php on line 8
+[18-Jan-2017 15:27:50 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/application/views/admin/commission/paypal_form.php on line 8
+[27-Jan-2017 01:36:26 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/application/views/admin/commission/paypal_form.php on line 8
+[27-Jan-2017 01:36:29 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home2/pofitec/public_html/homestaydnn.laravelecommerce.com/application/views/admin/commission/paypal_form.php on line 8

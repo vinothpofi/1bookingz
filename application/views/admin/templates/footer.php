@@ -1,0 +1,1 @@
+<p style="text-align:center;color: #fff;background: #1b2a47;margin: 0;padding: 5px 0;"><?php echo $footer; ?></p></body></html>

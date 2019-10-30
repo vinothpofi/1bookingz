@@ -1,0 +1,121 @@
+/*sidemenu style*/
+.loggedBg {	background-color: #f5f5f5;	margin: 0 0 16px;}
+.sideBarMenu li > a {	padding: 8px 16px;	display: block;	color: #787878;font-size: 14px;}
+.sideBarMenu li > a:hover {	color: #494949;}
+.sideBarMenu li > a.active {	color: #494949;	font-weight: 600;}
+/*dashboard style*/
+.sideBarMenu li > a:hover{text-decoration: none; color: #151515;}
+.dashboard .left .profile_I .dp{ border-radius: 0px; }
+.dashboard .left .name{ font-size: 15px; }
+.dashboard .left a{font-size: 13px;}
+.dashboard .panel-heading{font-size: 15px; color: #151515;}
+.dashboard .panel-body{font-size: 13px; color: #6e6e6e;}
+.verify{margin: 15px 0px 0px;}
+.table {font-size: 12px;color: #6e6e6e;}
+.table th {font-size: 100%;font-weight: bold;color: #3f3f3f;}
+.table.msgListing tbody tr th, .table.msgListing tbody tr td{text-align: center;}
+.leftAlign.table > tbody > tr > td, .leftAlign.table > tbody > tr > th{text-align: center;}
+.table > tbody > tr > td{line-height: 1.5;}
+.loggedIn .width80 .table-responsive{width: 100%; display: block;}
+.loggedIn .panel-heading{ background-color: #fff; border-color: transparent; padding: 6px 0px;color: #151515; font-weight: 600 }
+.loggedIn .panel-body{padding:16px 0px;}
+.loggedIn .panel-default{border-color: transparent; border-bottom: 1px solid #ddd; }
+.loggedIn .panel-default:last-child{border-bottom:0px;}
+.table tbody tr td{border-color: transparent; border-bottom:1px solid #dddddd80; background-color: #fff; color: #6e6e6e; padding: 10px 15px;}
+.table tbody tr:hover td{background-color: #f5f5f5;}
+.table tbody tr th{border-color: transparent; border-bottom: 1px solid #ddd; padding: 10px 15px;}
+.dbLoginMenu li{position: relative;}
+.dbLoginMenu li i{position: absolute;top:5px; right: 0px;font-size: 16px;}
+table.table.table-striped.leftAlign tbody tr td a{ float: none !important; }
+a.info-circle{margin:0px 5px;}
+.loggedIn .nav > li > a{ font-weight: 600; font-size: 13px; }
+.loggedIn .tab-content{font-size:13px;}
+h3.cancelAlert{font-size: 15px;}
+.number_s120{font-size: 19px;}
+.dropdown-menu.listings.msg{z-index: 998;}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover{background: rgba(255, 186, 0, 1)}
+.Rating , .rating{margin:10px 0px; }
+.formList .right select{min-width: 100px;}
+select#gender{padding-right:0px !important; min-width: 150px;}
+.table .dropdown-toggle{min-height: 30px; padding:6px;}
+.alert{position: relative;}
+.alert a.close{ position: absolute;top:6px; right:6px;background: transparent; }
+p.text-success , p.text-danger{margin:10px 0px 20px !important;}
+/*inbox*/
+#booking_number_filter{}
+#booking_number_filter .checkbox_select{width: 180px;margin: 10px 0px;}
+#booking_number_filter .checkbox_select_anchor{display: block;background: #fff;color: #444;cursor: pointer;padding:  9px 5px;position: relative;border: 1px solid #ccc;}
+#booking_number_filter .checkbox_select_anchor:after{  width: 0; 	height: 0; 	border-left: 5px solid transparent;	border-right: 5px solid transparent;border-top: 7px solid #444; content: "";  position: absolute;  right: 10px;  top: 15px;}
+#booking_number_filter .expanded .checkbox_select_anchor:after{	border-top: 0;	border-bottom: 7px solid #444;}
+#booking_number_filter .checkbox_select .select_input{    width: 100%;    cursor: pointer;}
+#booking_number_filter .checkbox_select_dropdown{    display: none;    background: whitesmoke; position: absolute;width: 180px;}
+#booking_number_filter .checkbox_select_dropdown.show{    display: block;}
+#booking_number_filter .checkbox_select_dropdown ul{    max-height: 150px;overflow-y: scroll;overflow-x: hidden;padding: 0;margin: 0;border: 1px solid #999;border-top: 0;}
+#booking_number_filter .checkbox_select_dropdown ul li{    list-style: none;    position: relative;    color: #666;}
+#booking_number_filter .checkbox_select_dropdown ul li label{  position: relative;      padding: 10px 5px 5px 40px;     display: block;  cursor: pointer;}
+#booking_number_filter .checkbox_select_dropdown ul li label:hover{  background: #cbcbcb;  color: white;}
+#booking_number_filter .checkbox_select_dropdown ul li input:checked + label{  background: #bbb;  color: white;  text-shadow: 0px 1px 1px rgba(150, 150, 150, 1);}
+#booking_number_filter .checkbox_select_dropdown ul li input{  position: absolute;  left:0;  z-index:1;  display: inline-block;  height: 100%;  width: 30px;}
+#booking_number_filter .checkbox_select_search{ display: none;}
+#booking_number_filter .checkbox_select_submit{display:none;}
+#booking_number_filter .hide{display: none;}
+.badge{color: #444; border-color: #444;}
+.loggedIn .width20 h3{ font-size: 16px; margin: 10px 0px; }
+.profile_I .dp{ border-radius: 0px; }
+.loggedIn .verifications, .loggedIn .verifications p, .loggedIn .verifications .number_s120{ font-size: 13px; }
+.msgConversation{font-size: 14px;}
+.chat .left p, .chat .right p{font-size: 13px; line-height: 1.5;}
+.chat .right small, .chat .left small{padding: 10px 0px;}
+.loggedIn .verifications h5 { font-size: 15px; }
+/* dashboard mytrips page modal popup*/
+.modal-header h2{ font-size: 20px;}
+.close{float: right !important; font-size: 35px !important; padding: 0px !important;}
+#add_dispute_EN1500188 .modal-body .left{ display: block; width: 100px; }
+.table > tbody > tr > td img{ max-height: 100px;display: block; width: 100%;}
+.loggedIn .panel-body .formList label{ font-size: 15px;text-align: left;color:#151515; padding: 0px; }
+.loggedIn .panel-body .formList{border-bottom:1px solid #eee; padding-bottom: 25px;}
+.loggedIn .panel-body .formList:last-child{border-bottom-color: transparent;}
+.loggedIn .panel-body .formList input, .loggedIn .panel-body .formList select, .formList .right p, .loggedIn .panel-body p{font-size: 12px;}
+.loggedIn .panel-body .formList .right p{line-height: 1.5;}
+.loggedIn .panel-body .formList .right .addLang{margin: 0px;}
+.loggedIn .panel-body h5, .phoneVer label{font-size: 15px;}
+#knownLanguages li{ margin: 5px 5px }
+.photos .left{vertical-align: top;}
+.photos h5{font-size: 17px;}
+.photos  p, .photos .note{font-size: 13px; line-height: 1.5}
+.loggedIn p{line-height: 1.5;}
+.loggedIn .panel .panel-body > .marginBottom3{ margin-top: 10px; font-size: 15px; }
+.phoneVer .submitBtn1{margin-top: 37px; padding: 10px;}
+.phoneVer input.num, .phoneVer select{height: 35px;}
+.phoneVer .code{ padding: 8px 8px; }
+#proofUpload{font-size: 13px; line-height: 1.5;}
+#proofUpload h3{ font-family: 'Montserrat', sans-serif !important; font-size: 15px; font-weight: normal; }
+.loggedIn .tran_container .nav-tabs > li > a{font-size: 15px;}
+.inviteFrnds .heading h2{ font-family: 'Montserrat', sans-serif !important; font-size: 18px; }
+.loggedIn h3{font-family: 'Montserrat', sans-serif !important;}
+.loggedIn a:hover{text-decoration: none;}
+select#gender{ padding-right: 10px; }
+ul.listings li h6{ font-family: 'Montserrat', sans-serif !important;font-size: 14px;}
+.dropdown-toggle{padding: 20px 10px;}
+/*User Profile*/
+.userProfile h1, .userProfile h2, .userProfile h3, .userProfile h4, .userProfile h5, .userProfile h6{font-family:'Montserrat', sans-serif !important; }
+.userProfile h2{font-size: 17px; margin: 10px 0px;}
+.userProfile p, .userProfile, .userProfile .aboutMe p{font-size:13px;}
+.userProfile .aboutMe p{word-break: break-all;}
+.userProfile h6{font-size: 13px;}
+.userProfile .myListings{ border-bottom: 1px solid #ddd; }
+.userProfile .row{ border-bottom:1px solid #ddd; padding-bottom: 10px;}
+.userProfile .panel-default {border:0px solid; border-bottom: 1px solid #ddd; padding-bottom: 10px;}
+.userProfile .panel-default .panel-heading{background-color: #fff;border-color: transparent;padding: 6px 0px;color: #151515;font-weight: 600; font-size: 15px;}
+.userProfile .panel-default .panel-body{padding: 5px 0px;}
+.userProfile a:hover{text-decoration: none;}
+/*table resposive*/
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{display: table-cell;}
+
+
+
+/*review modal radio button style*/
+.Rating label .checkboxStyle{ width: 15px; color: #444; border-radius: 50%;background: #ffba00 }
+.Rating label .checkboxStyle input{ width: 0px; height: 0px;top: 0px; left: 0; margin: 0px; opacity: 0}
+.Rating .checkboxStyle input[type="radio"]:checked + .fa {display: block;border-radius: 50%;}
+.Rating .checkboxStyle .fa{width: 10px;height: 10px;margin-right: 0px;font-size: 10px;color: #fff;text-align: center;line-height: 12px;font-weight: 200;display: none;position: absolute;left: 1.5px;top: -1px;right: 0;}
