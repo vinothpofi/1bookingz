@@ -14,7 +14,7 @@ $currency_result = $this->session->userdata('currency_result');
 	echo form_input($data);
 	echo form_close();
 	?>
-	<section class="loggedBg">
+	<section class="loggedBg" style="display: none;">
 		<div class="container">
 			<ul class="loginMenu">
 			
@@ -48,14 +48,16 @@ $currency_result = $this->session->userdata('currency_result');
         </div>
 
         <div class="clearfix"></div>
-			<div class="row listings">
+			<div class="row listings card-section-bg">
 			<?php
 				if ($product->num_rows() > 0) {
 					foreach ($product->result_array() as $product_image) {
 						/*print_r($newArr);;die;*/
 						?>
-						<div class="col-sm-4 col-md-3" style="margin-top: 20px;">
+						<div class="col-sm-4 col-md-4">
+							<div class="card-section">
 							<div class="owl-carousel show">
+								<div class="item">
 								<?php if ($this->session->userdata('fc_session_user_id')) {
 									if (in_array($product_image['id'], $newArr)) { ?>
 										<div class="wishList_I yes" style="display: block;"></div>
@@ -78,6 +80,9 @@ $currency_result = $this->session->userdata('currency_result');
 										<div class="myPlace"
 											 style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div>
 									<?php } ?>
+								</a>
+							</div>
+							</div>
 									<div class="bottom">
 										<div class="loc">
 										<?php 
@@ -138,6 +143,14 @@ $currency_result = $this->session->userdata('currency_result');
                                             } else $per= "per night"; ?>
                                             <span style="font-size:14px;"><?php echo $per;  ?> </span>
                                         </div>
+                                        <div class="bottom-text">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
+                                                </p>
+                                        </div>
+                                        <div class="bottom-icons">
+                                                <span class="guest-limit">8</span>
+                                        </div>
 										<div class="clear">
 											<div class="starRatingOuter">
 												<?php
@@ -153,8 +166,7 @@ $currency_result = $this->session->userdata('currency_result');
 												} else echo "Reviews"; ?></span>
 										</div>
 									</div>
-								</a>
-							</div>
+								</div>
 						</div>
 					<?php }
 				} else {
@@ -361,11 +373,12 @@ $currency_result = $this->session->userdata('currency_result');
                                 } else echo "See all"; ?> <span class="icon">></span></a>
                 </div>
                 <div class="clearfix"></div>
-				<div class="row listings">
+				<div class="row listings card-section-bg">
 				<?php foreach ($CityName[$city_name] as $CityRowss) { ?>
-						<div class="col-sm-4 col-md-3" style="margin-top: 20px;">
+						<div class="col-sm-4 col-md-4">
+							<div class="card-section">
 							<div class="owl-carousel show">
-								
+							<div class="item">
 							  <a href="<?php echo base_url(); ?>rental/<?php echo $CityRowss->seourl; ?>">
                                         <?php
                                         $base = base_url();
@@ -382,6 +395,9 @@ $currency_result = $this->session->userdata('currency_result');
                                             <div class="myPlace"
                                                  style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div>
                                         <?php } ?>
+                                    </a>
+                                </div>
+							</div>
                                         <div class="bottom">
                                            <div class="loc">
 										   <?php  
@@ -428,6 +444,14 @@ $currency_result = $this->session->userdata('currency_result');
                                                 } else $per= "per night"; ?>
                                                 <span style="font-size:14px;"><?php echo $per;  ?> </span>
                                             </div>
+                                            <div class="bottom-text">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
+                                                </p>
+                                        	</div>
+                                        	<div class="bottom-icons">
+                                                <span class="guest-limit">8</span>
+                                        	</div>
                                             <div class="clear">
                                                 <div class="starRatingOuter">
                                                     <div class="starRatingInner"
@@ -439,8 +463,7 @@ $currency_result = $this->session->userdata('currency_result');
                                                     } else echo "Reviews"; ?> </span>
                                             </div>
                                         </div>
-                                    </a>
-							</div>
+                                 </div>   
 						</div>
 					<?php } ?>
 				 </div>

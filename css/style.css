@@ -182,11 +182,6 @@ footer select {border: 0px solid #ddd;background-color: rgba(255, 255, 255, 0.08
 .card-section:hover .bottom h5{ color: #cc0000; }
 .card-section:hover .myPlace{ transform: scale(1.09); }
 .card-section:hover .myPlace:after{ opacity: 1; }
-.card-section .bottom-text{ margin: 10px 0; }
-.card-section .bottom-text p{ font-size: 13px; }
-.card-section .bottom-icons{ margin: 0 0 10px; }
-.card-section .user-limit{ margin-right: 15px; font-size: 14px; font-weight: 600; color: #000; }
-.card-section .user-limit:before{ margin-right: 7px; content: "\f236"; font-family: 'FontAwesome'; }
 
 .owl-carousel.listing-carousel .owl-nav button{ top: 50%; transform: translateY(-50%)!important; }
 .owl-carousel.listing-carousel .owl-nav button:after{ left: 0; right: 0; }

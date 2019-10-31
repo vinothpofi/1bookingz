@@ -829,7 +829,7 @@ $this->load->view('site/includes/footer');
 					'                                    <h5>' + location[0] + '</h5>\n' +
 					'                                    <div class="price"><span class="number_s"> <?php echo $currencySymbol; ?>' + location[7] + ' </span>'+svg_is+'</div>\n' +
 					'                                    <div class="bottom-text"><p>Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]</p></div>\n'+
-					'                                    <div class="bottom-icons"><span class="user-limit">5</span></div>\n'+
+					'                                    <div class="bottom-icons"><span class="guest-limit">5</span></div>\n'+
 					'                                    <div class="clear">\n' +
 					'                                        <div class="starRatingOuter">\n' +
 					'                                            <div class="starRatingInner" style="width: ' + location[6] + '%;"></div>\n' +
@@ -866,7 +866,7 @@ image=(images[0]) ? images[0] : '';
 					'                                    <div class="loc" style="display:none;">' + location[11] +  location[4] + '</div>\n' +
 					'                                    <h5>' + location[0] + '</h5>\n' +
 					'                                    <div class="price"><span class="number_s"> <?php echo $currencySymbol; ?>' + location[7] + ' </span></div>\n' +
-					'               <div class="bottom-icons"><span class="user-limit">5</span></div>\n' +
+					'               <div class="bottom-icons"><span class="guest-limit">5</span></div>\n' +
 					'                                    <div class="clear">\n' +
 					'                                        <div class="starRatingOuter">\n' +
 					'                                            <div class="starRatingInner" style="width: ' + location[6] + '%;"></div>\n' +

@@ -24,7 +24,7 @@
             ?>
             <section>
 			
-			<div class="container" style="margin-top: 20px;"><!--container-fluid-->
+			<div class="container" ><!--container-fluid-->
 
                 <div class="rowHead">
                 <h3><?php if ($this->lang->line('Home in') != '') {
@@ -39,11 +39,12 @@
                 </div>
                 <div class="clearfix"></div>
 
-				<div class="row listings">
+				<div class="row listings card-section-bg">
 				<?php foreach ($CityName[$city_name] as $CityRowss) { ?>
-						<div class="col-sm-4 col-md-3" style="margin-top: 20px;">
+						<div class="col-sm-4 col-md-3">
+                            <div class="card-section">
 							<div class="owl-carousel show">
-								
+								<div class="item">
 							  <a href="<?php echo base_url(); ?>rental/<?php echo $CityRowss->seourl; ?>">
                                         <?php
                                         $base = base_url();
@@ -60,6 +61,9 @@
                                             <div class="myPlace"
                                                  style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg"></div>
                                         <?php } ?>
+                                    </a>
+                                </div>
+                            </div>
                                         <div class="bottom">
                                            <div class="loc">
 										   <?php  
@@ -99,6 +103,14 @@
                                                 echo stripslashes($this->lang->line('per_night'));
                                             } else echo "per night"; ?></span>
                                             </div>
+                                            <div class="bottom-text">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
+                                                </p>
+                                            </div>
+                                            <div class="bottom-icons">
+                                                <span class="guest-limit">8</span>
+                                            </div>
                                             <div class="clear">
                                                 <div class="starRatingOuter">
                                                     <div class="starRatingInner"
@@ -110,8 +122,7 @@
                                                     } else echo "Reviews"; ?> </span>
                                             </div>
                                         </div>
-                                    </a>
-							</div>
+                                   </div> 
 						</div>
 					<?php } ?>
 				 </div>

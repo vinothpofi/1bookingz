@@ -13,7 +13,7 @@ $currency_result = $this->session->userdata('currency_result');
 	$data = array('type' => 'hidden', 'id' => 'page_number', 'name' => 'page_number', 'value' => 1);
 	echo form_input($data);
 	?>
-	<section class="loggedBg" style="display: none;">
+	<section class="loggedBg">
 		<div class="container">
 			<ul class="loginMenu">
 			
