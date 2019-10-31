@@ -13,7 +13,7 @@ $currency_result = $this->session->userdata('currency_result');
 	$data = array('type' => 'hidden', 'id' => 'page_number', 'name' => 'page_number', 'value' => 1);
 	echo form_input($data);
 	?>
-	<section class="loggedBg">
+	<section class="loggedBg" style="display: none;">
 		<div class="container">
 			<ul class="loginMenu">
 			
@@ -34,8 +34,9 @@ $currency_result = $this->session->userdata('currency_result');
 			</ul>
 		</div>
 	</section>
-	<section>
-		<div class="container" style="margin-top: 20px;">
+	<section class="explore-bg">
+		<div class="container">
+			<div class="rowHead"><h3>Explore Listings</h3></div>
 			<div class="row listings card-section-bg" id="property_listings">
 				<?php
 				if ($product->num_rows() > 0) {
@@ -44,6 +45,7 @@ $currency_result = $this->session->userdata('currency_result');
 						//print_r($product_image);
 						?>
 						<div class="col-sm-4 col-md-4">
+						<div class="card-section">
 							<div class="owl-carousel show">
 								<div class="item">
 								<?php if ($this->session->userdata('fc_session_user_id')) {
@@ -62,12 +64,16 @@ $currency_result = $this->session->userdata('currency_result');
 								<a href="<?php echo base_url(); ?>rental/<?php echo $product_image['seourl']; ?>">
 									<?php if (($product_image['product_image'] != '') && (file_exists('./images/rental/' . $product_image['product_image']))) {
 										?>
-										<div class="card-image"><div class="myPlace"
-											 style="background-image: url('<?php echo base_url(); ?>images/rental/<?php echo $product_image['product_image']; ?>')"></div></div>
+										<div class="myPlace"
+											 style="background-image: url('<?php echo base_url(); ?>images/rental/<?php echo $product_image['product_image']; ?>')"></div>
 									<?php } else { ?>
-										<div class="card-image"><div class="myPlace"
-											 style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div></div>
+										<div class="myPlace"
+											 style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div>
 									<?php } ?>
+
+									</a>
+							</div>
+							</div>
 									<div class="bottom">
 										<div class="loc" style="display: none;">
 										<?php 
@@ -203,9 +209,7 @@ $currency_result = $this->session->userdata('currency_result');
 												} else echo "Reviews"; ?></span>
 										</div>
 									</div>
-								</a>
-							</div>
-							</div>
+								</div>
 						</div>
 					<?php }
 				} else {
