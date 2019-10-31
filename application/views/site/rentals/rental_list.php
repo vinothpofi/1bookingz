@@ -153,7 +153,7 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
 
     header.posHeader.fixedHeader {height: 80px;}
     header.posHeader.fixedHeader nav.navbar {padding: 15px;}
-    .listingRow {margin-top: 80px;}
+    .listingRow {margin-top: 20px;}
     @media (min-width: 320px) and (max-width: 480px){
     	.listingRow{margin-top: 104px;}
     	.guestFilter, .openFilter.moreFilter, .categoriesBlock{top: 155px;}
@@ -188,8 +188,15 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
 	echo form_input(array('type' => 'hidden', 'value' => $lat, 'name' => 'lat', 'id' => 'lat'));
 	echo form_input(array('type' => 'hidden', 'value' => $long, 'name' => 'long', 'id' => 'long'));
 	?>
+
+
+	<div class="mapListing">
+					<div id="map_result" style="height: 100%;">
+					</div>
+	</div>
+
 	<section>
-		<div class="container-fluid bordered">
+		<div class="container bordered">
 			<div class="filterBlock clear">
 				<div class="backDrop"></div>
 				<div class="filterBtn">
@@ -424,13 +431,19 @@ if(!empty($roomType)){
 				<div class="filterBtn"><button onclick="window.location.reload();" type="button" class="toggleBtn"><?php if ($this->lang->line('reset') != '') {
 							echo stripslashes($this->lang->line('reset'));
 						} else echo "Reset Filters"; ?></button></div>
+				<div class="grid-list-view">
+					<div id="grid_view" class="active"><i class="fa fa-th"></i></div>
+				</div>
+				<div class="grid-list-view">
+					<div id="list_view"><i class="fa fa-bars"></i></div>
+				</div>
 			</div>
 		</div>
 	</section>
 	<?php echo form_close(); ?>
 </div>
 <section class="proListing">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="listingRow">
 			<div class="propertyListing">
 				<div class="row" id="property_listing">
@@ -460,11 +473,7 @@ if(!empty($roomType)){
 					</div>
 
 
-				</div>
-				<div class="mapListing">
-					<div id="map_result" style="height: 100%;">
-					</div>
-				</div>
+				</div>				
 			</div>
 		</div>
 </section>
@@ -525,7 +534,7 @@ $this->load->view('site/includes/footer');
 			}
 		});
 		$(document).on("click", ".toggleBtn", function () {
-			$(".backDrop").toggle();
+			// $(".backDrop").toggle();
 
 			if ($(this).is("#config-demo") && $(this).parent(".filterBtn").hasClass("active")) {
 
@@ -794,7 +803,7 @@ $this->load->view('site/includes/footer');
                 lat_lang_inc= lat_lang_inc+0.0111;
 
 				var coords = new google.maps.LatLng(location[1], location[2]);
-				var contentString = '<div class="listingResult col-md-4 col-sm-4">\n';
+				var contentString = '<div class="listingResult col-md-4 col-sm-4 grid-view-listing">\n';
 				if (location[10] != "") {
 					contentString += '		<div class="wishList_I" ' + location[10] + ' style="display:block;"></div>\n';
 				} else {
@@ -817,6 +826,8 @@ $this->load->view('site/includes/footer');
 					'                                    <div class="loc">' + location[11] + location[4] + '</div>\n' +
 					'                                    <h5>' + location[0] + '</h5>\n' +
 					'                                    <div class="price"><span class="number_s"> <?php echo $currencySymbol; ?>' + location[7] + ' </span>'+svg_is+'</div>\n' +
+					'                                    <div class="bottom-text"><p>Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]</p></div>\n'+
+					'                                    <div class="bottom-icons"><span class="user-limit">5</span></div>\n'+
 					'                                    <div class="clear">\n' +
 					'                                        <div class="starRatingOuter">\n' +
 					'                                            <div class="starRatingInner" style="width: ' + location[6] + '%;"></div>\n' +
@@ -1029,5 +1040,19 @@ image=(images[0]) ? images[0] : '';
 	$('.range_inputs .applyBtn').click(function () {
 		boot_alert("The paragraph was clicked.");
 	});
+
+	/** Grid List View **/
+	$('.grid-list-view i').on('click',function(){
+		$('.grid-list-view > div').removeClass('active');
+		$(this).parent('div').addClass('active');
+	});
+
+	$('#list_view i').on('click',function(){
+		$('.listingResult').removeClass('grid-view-listing').addClass('list-view-listing');
+	});
+	$('#grid_view i').on('click',function(){
+		$('.listingResult').removeClass('list-view-listing').addClass('grid-view-listing');
+	});
+
 
 </script>
