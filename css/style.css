@@ -116,8 +116,11 @@ body:not(.preloader-site) header.posHeader {border-bottom: 1px solid #eee;backgr
 .bottom .bottom-text{ margin: 10px 0; }
 .bottom .bottom-text p{ font-size: 13px; }
 .bottom .bottom-icons{ margin: 0 0 10px; }
-.bottom .bottom-icons .user-limit:before{ margin-right: 7px; content: "\f236"; font-family: 'FontAwesome'; }
-.bottom .bottom-icons span{ margin-right: 15px; font-size: 13px; font-weight: 600; color: #000; }
+.bottom .bottom-icons span:before{ margin-right: 7px; font-weight: 100; }
+.bottom .bottom-icons .guest-limit:before{ content: "\f007"; font-family: 'FontAwesome'; }
+.bottom .bottom-icons .bed-limit:before{ content: "\f236"; font-family: 'FontAwesome'; }
+.bottom .bottom-icons .size-limit:before{ content: "\f278"; font-family: 'FontAwesome'; }
+.bottom .bottom-icons span{ margin-right: 15px; font-size: 13px; font-weight: 600;  }
 .listingResult.sliderInMap .bottom-icons{ margin: 7px 0 10px; }
 /*.owl-carousel .item{ box-shadow: 1px 1px 8px #ddd; position: relative; top: 10px; transition: all 0.5s; }*/
 .owl-carousel .item:hover{ top: 0px; }

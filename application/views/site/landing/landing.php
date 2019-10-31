@@ -779,7 +779,7 @@ if ($CityDetails->num_rows() > 0) {
                                             </div>
 											
                                             <div class="bottom-icons">
-                                                <span class="fa fa-users"><?php echo $CityRowss->guestcapacity;?></span>
+                                                <span class="guest-limit"><?php echo $CityRowss->guestcapacity;?></span>
                                                 
 												<?php $finalsListing = json_decode($CityRowss->listings);
 												  foreach ($finalsListing as $listingResult => $FinalValues) {
@@ -787,13 +787,13 @@ if ($CityDetails->num_rows() > 0) {
 													  if(trim($FinalValues) != '') {
 														$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
 															if ($list_type_value->row()->parent_id == "78") { ?>
-															<span class="user-limit">
+															<span class="bed-limit">
 																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
 															</span>
 															<?php }
 															
 															if ($listingResult == "76") { ?>
-															<span class="user-limit">
+															<span class="size-limit">
 																<?= stripslashes(ucfirst($FinalValues)); ?>
 															</span>
 															<?php }
