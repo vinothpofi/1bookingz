@@ -394,7 +394,7 @@ if ($adminList->slider == "on") {
 
 
 </section>
-<section style="margin-top: 50px;">
+<section style="margin-top: 50px; display: none;">
     <div class="container">
         <div class="rowHead">
         <h3><?php if ($this->lang->line('explore_homestay') != '') {
@@ -658,7 +658,7 @@ if ($CityDetails->num_rows() > 0) {
        // echo '<pre>';  print_r($city_name);
         if (count($CityName[$city_name]) > 0) {
             ?>
-            <section class="card-section">
+            <section>
                 <div class="container">
                     <div class="rowSpace dev">
                         <div class="rowHead clear" data-alt="test">
@@ -692,9 +692,14 @@ if ($CityDetails->num_rows() > 0) {
                     <div class="card-section-bg">
                             
                         <div class="owl-carousel owl-theme homes-carousel">
+                            
+                            
                                 <?php foreach ($CityName[$city_name] as $CityRowss) {
                                     //print_r($CityRowss);
                                     ?>
+                            <div class="item">
+                                <div class="card-section">
+                                <div class="owl-carousel show">
                                     <div class="item" >
                                         <a href="<?php echo base_url(); ?>rental/<?php echo $CityRowss->seourl; ?>" target="_blank">
                                             <?php
@@ -714,6 +719,10 @@ if ($CityDetails->num_rows() > 0) {
                                                 <div class="card-image"><div class="myPlace"
                                                      style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div></div>
                                             <?php } ?>
+                                        </a>
+                                    </div>
+                                </div>
+
                                             <div class="bottom">
                                                <div class="loc" style="display: none;">
                                                <?php
@@ -801,9 +810,8 @@ if ($CityDetails->num_rows() > 0) {
 													  
 												  }
 												  
-											?>
+											?>	
 												
-												</span>
                                             </div>
                                                 <div class="clear">
                                                     <div class="starRatingOuter">
@@ -816,13 +824,13 @@ if ($CityDetails->num_rows() > 0) {
                                                         } else echo "Reviews"; ?> </span>
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </div>
                                 <?php } ?>
                             </div>
                 </div>
                     </div>
                 </div>
+            </div>
             </section>
             <?php
         }
