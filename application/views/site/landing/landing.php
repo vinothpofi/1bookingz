@@ -777,8 +777,33 @@ if ($CityDetails->num_rows() > 0) {
 
                                                 </p>
                                             </div>
+											
                                             <div class="bottom-icons">
-                                                <span class="user-limit">5</span>
+                                                <span class="fa fa-users"><?php echo $CityRowss->guestcapacity;?></span>
+                                                
+												<?php $finalsListing = json_decode($CityRowss->listings);
+												  foreach ($finalsListing as $listingResult => $FinalValues) {
+													  $resultArr[$listingResult] = $FinalValues;
+													  if(trim($FinalValues) != '') {
+														$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
+															if ($list_type_value->row()->parent_id == "78") { ?>
+															<span class="user-limit">
+																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
+															</span>
+															<?php }
+															
+															if ($listingResult == "76") { ?>
+															<span class="user-limit">
+																<?= stripslashes(ucfirst($FinalValues)); ?>
+															</span>
+															<?php }
+													  }
+													  
+												  }
+												  
+											?>
+												
+												</span>
                                             </div>
                                                 <div class="clear">
                                                     <div class="starRatingOuter">
