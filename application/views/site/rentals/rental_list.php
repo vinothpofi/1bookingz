@@ -336,7 +336,7 @@ if(!empty($roomType)){
 					<button type="button" class="toggleBtn"><?php if ($this->lang->line('more_filters') != '') {
 							echo stripslashes($this->lang->line('more_filters'));
 						} else echo "More Filters"; ?></button>
-					<div class="openFilter moreFilter open__filter home__type">
+					<div class="openFilter moreFilter open__filter home__type sidebar-scroll">
 						<div class="appendPriceRange"></div>
 						<div class="appendHometype"></div>
 						<h5><?php $prop_type_tiltle=language_dynamic_enable("attribute_name",$this->session->userdata('language_code'),$prop_type_is);
@@ -488,7 +488,7 @@ $this->load->view('site/includes/footer');
 		// $('.loading').show();
 		function carouselFunc() {
 			$('.listing-carousel').owlCarousel({
-				loop: true,
+				loop: false,
 				margin: 10,
 				responsiveClass: true,
 				responsive: {
@@ -804,6 +804,8 @@ $this->load->view('site/includes/footer');
 
 				var coords = new google.maps.LatLng(location[1], location[2]);
 				var contentString = '<div class="listingResult col-md-4 col-sm-4 grid-view-listing">\n';
+				contentString += '		<div class="card-section">\n';
+
 				if (location[10] != "") {
 					contentString += '		<div class="wishList_I" ' + location[10] + ' style="display:block;"></div>\n';
 				} else {
@@ -835,6 +837,7 @@ $this->load->view('site/includes/footer');
 					'                                        <span class="ratingCount">' + location[5] + '</span>\n' +
 					'                                    </div>\n' +
 					'                                </div>\n' +
+					'                              </div>\n' +
 					'                            </div>';
 
 
@@ -860,9 +863,10 @@ image=(images[0]) ? images[0] : '';
 					'\n' +
 					'                                </div>\n' +
 					'                                <div class="bottom">\n' +
-					'                                    <div class="loc">' + location[11] +  location[4] + '</div>\n' +
+					'                                    <div class="loc" style="display:none;">' + location[11] +  location[4] + '</div>\n' +
 					'                                    <h5>' + location[0] + '</h5>\n' +
-					'                                    <div class="price"><span class=""> <?php echo $currencySymbol; ?>' + location[7] + ' </span></div>\n' +
+					'                                    <div class="price"><span class="number_s"> <?php echo $currencySymbol; ?>' + location[7] + ' </span></div>\n' +
+					'               <div class="bottom-icons"><span class="user-limit">5</span></div>\n' +
 					'                                    <div class="clear">\n' +
 					'                                        <div class="starRatingOuter">\n' +
 					'                                            <div class="starRatingInner" style="width: ' + location[6] + '%;"></div>\n' +
@@ -1006,7 +1010,7 @@ image=(images[0]) ? images[0] : '';
 
 	function carouselFunc() {
 		$('.listing-carousel').owlCarousel({
-			loop: true,
+			loop: false,
 			margin: 10,
 			responsiveClass: true,
 			responsive: {
