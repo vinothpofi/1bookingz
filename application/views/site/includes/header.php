@@ -350,7 +350,7 @@ $(document).ready(function(){
                                   <?php
                                   if ($this->session->userdata('fc_session_user_id')) { ?>
                                   <li><?php echo anchor('list_space', $listSpace); ?></li>
-                                  <li><?php echo anchor('manage_experience', $listExprience); ?></li>
+                                  <?php /* <li><?php echo anchor('manage_experience', $listExprience); ?></li> */ ?>
 
 
                                   <?php } else { ?>
@@ -358,9 +358,9 @@ $(document).ready(function(){
                                   <li><a data-toggle="modal" data-target="#signUp"
                                          onclick="javascript:set_signup_and_login_link('list_space');"><?php echo $listSpace; ?></a>
                                   </li>
-                                  <li><a data-toggle="modal" data-target="#signUp"
+                                  <?php /* <li><a data-toggle="modal" data-target="#signUp"
                                          onclick="javascript:set_signup_and_login_link('manage_experience');"><?php echo $listExprience; ?></a>
-                                  </li>
+                                  </li> */ ?>
                                   <?php } ?>
 
                               </ul>
@@ -443,7 +443,7 @@ $(document).ready(function(){
                                                   echo stripslashes($this->lang->line('wish_list'));
                                               } else echo "Wish List"; ?></a>
                                       </li>
-                                      <li class="">
+                                      <li class="visible-xs">
                                           <a href="<?php echo base_url(); ?>your-wallet"><?php if ($this->lang->line('Wallet') != '') {
                                                   echo stripslashes($this->lang->line('Wallet'));
                                               } else echo "Wallet";

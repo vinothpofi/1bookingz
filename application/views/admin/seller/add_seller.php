@@ -11,14 +11,19 @@ $this->load->view('admin/templates/header.php');
 		var email = $("#email").val();
 		var pwd = $("#new_password").val();
 		var confirmPwd = $("#confirm_password").val();
+		var business_name = $("#business_name").val();
+		var business_description = $("#description").val();
+		var license_number = $("#license_number").val();
+		var business_address = $("#business_address").val();
+		
 		var re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-		if ((firstname == '') || (lastname == '') || (email == '') || (pwd == '') || (confirmPwd == '')) 
+		if ((firstname == '') || (lastname == '') || (email == '') || (pwd == '') || (confirmPwd == '')  || (business_name == '')  || (business_description == '')  || (license_number == '') || (business_address == '')) 
 		{
 			$("#nextBtn").removeClass('nxtTab');
 			noMandatory = 1;
 
-			alert('Some mandatory field remainds empty.Please fill mandatories. ');
+			alert('Some mandatory field remainds empty.Please fill mandatories.');
 			return false;
 		} 
 		else if (!email.match(re)) 
@@ -381,7 +386,13 @@ $this->load->view('admin/templates/header.php');
 												'title'		  => 'Please enter business name',
 												'maxlength'	  => 100
 									        ]);
+											
+											$busnamelbl = array('id' => 'business_name_error', 'style' => 'font-size:12px;display:none;','class' => 'error','generated' => 'true');
+
+											echo form_label('Numbers are not allowed','', 
+												$busnamelbl);
 									    ?>
+										
 							    	</div>
 							    </div>
 							</li>
@@ -397,7 +408,7 @@ $this->load->view('admin/templates/header.php');
 										<?php
 											
 									        $descattr = array(
-											    'name' 	      => 'business_desc',
+											    'name' 	      => 'description',
 									            'style'   	  => 'width:295px',
 									            'tabindex'    => '5',
 												'required'	  => 'required',
@@ -416,7 +427,7 @@ $this->load->view('admin/templates/header.php');
 								<div class="form_grid_12">
 									<?php										
 										echo form_label('Real Estate License number <span
-											class="req">*</span>','description', 
+											class="req">*</span>','license_number', 
 												$commonclass);	
 								    ?>
 									<div class="form_input">
@@ -456,6 +467,11 @@ $this->load->view('admin/templates/header.php');
 												'title'		  => 'Please enter business address'
 											);
 											echo form_textarea($descattr);
+											
+											$citylbl = array('id' => 's_city_error', 'style' => 'font-size:12px;display:none;','class' => 'error');
+
+											echo form_label('Only Alphabets are allowed','', 
+												$citylbl);
 										?>
 									</div>
 								</div>
@@ -890,6 +906,19 @@ $this->load->view('admin/templates/footer.php');
 			document.getElementById("bankname_error").style.display = "inline";
 			$("#bankname").focus();
 			$("#bankname_error").fadeOut(5000);
+			$(this).val(val.replace(/[0-9]+$/, ''));
+		}
+	});
+	
+	$("#business_name").on('keyup', function (e) 
+	{
+		var numers = /[0-9]+$/;
+		var val = $(this).val();
+		if (numers.test(val)) 
+		{
+			document.getElementById("business_name_error").style.display = "inline";
+			$("#business_name").focus();
+			$("#business_name_error").fadeOut(5000);
 			$(this).val(val.replace(/[0-9]+$/, ''));
 		}
 	});

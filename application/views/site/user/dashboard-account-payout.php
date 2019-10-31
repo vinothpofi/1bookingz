@@ -8,9 +8,11 @@ $currency_result = $this->session->userdata('currency_result');
             <div class="dashboard loggedIn clear">
                 <div class="col-sm-3 width20">
                     <ul class="sideBarMenu">
-                        <li>
+                        <?php if($this->data['userDetails']->row()->group == 'Seller'){ ?> 
+						<li>
                             <a href="<?php echo base_url(); ?>account-payout" <?php if ($this->uri->segment(1) == 'account-payout') echo 'class="active"'; ?>><?php if ($this->lang->line('PayoutPreferences') != '') { echo stripslashes($this->lang->line('PayoutPreferences')); } else echo "Payout Preferences"; ?></a></li>
-                        <li>
+						<?php } ?>
+					    <li>
                             <a href="<?php echo base_url(); ?>account-trans" <?php if ($this->uri->segment(1) == 'account-trans') echo 'class="active"'; ?>><?php if ($this->lang->line('TransactionHistory') != '') { echo stripslashes($this->lang->line('TransactionHistory')); } else echo "Transaction History"; ?></a></li>
                         <li>
                             <a href="<?php echo base_url(); ?>account-security" <?php if ($this->uri->segment(1) == 'account-security') echo 'class="active"'; ?>><?php if ($this->lang->line('Security') != '') { echo stripslashes($this->lang->line('Security')); } else echo "Security"; ?></a>
@@ -18,8 +20,8 @@ $currency_result = $this->session->userdata('currency_result');
                         <li>
                             <a href="<?php echo base_url(); ?>account-setting" <?php if ($this->uri->segment(1) == 'account-setting') echo 'class="active"'; ?>><?php if ($this->lang->line('settings_new') != '') { echo stripslashes($this->lang->line('settings_new')); } else echo "Settings"; ?></a>
                         </li>
-                        <li>
-                            <a href="<?php echo base_url(); ?>your-wallet" <?php if ($this->uri->segment(1) == 'your-wallet') echo 'class="active"'; ?>><?php if ($this->lang->line('your_wallet') != '') { echo stripslashes($this->lang->line('your_wallet')); } else echo "Your Wallet"; ?></a></li>
+                        <?php /* <li>
+                            <a href="<?php echo base_url(); ?>your-wallet" <?php if ($this->uri->segment(1) == 'your-wallet') echo 'class="active"'; ?>><?php if ($this->lang->line('your_wallet') != '') { echo stripslashes($this->lang->line('your_wallet')); } else echo "Your Wallet"; ?></a></li>  */?>
                     </ul>
                 </div>
                 <div class="col-sm-9 width80">

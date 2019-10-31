@@ -763,7 +763,18 @@ if ($CityDetails->num_rows() > 0) {
                                                 </div>
                                             <div class="bottom-text">
                                                 <p>
-                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
+												  <?php 
+													
+													$prod_description=language_dynamic_enable("description",$this->session->userdata('language_code'),$CityRowss);
+													$desc_length = strlen($prod_description);
+													if($desc_length > 100){
+														echo character_limiter($prod_description,100);
+														/*echo substr($prod_description, 0, 100);*/
+													}else{
+														echo strip_tags($prod_description);
+													}
+												  ?>
+
                                                 </p>
                                             </div>
                                             <div class="bottom-icons">
