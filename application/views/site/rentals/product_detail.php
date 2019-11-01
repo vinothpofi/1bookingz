@@ -105,7 +105,7 @@ div#timer span {
 
         slider.owlCarousel({
             loop: false,
-            nav: false,
+            nav: true,
             items: 1,
             //startPosition:0
         }).on('changed.owl.carousel', function (e) {
@@ -205,13 +205,14 @@ div#timer span {
 
 <div id="lightBox">
 
-	<div class="closeLightBox">X</div>
+	
 
 	<div class="outerBlock">
 
+		<div class="closeLightBox">X</div>
 		<div class="slider-container">
 
-			<div id="slider" class="slider owl-carousel lightBoxSlider">
+			<div id="slider" class="slider owl-carousel owl-theme lightBoxSlider">
 
 				<?php
 
@@ -281,7 +282,7 @@ div#timer span {
 
 			</div>
 
-			<div class="slider-controls">
+			<!-- <div class="slider-controls">
 
 				<a class="slider-left" href="javascript:;"><span><i class="fa fa-2x fa-chevron-left"></i></span></a>
 
@@ -289,11 +290,11 @@ div#timer span {
 
 							class="fa fa-2x fa-chevron-right"></i></span></a>
 
-			</div>
+			</div> -->
 
 		</div>
 
-		<div class="thumbnail-slider-container">
+		<!-- <div class="thumbnail-slider-container">
 
 			<div id="thumbnailSlider" class="thumbnail-slider owl-carousel">
 
@@ -351,7 +352,7 @@ div#timer span {
 
 			</div>
 
-		</div>
+		</div> -->
 
 	</div>
 
@@ -428,6 +429,50 @@ div#timer span {
 
 
 </section>
+
+
+
+<section>
+	<div class="outer owl-thumb">
+		<div id="big" class="owl-carousel owl-theme">
+		  <div class="item lightboxBanner">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background0; ?>">
+		  </div>
+		  <div class="item lightboxBanner">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background1; ?>">
+		  </div>
+		  <div class="item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background2; ?>">
+		  </div>
+		  <div class="item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background3; ?>">
+		  </div>
+		  <div class="item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background4; ?>">
+		  </div>		  
+		</div>
+		<div id="thumbs" class="owl-carousel owl-theme">
+		  <div class="list-item item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background0; ?>">
+		  </div>
+		  <div class="list-item item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background1; ?>">
+		  </div>
+		  <div class="list-item item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background2; ?>">
+		  </div>
+		  <div class="list-item item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background3; ?>">
+		  </div>
+		  <div class="list-item item">
+		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background4; ?>">
+		  </div>		 
+		</div>
+		</div>
+</section>
+
+
+
 
 <section class="rental">
 
@@ -508,7 +553,7 @@ div#timer span {
                                     }
 
 	             	                echo ucfirst($prod_tit); ?></h2>
-	             	               <h3>$10.00</h3>
+	             	               
 	             	           </div>
                         <div class="clearfix"></div>
 						<div class="clear">
@@ -551,6 +596,7 @@ div#timer span {
 
 							</div>
                             <div class="clearfix"></div>
+                         <div class="product-detail-social">
 							<div class="starRatingOuter">
 
 								<div class="starRatingInner"
@@ -570,6 +616,40 @@ div#timer span {
 								} else echo "Reviews"; ?>
 
 							</div>
+
+							<div class="right">
+
+								<?php
+
+								$description = $product->experience_description;
+
+								$url = base_url().$this->uri->uri_string();
+
+								$url = urlencode($url);
+
+								$facebook_share = 'http://www.facebook.com/sharer.php?u=' . $url;
+								$twitter_share = 'https://twitter.com/share?url=' . $url;
+								$google_share = 'https://plus.google.com/share?url=' . $url;
+
+								?>
+
+								<i class="fa fa-facebook" aria-hidden="true" style="cursor: pointer;"
+
+								   onclick="window.location.href='<?= $facebook_share; ?>'"></i>
+
+								<i class="fa fa-twitter" aria-hidden="true" style="cursor: pointer;"
+
+								   onclick="window.location.href='<?= $twitter_share; ?>'"></i>
+
+								<!-- <i class="fa fa-google-plus" aria-hidden="true" style="cursor: pointer;"
+								   onclick="window.location.href='<?= $google_share; ?>'"></i> -->
+
+								<i class="fa fa-pinterest" aria-hidden="true" style="cursor: pointer;"
+								   onclick="window.location.href=''"></i>
+
+							</div>
+
+						</div>
 
 						</div>
 
@@ -1823,6 +1903,17 @@ div#timer span {
 			</div>
 		</div>
 	</div>
+
+
+
+	<div class="collapse-map">
+		<a data-toggle="collapse" href="#location-map"><h3 id="location"><?php if ($this->lang->line('list_Location') != '') { echo stripslashes($this->lang->line('list_Location')); } else echo "Map"; ?></h3></a>
+
+		<div class="collapse in" id="location-map"><div class="mapSection" id="map" style="height: 200px;"></div></div>
+	</div>
+
+
+
 </div>
 
 			<div class="toggleBooking">
@@ -1918,13 +2009,13 @@ div#timer span {
 			</div>
 
 			<div class="detailRight toggleRequestBook">
-				<h3 class="booking-title">Book Property</h3>
+				<!-- <h3 class="booking-title">Book Property</h3> -->
 
 				<div class="bookingBlock">
 
 					<button type="button" class="tRB close">&times;</button>
 
-						<!-- <h5 class="price"><span class="number_s150">
+						 <h5 class="price"><span class="number_s150">
 
 						<?php
 
@@ -1970,7 +2061,7 @@ div#timer span {
 
 						} else echo "per night"; ?></h5>
 
-					<div class="clear">
+					<!-- <div class="clear">
 
 						<div class="starRatingOuter">
 
@@ -1988,9 +2079,9 @@ div#timer span {
 
 							} else echo "Reviews"; ?></span></a>
 
-					</div>
+					</div> -->
 
-					<div class="divider"></div> -->
+					<div class="divider"></div> 
 
 
 
@@ -2340,7 +2431,7 @@ if($host_status != 'Inactive')
 
 					?>
 
-					<div class="divider"></div>
+					<!-- <div class="divider"></div>
 
 					<div class="expRow">
 
@@ -2424,7 +2515,7 @@ if($host_status != 'Inactive')
 
 						<p><?php if ($this->lang->line('people_are') != '') { echo stripslashes($this->lang->line('people_are')); } else echo "People are eyeing this"; ?>  <?php if ($this->lang->line('listing_over') != '') { echo stripslashes($this->lang->line('listing_over')); } else echo "Listing. Over"; ?> <?php echo $product->likes; ?> <?php if ($this->lang->line('viewed_it') != '') { echo stripslashes($this->lang->line('viewed_it')); } else echo "people have viewed it"; ?>.</p>
 
-				<?php } ?>
+				<?php } ?> -->
 
 				</div>
 
@@ -2439,10 +2530,7 @@ if($host_status != 'Inactive')
 
 
 		<div class="centeredBtm">
-
-			<h3 id="location"><?php if ($this->lang->line('list_Location') != '') { echo stripslashes($this->lang->line('list_Location')); } else echo "Location"; ?></h3>
-
-			<div class="mapSection" id="map" style="height: 200px;"></div>
+			
 
 			<?php if ($DistanceQryArr->num_rows() > 0) { ?>
 
@@ -2463,7 +2551,9 @@ if($host_status != 'Inactive')
 						?>
 
 						<div class="item">
-
+							 <div class="card-section">
+                                <div class="owl-carousel show">
+                                	<div class="item" >
 							<?php if ($this->session->userdata('fc_session_user_id')) {
 
 								if (in_array($similar_Rentals->id, $newArr)) { ?>
@@ -2505,6 +2595,9 @@ if($host_status != 'Inactive')
 										 style="background-image: url('<?php echo base_url(); ?>images/rental/dummyProductImage.jpg')"></div>
 
 								<?php } ?>
+							</a>
+							</div>
+						</div>
 
 								<div class="bottom">
 
@@ -2618,6 +2711,15 @@ if($host_status != 'Inactive')
 
 									</div>
 
+									<div class="bottom-text">
+                                                <p>
+												  dsds
+                                                </p>
+                                    </div>
+                                    <div class="bottom-icons">
+                                        <span class="guest-limit">3</span>
+                                    </div>
+
 									<div class="clear">
 
 										<?php
@@ -2648,9 +2750,7 @@ if($host_status != 'Inactive')
 
 								</div>
 
-							</a>
-
-						</div>
+							</div></div>
 
 						<?php
 
@@ -2888,7 +2988,7 @@ $('form').delegate(':input', 'focus', function() {
 
 				1200: {
 
-					items: 4,
+					items: 3,
 
 					nav: true,
 
@@ -3611,9 +3711,104 @@ setInterval(function() { makeTimer(); }, 1000);
     });
 </script>
 
-<div>
+<script type="text/javascript">
+	$(document).ready(function() {
+  var bigimage = $("#big");
+  var thumbs = $("#thumbs");
+  //var totalslides = 10;
+  var syncedSecondary = true;
 
-</div>
+  bigimage
+    .owlCarousel({
+    items: 1,
+    slideSpeed: 2000,
+    nav: true,
+    autoplay: false,
+    dots: false,
+    loop: false,
+    responsiveRefreshRate: 200,
+    navText: [
+      '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
+      '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
+    ]
+  })
+    .on("changed.owl.carousel", syncPosition);
+
+  thumbs
+    .on("initialized.owl.carousel", function() {
+    thumbs
+      .find(".owl-item")
+      .eq(0)
+      .addClass("current");
+  })
+    .owlCarousel({
+    items: 10,
+    dots: true,
+    nav: true,
+    navText: [
+      '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
+      '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
+    ],
+    smartSpeed: 200,
+    slideSpeed: 500,
+    slideBy: 4,
+    responsiveRefreshRate: 100
+  })
+    .on("changed.owl.carousel", syncPosition2);
+
+  function syncPosition(el) {
+    //if loop is set to false, then you have to uncomment the next line
+    //var current = el.item.index;
+
+    //to disable loop, comment this block
+    var count = el.item.count - 1;
+    var current = Math.round(el.item.index - el.item.count / 2 - 0.5);
+
+    if (current < 0) {
+      current = count;
+    }
+    if (current > count) {
+      current = 0;
+    }
+    //to this
+    thumbs
+      .find(".owl-item")
+      .removeClass("current")
+      .eq(current)
+      .addClass("current");
+    var onscreen = thumbs.find(".owl-item.active").length - 1;
+    var start = thumbs
+    .find(".owl-item.active")
+    .first()
+    .index();
+    var end = thumbs
+    .find(".owl-item.active")
+    .last()
+    .index();
+
+    if (current > end) {
+      thumbs.data("owl.carousel").to(current, 100, true);
+    }
+    if (current < start) {
+      thumbs.data("owl.carousel").to(current - onscreen, 100, true);
+    }
+  }
+
+  function syncPosition2(el) {
+    if (syncedSecondary) {
+      var number = el.item.index;
+      bigimage.data("owl.carousel").to(number, 100, true);
+    }
+  }
+
+  thumbs.on("click", ".owl-item", function(e) {
+    e.preventDefault();
+    var number = $(this).index();
+    bigimage.data("owl.carousel").to(number, 300, true);
+  });
+});
+
+</script>
 
 <?php
 
