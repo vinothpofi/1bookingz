@@ -115,7 +115,7 @@ body:not(.preloader-site) header.posHeader {border-bottom: 1px solid #eee;backgr
 .bottom .clear {margin-bottom: 0px; padding:10px 0; line-height: 1.9;min-height: 20px; border-top: 1px dashed #ccc;}
 .bottom .bottom-text{ margin: 10px 0; }
 .bottom .bottom-text p{ font-size: 13px; }
-.bottom .bottom-icons{ margin: 0 0 10px; }
+.bottom .bottom-icons{ margin: 0 0 10px; height: 26px; }
 .bottom .bottom-icons span:before{ margin-right: 7px; font-weight: 100; }
 .bottom .bottom-icons .guest-limit:before{ content: "\f007"; font-family: 'FontAwesome'; }
 .bottom .bottom-icons .bed-limit:before{ content: "\f236"; font-family: 'FontAwesome'; }
