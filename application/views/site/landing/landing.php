@@ -378,18 +378,66 @@ if ($adminList->slider == "on") {
     ?>
 </div>
 
+<?php if ($CityDetails->num_rows() > 0) {  ?>
+    <section>
+        <div class="container">
+            <div class="rowSpace">
+                <div class="rowHead clear">
+                   <h3><?php if ($this->lang->line('recomendes_you') != '') {
+                            echo stripslashes($this->lang->line('recomendes_you'));
+                        } else {
+                            "Recommended for you";
+                        } ?></h3>
+                </div>
+                <div class="owl-carousel owl-theme featured-carousel">
+                    <?php
+                    foreach ($CityDetails->result() as $CityRows) {
+                        $Cityname = str_replace(' ', '+', $CityRows->name);
+                        if ($CityRows->state_name != '') {
+                            $StateName = "," . str_replace(' ', '+', $CityRows->state_name);
+                        } else {
+                            $StateName = " ";
+                        }
+                        if ($CityRows->country != '') {
+                            $Country = "," . str_replace(' ', '+', $CityRows->country);
+                        } else {
+                            $Country = " ";
+                        }
+                        ?>
+                        <div class="item" >
+                            <a href="<?= base_url(); ?>property?city=<?php echo $Cityname . $StateName . $Country; ?>" target= "_blank">
+                                <div class="myPlace"
+                                     style="background-image: url('<?php echo base_url(); ?>images/city/<?php echo (file_exists('./images/city/' . $CityRows->citythumb)) ? $CityRows->citythumb : 'no-image-found.jpg'; ?>')"></div>
+                                <div class="bottom">
+                                    <div class="f_des"><?php
+                                    if($this->session->userdata('language_code') =='en')
+                                    {
+                                        $cityname = $CityRows->name;
+                                    }
+                                    else
+                                    {
+                                        $cityAr='name_'.$this->session->userdata('language_code');
+                                        if($CityRows->$cityAr == '') { 
+                                            $cityname=$CityRows->$cityAr;
+                                        }
+                                        else{
+                                            $cityname=$CityRows->$cityAr;
+                                        }
+                                    }
+                               ?></div>
 
-<!--<div>
-<?php
-//if ($SliderList->num_rows() > 0 ){
-	//foreach ($SliderList->result() as $slider){ ?>
-		<img src="<?php// echo base_url()?>images/slider/<?php// echo $slider->image; ?>">
-	<?php //}
-
-//}
-?>
-</div>-->
-
+                                 <h5><?php  $cityname=language_dynamic_enable("name",$this->session->userdata('language_code'),$CityRows);
+                                    echo ucfirst($cityname); ?></h5>
+                                </div>
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+} ?>
 
 
 
@@ -892,79 +940,14 @@ if (count($adv_result) > 0) {
         </section>
         <?php
     }
-}
-if ($CityDetails->num_rows() > 0) {
-    ?>
-    <section>
-        <div class="container">
-            <div class="rowSpace">
-                <div class="rowHead clear">
-                   <h3><?php if ($this->lang->line('recomendes_you') != '') {
-                            echo stripslashes($this->lang->line('recomendes_you'));
-                        } else {
-                            "Recommended for you";
-                        } ?></h3>
-                </div>
-                <div class="owl-carousel owl-theme featured-carousel">
-                    <?php
-                    foreach ($CityDetails->result() as $CityRows) {
-                        $Cityname = str_replace(' ', '+', $CityRows->name);
-                        if ($CityRows->state_name != '') {
-                            $StateName = "," . str_replace(' ', '+', $CityRows->state_name);
-                        } else {
-                            $StateName = " ";
-                        }
-                        if ($CityRows->country != '') {
-                            $Country = "," . str_replace(' ', '+', $CityRows->country);
-                        } else {
-                            $Country = " ";
-                        }
-                        ?>
-                        <div class="item" >
-                            <a href="<?= base_url(); ?>property?city=<?php echo $Cityname . $StateName . $Country; ?>" target= "_blank">
-                                <div class="myPlace"
-                                     style="background-image: url('<?php echo base_url(); ?>images/city/<?php echo (file_exists('./images/city/' . $CityRows->citythumb)) ? $CityRows->citythumb : 'no-image-found.jpg'; ?>')"></div>
-                                <div class="bottom">
-                                    <div class="f_des"><?php
-                                    if($this->session->userdata('language_code') =='en')
-                                    {
-                                        $cityname = $CityRows->name;
-                                    }
-                                    else
-                                    {
-                                        $cityAr='name_'.$this->session->userdata('language_code');
-                                        if($CityRows->$cityAr == '') { 
-                                            $cityname=$CityRows->$cityAr;
-                                        }
-                                        else{
-                                            $cityname=$CityRows->$cityAr;
-                                        }
-                                    }
-                                  //  echo $Ncity;
-                                // echo trim(stripslashes($cityname)); ?></div>
+} ?>
 
-                                 <h5><?php  $cityname=language_dynamic_enable("name",$this->session->userdata('language_code'),$CityRows);
-                                    echo ucfirst($cityname); ?></h5>
-                                </div>
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-    </section>
-    <?php
-}
-$j = 0;
+<?php 
+/* $j = 0;
 echo form_open('explore-experience', array('method' => 'POST', 'id' => 'exp_search_result_form'));
 echo '<input name="type_id[]" type="hidden" id="categorywiseId">';
 echo form_close();
-//if ($CityDetails->num_rows() > 0) {
 
-  //  foreach ($CityDetails->result() as $CityRows) {
-        //$sel_featuredExpType = "SELECT * FROM " . EXPERIENCE_TYPE . " WHERE  featured = 1 and status='Active' ";
-        //$featuredExperiencesType = $this->landing_model->ExecuteQuery($sel_featuredExpType);
-		//print_r($featuredExperiencesType->result());
 if ($experienceExistCount > 0) {
 		if($featuredExperiences_Cat_type->num_rows() > 0 )
 		{
@@ -1003,8 +986,6 @@ if ($experienceExistCount > 0) {
 									</div>
 									<div class="owl-carousel owl-theme experience-carousel">
 										<?php 
-//                                         echo "<pre>";
-// print_r($Cat_Type[$exp_type_id]->result());
                                         foreach ($Cat_Type[$exp_type_id]->result() as $experience) {
 											$experience_currency = $experience->currency;
 											$experience_price = $experience->price;
@@ -1020,20 +1001,14 @@ if ($experienceExistCount > 0) {
 														 style="background-image: url('<?php echo base_url(); ?>images/experience/<?php echo $ImgSrc; ?>')"></div>
 													<div class="bottom">
 
-														<!--<div class="loc">Nightlife · New York</div>-->
 														<div class="loc">
                                                             <?php 
-
-                                                          //  echo $experience->location;
-
                                                             $prod_tiltle=language_dynamic_enable("location",$this->session->userdata('language_code'),$experience);
                                                            echo ucfirst($prod_tiltle);
                                                             ?></div>
 														<h5>
 
                                                             <?php
-
-															//echo ucfirst($experience->exp_title);
                                                             $prod_tiltle=language_dynamic_enable("exp_title",$this->session->userdata('language_code'),$experience);
                                                             echo ucfirst($prod_tiltle);
 
@@ -1086,7 +1061,7 @@ if ($experienceExistCount > 0) {
 				}
 			}
         }
-}
+} */
 ?>
 
 
