@@ -355,6 +355,11 @@ $lang['security_code']='Please provide security code';
 $lang['valid_security_code']='Please provide valid security code';  
 $lang['License_Reg_verification']='Real Estate License Registration Document Verification'; 
 $lang['all_rentals']='All Rentals'; 
-
+$lang['signup_business_name']='Business Name';
+$lang['signup_business_description']='Business Description'; 
+$lang['signup_license_number']='Real Estate License Number';
+$lang['pls_entr_business_name']='Please Enter Business Name';
+$lang['pls_entr_business_addr']='Please Enter Business Address';   
+$lang['signup_login_type']='Login Type'; 
 
 ?>

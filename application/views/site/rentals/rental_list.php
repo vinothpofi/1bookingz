@@ -806,11 +806,14 @@ $this->load->view('site/includes/footer');
 				var contentString = '<div class="listingResult col-md-4 col-sm-4 grid-view-listing">\n';
 				contentString += '		<div class="card-section">\n';
 
-				if (location[10] != "") {
-					contentString += '		<div class="wishList_I" ' + location[10] + ' style="display:block;"></div>\n';
-				} else {
-					contentString += '		<div class="wishList_I yes" style="display:block;"></div>\n';
+				if(location[14] == "User"){
+					if (location[10] != "") {
+						contentString += '		<div class="wishList_I" ' + location[10] + ' style="display:block;"></div>\n';
+					} else {
+						contentString += '		<div class="wishList_I yes" style="display:block;"></div>\n';
+					}
 				}
+				
 				contentString += '                               <div class="owl-carousel show owl-theme listing-carousel">\n';
 				var images = location[8].split(',');
 				images.forEach(function (image) {
@@ -842,10 +845,13 @@ $this->load->view('site/includes/footer');
 
 
 				var contentStringMap = '<div class="listingResult sliderInMap">\n';
-				if (location[10] != "") {
-					contentStringMap += '		<div class="wishList_I" ' + location[10] + ' style="display:block;"></div>\n';
-				} else {
-					contentStringMap += '		<div class="wishList_I yes" style="display:block;"></div>\n';
+				
+				if(location[14] == "User"){
+					if (location[10] != "") {
+						contentStringMap += '		<div class="wishList_I" ' + location[10] + ' style="display:block;"></div>\n';
+					} else {
+						contentStringMap += '		<div class="wishList_I yes" style="display:block;"></div>\n';
+					}
 				}
 
 image=(images[0]) ? images[0] : '';

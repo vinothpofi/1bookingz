@@ -477,6 +477,60 @@
                             <i class="fa fa-phone" aria-hidden="true"></i>
                         </div>
                         <label>Example: +1 999-999-9999</label>
+						
+						<div class="image_box">
+                            <?php
+                            if ($this->lang->line('signup_login_type') != '') {
+                                $login_type = stripslashes($this->lang->line('signup_login_type'));
+                            } else $login_type = "Login Type";
+							
+							if ($this->lang->line('Host') != '') {
+                                $host_labe = stripslashes($this->lang->line('Host'));
+                            } else $host_labe = "Host";
+							
+							if ($this->lang->line('guest_s') != '') {
+                                $guest_labe = stripslashes($this->lang->line('guest_s'));
+                            } else $guest_labe = "Guest";
+							
+								$options = array('' => $login_type, 'Host' => $host_labe, 'Guest' => $guest_labe);
+							    echo form_dropdown('login_type', $options, '', array("id" => "login_type"));
+							?>
+                        </div>
+						
+						<div id="host_details" style="display:none;">
+							<div class="image_box">
+								<?php
+								if ($this->lang->line('signup_business_name') != '') {
+									$bus_name = stripslashes($this->lang->line('signup_business_name'));
+								} else $bus_name = "Business Name";
+								echo form_input('business_name', '', array("id" => "business_name", "placeholder" => $bus_name)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+							</div>
+							
+							<div class="image_box">
+								<?php
+								if ($this->lang->line('signup_business_description') != '') {
+									$bus_desc = stripslashes($this->lang->line('signup_business_description'));
+								} else $bus_desc = "Business Description";
+								echo form_input('business_desc', '', array("id" => "business_desc", "placeholder" => $bus_desc)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+							</div>
+							
+							<div class="image_box">
+								<?php
+								if ($this->lang->line('signup_license_number') != '') {
+									$lic_num = stripslashes($this->lang->line('signup_license_number'));
+								} else $lic_num = "License Number";
+								echo form_input('license_no', '', array("id" => "license_no", "placeholder" => $lic_num)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+							</div>
+							
+							<div class="image_box">
+								<?php
+								if ($this->lang->line('signup_business_address') != '') {
+									$bus_addr = stripslashes($this->lang->line('signup_business_address'));
+								} else $bus_addr = "Business Address";
+								echo form_input('business_addr', '', array("id" => "business_addr", "placeholder" => $bus_addr)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+							</div>
+						</div>
+						
                         <div class="image_box">
                             <?php
                             if ($this->lang->line('create_pwd') != '') {
@@ -485,7 +539,7 @@
                             echo form_password('user_password', '', array("onkeyup"=>"pwd_validation(this.value);","id" => "user_password", "placeholder" => $cr_pswd)); ?>
                             <i id="showPass_reg" class="fa fa-eye" aria-hidden="true"></i>
                         </div>
-                        
+						
                         <div class="image_box">
                             <?php
                             if ($this->lang->line('change_conf_pwd') != '') {
@@ -889,6 +943,42 @@ if ($this->lang->line('must_accept_term') != '') {
 ?>
 <input type="hidden" name="" id="must_accept" value="<?php echo $must_accept; ?>">
 
+<?php
+if ($this->lang->line('pls_entr_business_name') != '') {
+    $entr_bus_name = stripslashes($this->lang->line('pls_entr_business_name'));
+} else {
+    $entr_bus_name = "Please Enter Business Name";
+}
+?>
+<input type="hidden" name="" id="entr_bus_name" value="<?php echo $entr_bus_name; ?>">
+
+<?php
+if ($this->lang->line('pls_entr_business_desc') != '') {
+    $entr_bus_desc = stripslashes($this->lang->line('pls_entr_business_desc'));
+} else {
+    $entr_bus_desc = "Please Enter Business Description";
+}
+?>
+<input type="hidden" name="" id="entr_bus_desc" value="<?php echo $entr_bus_desc; ?>">
+
+<?php
+if ($this->lang->line('pls_entr_license_no') != '') {
+    $entr_licen_no = stripslashes($this->lang->line('pls_entr_license_no'));
+} else {
+    $entr_licen_no = "Please Enter Real Estate License Number";
+}
+?>
+<input type="hidden" name="" id="entr_licen_no" value="<?php echo $entr_licen_no; ?>">
+
+<?php
+if ($this->lang->line('pls_entr_business_addr') != '') {
+    $entr_bus_addr = stripslashes($this->lang->line('pls_entr_business_addr'));
+} else {
+    $entr_bus_addr = "Please Enter Business Address";
+}
+?>
+<input type="hidden" name="" id="entr_bus_addr" value="<?php echo $entr_bus_addr; ?>">
+
 <input type="hidden" id="to_url_value" value="<?php echo current_url(); ?>"/>
 <script>
 
@@ -903,13 +993,21 @@ if ($this->lang->line('must_accept_term') != '') {
         var confirmS = $("#confirm_pas").val();
         var not_matchedS = $("#not_matched").val();
         var must_accept = $("#must_accept").val();
+        var entr_bus_nameS = $("#entr_bus_name").val();
+        var entr_bus_descS = $("#entr_bus_desc").val();
+        var entr_licen_noS = $("#entr_licen_no").val();
+        var entr_bus_addrS = $("#entr_bus_addr").val();
+        
 
         var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         var email_address = $("#email_address").val();
         var first_name = $("#first_name").val();
         var last_name = $("#last_name").val();
         var phone = $("#phone").val();
-
+		var business_name = $("#business_name").val();
+        var business_desc = $("#business_desc").val();
+        var license_no = $("#license_no").val();
+        var business_addr = $("#business_addr").val();
         var user_password = $("#user_password").val();
         var birth_month = $("#birth_month").val();
         var birth_day = $("#birth_day").val();
@@ -937,7 +1035,23 @@ if ($this->lang->line('must_accept_term') != '') {
             $("#phone").focus();
             $("#signup_error_message").html(enter_phone);
             return false;
-        }
+        } else if (business_name == "") {
+            $("#business_name").focus();
+            $("#signup_error_message").html(entr_bus_nameS)
+            return false;
+        } else if (business_desc == "") {
+            $("#business_desc").focus();
+            $("#signup_error_message").html(entr_bus_descS)
+            return false;
+        } else if (license_no == "") {
+            $("#license_no").focus();
+            $("#signup_error_message").html(entr_licen_noS)
+            return false;
+        } else if (business_addr == "") {
+            $("#business_addr").focus();
+            $("#signup_error_message").html(entr_bus_addrS)
+            return false;
+        } 
         else if (user_password == "") {
             $("#user_password").focus();
             $("#signup_error_message").html(entr_paswrdS)
@@ -1130,7 +1244,10 @@ if ($this->lang->line('must_accept_term') != '') {
         $("#to_url_value").val(link_to);
         $.post("<?= base_url(); ?>site/user/set_redirect_session", {'to_url': link_to});
     }
-
+	
+	function manage_register_form() {
+       
+    }
 
 </script>
 <script type="text/javascript">
@@ -1232,5 +1349,16 @@ function cnf_pwd_validation(params) {
            
         }
     });
+</script>
+
+<script>
+ $("#login_type").change(function () { 
+	 var login_type = $("#login_type").val(); 
+	 if(login_type == 'Host'){ 
+		 $("#host_details").show();
+	 }else{
+		 $("#host_details").hide();
+	 }
+ });
 </script>
 

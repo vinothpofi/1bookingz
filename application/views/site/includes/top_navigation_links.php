@@ -30,11 +30,13 @@
                     <?php
                 } */
             ?>
-            <li>
+			
+			 <?php if($this->data['userDetails']->row()->group == 'User'){ ?>
+				<li>
                 <a href="<?php echo base_url(); ?>trips/upcoming" <?php if ($this->uri->segment(1) == 'trips') { ?> class="active" <?php } ?>><?php if ($this->lang->line('your_trips') != '') {
                         echo stripslashes($this->lang->line('your_trips'));
                     } else echo "My Trips"; ?></a><i class="fa fa-info-circle" title="your booking history" aria-hidden="true"></i></li>
-				
+			 <?php } ?>
 				
 					
 				

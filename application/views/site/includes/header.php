@@ -341,7 +341,16 @@ $(document).ready(function(){
                           <!-- Add "active" class in "li" for Active Link -->
                           <?php /* <li class=""><a href="<?php echo base_url(); ?>popular" onclick="set_signup_and_login_link('<?= uri_string(); ?>')"; ><?php if ($this->lang->line('popular') != '') {  echo stripslashes($this->lang->line('popular'));   } else echo "Popular"; ?></a></li> */ ?>
                           <li class=""><a href="<?php echo base_url(); ?>all_listing" onclick="set_signup_and_login_link('<?= uri_string(); ?>')"; ><?php if ($this->lang->line('all_rentals') != '') {  echo stripslashes($this->lang->line('all_rentals'));   } else echo "All Rentals"; ?></a></li>
-                          <li class="dropdown">
+                          
+						  <?php $hide_rentspace = "display:block;"; 
+								if($this->session->userdata('fc_session_user_id')){ 
+									if($this->data['userDetails']->row()->group == 'User'){ 
+										$hide_rentspace = "display:none;"; ?>
+									<?php } ?>
+						  <?php } ?>
+						  
+						  
+						  <li class="dropdown" style=<?= $hide_rentspace; ?>>
                               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                   <?php if ($this->lang->line('Become_Host') != '') {
                                       echo stripslashes($this->lang->line('Become_Host'));
@@ -351,21 +360,18 @@ $(document).ready(function(){
                                   <?php
                                   if ($this->session->userdata('fc_session_user_id')) { ?>
                                   <li><?php echo anchor('list_space', $listSpace); ?></li>
-                                  <?php /* <li><?php echo anchor('manage_experience', $listExprience); ?></li> */ ?>
-
-
+                          
                                   <?php } else { ?>
 
                                   <li><a data-toggle="modal" data-target="#signUp"
-                                         onclick="javascript:set_signup_and_login_link('list_space');"><?php echo $listSpace; ?></a>
+                                         onclick="javascript:set_signup_and_login_link('list_space'),manage_register_form();"><?php echo $listSpace; ?></a>
                                   </li>
-                                  <?php /* <li><a data-toggle="modal" data-target="#signUp"
-                                         onclick="javascript:set_signup_and_login_link('manage_experience');"><?php echo $listExprience; ?></a>
-                                  </li> */ ?>
+                           
                                   <?php } ?>
 
                               </ul>
                           </li>
+						  
                           <?php
                           if ($this->session->userdata('fc_session_user_id')=='') { ?>                              
                               <!-- <li>
@@ -439,7 +445,7 @@ $(document).ready(function(){
                                                   echo stripslashes($this->lang->line('your_trips'));
                                               } else echo "Your Trips"; ?></a>
                                       </li>
-                                      <li class="">
+                                      <li class="<?php if($this->data['userDetails']->row()->group == 'Seller'){ ?>visible-xs<?php } ?>">
                                           <a href="<?php echo base_url(); ?>users/<?php echo $loginCheck; ?>/wishlists"><?php if ($this->lang->line('wish_list') != '') {
                                                   echo stripslashes($this->lang->line('wish_list'));
                                               } else echo "Wish List"; ?></a>

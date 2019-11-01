@@ -4534,10 +4534,10 @@ class User extends MY_Controller
     }
 
     public function set_redirect_session()
-    {
+    { 
         $this->session->set_userdata(array('session_redirect_url' => $this->input->post('to_url')));
     }
-      public function set_session_ques()
+    public function set_session_ques()
 
     {
     

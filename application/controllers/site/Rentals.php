@@ -510,7 +510,26 @@ class Rentals extends MY_Controller
 					$pro_description =  strip_tags($rentals->description);
 				}
 				
-				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'","'. $pro_description .'"]';
+				/*Listing Details*/
+				
+				
+				$finalsListing = json_decode($rentals->listings);
+				if(count($finalsListing) > 0){
+					foreach ($finalsListing as $listingResult => $FinalValues) {
+						$resultArr[$listingResult] = $FinalValues;
+						if(trim($FinalValues) != '') {
+							$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
+							if ($list_type_value->row()->parent_id == "78") {
+								
+								
+							}
+						}
+					}
+				}
+				
+				
+				
+				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'","'. $pro_description .'","'. $this->data['userDetails']->row()->group .'"]';
 				if ($i != $productList->num_rows()) {
 					$result .= ',';
 				};
