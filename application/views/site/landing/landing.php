@@ -825,8 +825,9 @@ if ($CityDetails->num_rows() > 0) {
                                                 </div>
                                             </div>
                                         </div>
+                                        </div>
                                 <?php } ?>
-                            </div>
+                            
                 </div>
                     </div>
                 </div>
