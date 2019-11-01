@@ -361,7 +361,7 @@ div#timer span {
 
 
 
-<section>
+<section style="display: none;">
 
 	<!--<div class="container-fluid lightboxBanner" style="background-image: url('<?php echo base_url(); ?>images/rental/<?php echo $banner_background; ?>')">
 
@@ -437,7 +437,7 @@ div#timer span {
 
 			<div class="detailLeft details__nav">
 
-				<div class="fixedHeader clear" data-spy="affix" data-offset-top="500">
+				<div class="fixedHeader clear" style="display: none;">
 
 					<div class="fixedContainer">
 
@@ -476,7 +476,7 @@ div#timer span {
 				<div class="title" style="display: block;">
 
 					<div class="left" style="display: block;">
-
+					<div class="title-section">
 	             	<h2 id="overview"><?php 
 
 	             	if($this->session->userdata('language_code') =='en')
@@ -508,6 +508,8 @@ div#timer span {
                                     }
 
 	             	                echo ucfirst($prod_tit); ?></h2>
+	             	               <h3>$10.00</h3>
+	             	           </div>
                         <div class="clearfix"></div>
 						<div class="clear">
 
@@ -598,6 +600,111 @@ div#timer span {
                     -->
 
 				</div>
+
+
+			<div class="product-detail-tab">
+				<ul class="nav nav-tabs">
+				  <li class="active"><a data-toggle="tab" href="#description-tab">Description</a></li>
+				  <li><a data-toggle="tab" href="#detail-tab">Details</a></li>
+				  <li><a data-toggle="tab" href="#review-tab"><?php if ($this->lang->line('Reviews') != '') {
+
+								echo stripslashes($this->lang->line('Reviews'));
+
+							} else echo "Reviews"; ?></a></li>
+				  <li><a data-toggle="tab" href="#host-tab"><?php if ($this->lang->line('the_host') != '') {
+
+								echo stripslashes($this->lang->line('the_host'));
+
+							} else echo "The Host"; ?></a></li>
+				</ul>
+
+
+				<div class="tab-content">
+				  <div id="description-tab" class="tab-pane fade in active">
+				   	<p>
+
+					<?php
+
+					                    /*if($_SESSION['language_code'] =='en')
+
+                                                 {
+
+                                                     $prod_desc = $product->description_ar;
+
+                                                 }
+
+                                                 else
+
+                                                 {
+
+                                                     $prod_Ar='description_'.$_SESSION['language_code'];
+
+                                                    // echo $CityRowss->description_ar;
+
+                                                     if($product->$prod_Ar == '') { 
+
+                                                         $prod_desc=$product->description_ar;
+
+                                                     }
+
+                                                     else{
+
+                                                        $prod_desc=$product->description_ar;
+
+                                                    }
+
+                                               }*/
+
+		                        $prod_tiltle=language_dynamic_enable("description",$this->session->userdata('language_code'),$product);
+		                        echo ucfirst($prod_tiltle);
+
+                                            // echo ucfirst($prod_desc);
+
+				                      //	echo nl2br(stripslashes($prod_desc));
+
+					if ($product->video_url != '') {
+
+						$url = $product->video_url;
+
+						preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $matches);
+
+						$id = $matches[1];
+
+						if ($id != '') {
+
+							?>
+
+							<iframe width="100%" height="350px"
+
+									src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3">
+
+							</iframe>
+
+							<?php
+
+						} else {
+
+							?>
+
+							<iframe width="100%" height="350px" src="<?php echo $product->video_url; ?>">
+
+							</iframe>
+
+							<?php
+
+						}
+
+					}
+
+					?>
+
+				</p>
+				  </div>
+				  
+				  
+				  
+				
+			<div id="detail-tab" class="tab-pane fade">
 
 				<div class="features">
 
@@ -691,84 +798,7 @@ div#timer span {
 
 				</div>
 
-				<p>
-
-					<?php
-
-					                    /*if($_SESSION['language_code'] =='en')
-
-                                                 {
-
-                                                     $prod_desc = $product->description_ar;
-
-                                                 }
-
-                                                 else
-
-                                                 {
-
-                                                     $prod_Ar='description_'.$_SESSION['language_code'];
-
-                                                    // echo $CityRowss->description_ar;
-
-                                                     if($product->$prod_Ar == '') { 
-
-                                                         $prod_desc=$product->description_ar;
-
-                                                     }
-
-                                                     else{
-
-                                                        $prod_desc=$product->description_ar;
-
-                                                    }
-
-                                               }*/
-
-		                        $prod_tiltle=language_dynamic_enable("description",$this->session->userdata('language_code'),$product);
-		                        echo ucfirst($prod_tiltle);
-
-                                            // echo ucfirst($prod_desc);
-
-				                      //	echo nl2br(stripslashes($prod_desc));
-
-					if ($product->video_url != '') {
-
-						$url = $product->video_url;
-
-						preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $matches);
-
-						$id = $matches[1];
-
-						if ($id != '') {
-
-							?>
-
-							<iframe width="100%" height="350px"
-
-									src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3">
-
-							</iframe>
-
-							<?php
-
-						} else {
-
-							?>
-
-							<iframe width="100%" height="350px" src="<?php echo $product->video_url; ?>">
-
-							</iframe>
-
-							<?php
-
-						}
-
-					}
-
-					?>
-
-				</p>
+				
 
 				<div class="divider"></div>
 
@@ -1399,11 +1429,13 @@ div#timer span {
 						</ul>
 
 					</div>
-
+		
 					<?php
 
-				}
+				} ?></div>
 
+				<div id="review-tab" class="tab-pane fade">
+				  
 				if (count($reviewData->result_array()) == 0) { ?>
 
 					<div class="divider"></div>
@@ -1562,7 +1594,10 @@ div#timer span {
 					<?php
 
 				} ?>
-                <div class="divider"></div>
+                <div class="divider"></div> </div>
+
+				<div id="host-tab" class="tab-pane fade">				    
+				  
 				<div class="hostDetail">
 
 					<div class="row">
@@ -1784,9 +1819,11 @@ div#timer span {
 
 					</ul>
 
-				</div>
-
+				</div> 
 			</div>
+		</div>
+	</div>
+</div>
 
 			<div class="toggleBooking">
 
@@ -1881,12 +1918,13 @@ div#timer span {
 			</div>
 
 			<div class="detailRight toggleRequestBook">
+				<h3 class="booking-title">Book Property</h3>
 
 				<div class="bookingBlock">
 
 					<button type="button" class="tRB close">&times;</button>
 
-						<h5 class="price"><span class="number_s150">
+						<!-- <h5 class="price"><span class="number_s150">
 
 						<?php
 
@@ -1952,7 +1990,7 @@ div#timer span {
 
 					</div>
 
-					<div class="divider"></div>
+					<div class="divider"></div> -->
 
 
 
@@ -3139,6 +3177,9 @@ $('form').delegate(':input', 'focus', function() {
 				}
 
 			});
+
+			$('#checkIn').data('daterangepicker').hide();
+			$('#checkOut').data('daterangepicker').hide();
 
 		});
 
