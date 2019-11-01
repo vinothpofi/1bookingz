@@ -1436,7 +1436,7 @@ div#timer span {
 
 				<div id="review-tab" class="tab-pane fade">
 				  
-				if (count($reviewData->result_array()) == 0) { ?>
+				<?php if (count($reviewData->result_array()) == 0) { ?>
 
 					<div class="divider"></div>
 
