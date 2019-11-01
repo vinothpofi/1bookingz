@@ -828,7 +828,7 @@ $this->load->view('site/includes/footer');
 					'                                    <div class="loc">' + location[11] + location[4] + '</div>\n' +
 					'                                    <h5>' + location[0] + '</h5>\n' +
 					'                                    <div class="price"><span class="number_s"> <?php echo $currencySymbol; ?>' + location[7] + ' </span>'+svg_is+'</div>\n' +
-					'                                    <div class="bottom-text"><p>Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]</p></div>\n'+
+					'                                    <div class="bottom-text"><p>'+ location[13] + '</p></div>\n'+
 					'                                    <div class="bottom-icons"><span class="guest-limit">5</span></div>\n'+
 					'                                    <div class="clear">\n' +
 					'                                        <div class="starRatingOuter">\n' +

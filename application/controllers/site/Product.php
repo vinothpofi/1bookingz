@@ -5894,12 +5894,12 @@ $client->account->messages->create(array(
             //$this->data ['product_count']; 
 			//all experience
 			
-       $this->data ['experience'] = $experience = $this->experience_model->get_exprience_view_details_withFilter('where    d.from_date > "' . date('Y-m-d') . '"' . " and extyp.status='Active' and p.status='1' AND EXISTS
+       /*$this->data ['experience'] = $experience = $this->experience_model->get_exprience_view_details_withFilter('where    d.from_date > "' . date('Y-m-d') . '"' . " and extyp.status='Active' and p.status='1' AND EXISTS
       ( select c.id FROM fc_experience_dates c where c.status='0' and c.experience_id=p.experience_id
       )  AND EXISTS (select count(td.id) FROM fc_experience_time_sheet td where td.status='1' and td.experience_id=p.experience_id) group by p.experience_id order by p.added_date desc LIMIT 0,8");
 		$this->data ['experience_count'] = $experience = $this->experience_model->get_exprience_view_details_withFilter('where    d.from_date > "' . date('Y-m-d') . '"' . " and extyp.status='Active' and p.status='1' AND EXISTS
       ( select c.id FROM fc_experience_dates c where c.status='0' and c.experience_id=p.experience_id
-      )  AND EXISTS (select count(td.id) FROM fc_experience_time_sheet td where td.status='1' and td.experience_id=p.experience_id) group by p.experience_id order by p.added_date desc ")->num_rows();	
+      )  AND EXISTS (select count(td.id) FROM fc_experience_time_sheet td where td.status='1' and td.experience_id=p.experience_id) group by p.experience_id order by p.added_date desc ")->num_rows();	*/
 		//end Experience all	
 		
 	    $perPage = 1;
@@ -5920,8 +5920,8 @@ $client->account->messages->create(array(
 						
 					 $this->data['CityName'][$city_name] = $this->city_model->cityall_listing($city_name,$perPage,$start)->result(); 
 					 $this->data['CityNameCount'][$city_name] = count($this->city_model->cityall_listing_count($city_name)->result());
-					 $this->data['CityName_exp'][$city_name] = $this->city_model->cityall_listing_exp($city_name,$perPage,$start)->result(); 
-					 $this->data['CityName_exp_count'][$city_name] = count($this->city_model->cityall_listing_exp_count($city_name)->result()); 
+					 /*$this->data['CityName_exp'][$city_name] = $this->city_model->cityall_listing_exp($city_name,$perPage,$start)->result(); 
+					 $this->data['CityName_exp_count'][$city_name] = count($this->city_model->cityall_listing_exp_count($city_name)->result());*/ 
 					
 					}
 					

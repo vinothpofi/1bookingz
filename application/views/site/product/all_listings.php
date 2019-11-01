@@ -144,8 +144,15 @@ $currency_result = $this->session->userdata('currency_result');
                                             <span style="font-size:14px;"><?php echo $per;  ?> </span>
                                         </div>
                                         <div class="bottom-text">
+												<?php $desc_length = strlen($product_image['description']);
+												if($desc_length > 100){
+													$pro_description = character_limiter($product_image['description'],100);
+												}else{
+													$pro_description =  strip_tags($product_image['description']);
+												} ?>
+												
                                                 <p>
-                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
+                                                    <?php echo $pro_description; ?>
                                                 </p>
                                         </div>
                                         <div class="bottom-icons">
@@ -189,7 +196,7 @@ $currency_result = $this->session->userdata('currency_result');
 	</section>
 	
 	<!--Experinece All-->
-	<section>
+	<?php /* <section>
 		<div class="container" style="margin-top: 20px;">
             <div class="rowHead">
 		<h3><?php if ($this->lang->line('Experiences_travelers') != '') { echo stripslashes($this->lang->line('Experiences_travelers')); } else echo "Experiences travelers love"; ?></h3>
@@ -210,7 +217,6 @@ $currency_result = $this->session->userdata('currency_result');
 			<?php
 				if ($experience->num_rows() > 0) {
 					foreach ($experience->result_array() as $product_image) {
-						/*print_r($newArr);;die;*/
 						?>
 						<div class="col-sm-4 col-md-3" style="margin-top: 20px;">
 						<div class="owl-carousel show">
@@ -330,7 +336,7 @@ $currency_result = $this->session->userdata('currency_result');
 		</div>
 	
 		
-	</section>
+	</section>  */?>
 	<!--end experience all-->
 	
 	<!--city-->
@@ -445,8 +451,15 @@ $currency_result = $this->session->userdata('currency_result');
                                                 <span style="font-size:14px;"><?php echo $per;  ?> </span>
                                             </div>
                                             <div class="bottom-text">
+											 <?php $prod_desc=language_dynamic_enable("description",$this->session->userdata('language_code'),$CityRowss);
+													$desc_length = strlen($prod_desc); ?>
+											
                                                 <p>
-                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
+                                                <?php if($desc_length > 100){
+													echo character_limiter($prod_desc,100);
+												}else{
+													echo strip_tags($prod_desc);
+												} ?>
                                                 </p>
                                         	</div>
                                         	<div class="bottom-icons">

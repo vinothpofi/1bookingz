@@ -1113,7 +1113,7 @@ public function get_all_cancelled_users()
 	public
 	function view_product_details_sitemapview($search, $Start, $searchPerPage)
 	{
-		$select_qry = "select p.id,p.instant_pay,p.price,p.seourl,p.product_title,p.currency,
+		$select_qry = "select p.id,p.instant_pay,p.price,p.seourl,p.product_title,p.description,p.currency,
 						u.id as userid,u.user_name,u.feature_product,u.image as userphoto,
 						pa.lat as latitude,pa.lang as longitude,pa.address,
 						pa.city as city_name,

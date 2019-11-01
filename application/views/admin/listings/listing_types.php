@@ -165,7 +165,7 @@ extract($privileges);
 											<?php 
 											} 
 
-											if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity') { ?>
+											if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity' && $row->name != 'SPACE_SIZE' && $row->name != 'No_of_beds') { ?>
 												<?php if ($allPrev == '1' || in_array('3', $Listing)) { ?>
 													<span>
 														<a class="action-icons c-delete"

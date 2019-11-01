@@ -501,7 +501,16 @@ class Rentals extends MY_Controller
 				} else {
 					$wishlist = "data-toggle='modal' data-target='#signIn' style='display: inline;'";
 				}
-				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'"]';
+				
+				/*Description*/
+				$desc_length = strlen($rentals->description);
+				if($desc_length > 100){
+					$pro_description = character_limiter($rentals->description,100);
+				}else{
+					$pro_description =  strip_tags($rentals->description);
+				}
+				
+				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'","'. $pro_description .'"]';
 				if ($i != $productList->num_rows()) {
 					$result .= ',';
 				};
@@ -540,6 +549,7 @@ class Rentals extends MY_Controller
 				else{
 					$this->data['average'] = '0.00';
 				}
+				
 		$this->data['productList'] = $result;
 		$this->data['pages'] = $pages;
 		$this->data['total_pages'] = $total_pages;

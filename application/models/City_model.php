@@ -173,8 +173,13 @@ class City_model extends My_Model
         if(count($langarray)>0) {
             $langarray=",".implode(",",$langarray);
         } else $langarray="";
+		
+		$langarray_desc=language_dynamic_admin_enable_submit(array('b.description'),2); //Need to Update here
+        if(count($langarray_desc)>0) {
+            $langarray_desc=",".implode(",",$langarray_desc);
+        } else $langarray_desc="";
 
-			$SQL_QUERY = "SELECT a.id as cityid,a.city,b.seourl,b.instant_pay,a.state,a.country,b.id,b.product_title'.$langarray.',b.price,b.currency,lsv.list_value,c.product_id,c.product_image,(select IFNULL(count(R.id),0) from " . REVIEW . " as R where  R.review_type='0' and  R.product_id= b.id and R.status='Active') as num_reviewers , (select IFNULL(avg(Rw.total_review),0) from " . REVIEW . " as Rw where Rw.review_type='0' and Rw.product_id= b.id and Rw.status='Active') as avg_val FROM " . PRODUCT_ADDRESS_NEW . " a INNER JOIN " . PRODUCT . " b on b.id = a.productId LEFT JOIN " . PRODUCT_PHOTOS . " c on c.product_id = b.id LEFT JOIN ".LISTSPACE_VALUES." lsv on lsv.id=b.home_type where LOWER(a.city) LIKE LOWER('" . $city_name . "%') AND b.status='Publish' group by c.product_id LIMIT 0,8";
+			$SQL_QUERY = "SELECT a.id as cityid,a.city,b.seourl,b.instant_pay,a.state,a.country,b.id,b.product_title'.$langarray.',b.description'.$langarray_desc.',b.price,b.currency,lsv.list_value,c.product_id,c.product_image,(select IFNULL(count(R.id),0) from " . REVIEW . " as R where  R.review_type='0' and  R.product_id= b.id and R.status='Active') as num_reviewers , (select IFNULL(avg(Rw.total_review),0) from " . REVIEW . " as Rw where Rw.review_type='0' and Rw.product_id= b.id and Rw.status='Active') as avg_val FROM " . PRODUCT_ADDRESS_NEW . " a INNER JOIN " . PRODUCT . " b on b.id = a.productId LEFT JOIN " . PRODUCT_PHOTOS . " c on c.product_id = b.id LEFT JOIN ".LISTSPACE_VALUES." lsv on lsv.id=b.home_type where LOWER(a.city) LIKE LOWER('" . $city_name . "%') AND b.status='Publish' group by c.product_id LIMIT 0,8";
 			
 			//echo $SQL_QUERY; exit;
 		

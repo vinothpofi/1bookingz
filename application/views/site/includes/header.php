@@ -339,7 +339,8 @@ $(document).ready(function(){
                       <ul class="nav navbar-nav navbar-right">
                           <!-- <li class="searchIconHeaderLI hidden-lg"><a href="#0" class="searchIconHeader"><i class="fa fa-search" aria-hidden="true"></i></a></li> -->
                           <!-- Add "active" class in "li" for Active Link -->
-                          <li class=""><a href="<?php echo base_url(); ?>popular" onclick="set_signup_and_login_link('<?= uri_string(); ?>')"; ><?php if ($this->lang->line('popular') != '') {  echo stripslashes($this->lang->line('popular'));   } else echo "Popular"; ?></a></li>
+                          <?php /* <li class=""><a href="<?php echo base_url(); ?>popular" onclick="set_signup_and_login_link('<?= uri_string(); ?>')"; ><?php if ($this->lang->line('popular') != '') {  echo stripslashes($this->lang->line('popular'));   } else echo "Popular"; ?></a></li> */ ?>
+                          <li class=""><a href="<?php echo base_url(); ?>all_listing" onclick="set_signup_and_login_link('<?= uri_string(); ?>')"; ><?php if ($this->lang->line('all_rentals') != '') {  echo stripslashes($this->lang->line('all_rentals'));   } else echo "All Rentals"; ?></a></li>
                           <li class="dropdown">
                               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                   <?php if ($this->lang->line('Become_Host') != '') {
