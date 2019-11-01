@@ -12,7 +12,7 @@
                     } else echo "Inbox"; ?> <?php if($property_msg_count>0 || $experience_msg_count>0){ ?><div class="badge"><?php echo $property_msg_count+$experience_msg_count; ?></div> <?php } ?> </a></li>
            
 		    
-		    <?php if($this->data['userDetails']->row()->group == 'Seller'){ $listingLinks = array('listing', 'listing-reservation'); ?>
+		    <?php if($userDetails->row()->group == 'Seller'){ $listingLinks = array('listing', 'listing-reservation'); ?>
             <li>
                 <a href="<?php echo base_url(); ?>listing/all" <?php if (in_array($this->uri->segment(1), $listingLinks)) { ?> class="active" <?php } ?>><?php if ($this->lang->line('YourListing') != '') {
                         echo stripslashes($this->lang->line('YourListing'));
@@ -31,7 +31,7 @@
                 } */
             ?>
 			
-			 <?php if($this->data['userDetails']->row()->group == 'User'){ ?>
+			 <?php if($userDetails->row()->group == 'User'){ ?>
 				<li>
                 <a href="<?php echo base_url(); ?>trips/upcoming" <?php if ($this->uri->segment(1) == 'trips') { ?> class="active" <?php } ?>><?php if ($this->lang->line('your_trips') != '') {
                         echo stripslashes($this->lang->line('your_trips'));

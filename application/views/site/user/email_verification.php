@@ -29,7 +29,7 @@ if ($this->lang->line('NotVerified') != '') {
 					<li>
 						<a href="<?php echo base_url(); ?>verification" <?php if ($this->uri->segment(1) == 'verification') { ?> class="active" <?php } ?>><?php if ($this->lang->line('TrustandVerification') != '') {
 								echo stripslashes($this->lang->line('TrustandVerification'));
-							} else echo "Trust and Verification"; ?></a></li>
+							} else echo "Verification"; ?></a></li>
 					<li>
 						<a href="<?php echo base_url(); ?>display-review" <?php if ($this->uri->segment(1) == 'display-review') { ?> class="active" <?php } ?>><?php if ($this->lang->line('Reviews') != '') {
 								echo stripslashes($this->lang->line('Reviews'));
@@ -294,12 +294,14 @@ if ($this->lang->line('NotVerified') != '') {
 												echo stripslashes($this->lang->line('err_upload_proof'));
 											} else echo "Please upload jpg,gif,png or pdf,doc file to verification, File size limit it 2 mb"; ?></small>
 										<br><br>
-										<b><?php if ($this->lang->line('note') != '') {
+										
+										<?php /* <b><?php if ($this->lang->line('note') != '') {
 												echo stripslashes($this->lang->line('note'));
 											} else echo "Note"; ?> : </b>
 										<small><?php if ($this->lang->line('once_you_uploaded') != '') {
 												echo stripslashes($this->lang->line('once_you_uploaded'));
-											} else echo "Once You Upload Proof you cannot able to edit Until Admin Gives Acceptance"; ?> </small>
+											} else echo "Once You Upload Proof you cannot able to edit Until Admin Gives Acceptance"; ?> </small>  */?>
+									
 									</div>
 									<div class="marginTop_1">
 										<button class="submitBtn1" type="button"

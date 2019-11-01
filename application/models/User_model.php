@@ -81,14 +81,22 @@ class User_model extends My_Model
         }
     }
 
-     public function insertUserQuick_user($firstname = '', $lastname = '', $phone_number,$email = '', $pwd = '', $confirm_password, $expireddate, $login_type, $dob_date, $dob_month, $dob_year, $invite_reference = '0', $rep_code)
+     public function insertUserQuick_user($firstname = '', $lastname = '', $phone_number,$email = '', $pwd = '', $confirm_password, $expireddate, $login_type, $dob_date, $dob_month, $dob_year, $invite_reference = '0', $rep_code,$acc_group_type='',$business_name='',$business_desc='',$license_no='',$business_addr='')
     {
         $this->db->reconnect();
-        if ($rep_code != '') {
+        /* if ($rep_code != '') {
             $rep_code_l = 'Seller';
         } else {
             $rep_code_l = 'User';
-        }
+        } */
+		
+		if($acc_group_type == 'Seller'){
+			$rep_code_l = 'Seller';
+		} else if($acc_group_type == 'User') {
+			$rep_code_l = 'User'; 
+		} else {
+			$rep_code_l = 'User'; 
+		}
         $dataArr = array(
             'firstname' => $firstname,
             'lastname' => $lastname,

@@ -8,7 +8,7 @@ $currency_result = $this->session->userdata('currency_result');
             <div class="dashboard loggedIn clear">
                 <div class="col-sm-3 width20">
                     <ul class="sideBarMenu">
-                        <?php if($this->data['userDetails']->row()->group == 'Seller'){ ?> 
+                        <?php if($userDetails->row()->group == 'Seller'){ ?> 
 						<li>
                             <a href="<?php echo base_url(); ?>account-payout" <?php if ($this->uri->segment(1) == 'account-payout') echo 'class="active"'; ?>><?php if ($this->lang->line('PayoutPreferences') != '') { echo stripslashes($this->lang->line('PayoutPreferences')); } else echo "Payout Preferences"; ?></a></li>
 						<?php } ?>

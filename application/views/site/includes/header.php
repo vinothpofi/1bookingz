@@ -344,7 +344,7 @@ $(document).ready(function(){
                           
 						  <?php $hide_rentspace = "display:block;"; 
 								if($this->session->userdata('fc_session_user_id')){ 
-									if($this->data['userDetails']->row()->group == 'User'){ 
+									if($userDetails->row()->group == 'User'){ 
 										$hide_rentspace = "display:none;"; ?>
 									<?php } ?>
 						  <?php } ?>
@@ -445,7 +445,7 @@ $(document).ready(function(){
                                                   echo stripslashes($this->lang->line('your_trips'));
                                               } else echo "Your Trips"; ?></a>
                                       </li>
-                                      <li class="<?php if($this->data['userDetails']->row()->group == 'Seller'){ ?>visible-xs<?php } ?>">
+                                      <li class="<?php if($userDetails->row()->group == 'Seller'){ ?>visible-xs<?php } ?>">
                                           <a href="<?php echo base_url(); ?>users/<?php echo $loginCheck; ?>/wishlists"><?php if ($this->lang->line('wish_list') != '') {
                                                   echo stripslashes($this->lang->line('wish_list'));
                                               } else echo "Wish List"; ?></a>

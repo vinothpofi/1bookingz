@@ -2081,10 +2081,11 @@ div#timer span {
 
 					</div> -->
 
+					
+
+
+				<div id="booking_part">
 					<div class="divider"></div> 
-
-
-
 					<ul class="coupon-detail">
 
 						<?php $productAr = explode(',', $couponData->row()->product_id);
@@ -2431,6 +2432,7 @@ if($host_status != 'Inactive')
 
 					?>
 
+		</div>
 					<!-- <div class="divider"></div>
 
 					<div class="expRow">

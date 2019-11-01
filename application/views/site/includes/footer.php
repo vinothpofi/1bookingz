@@ -492,7 +492,7 @@
                                 $guest_labe = stripslashes($this->lang->line('guest_s'));
                             } else $guest_labe = "Guest";
 							
-								$options = array('' => $login_type, 'Host' => $host_labe, 'Guest' => $guest_labe);
+								$options = array('' => $login_type, 'Seller' => $host_labe, 'User' => $guest_labe);
 							    echo form_dropdown('login_type', $options, '', array("id" => "login_type"));
 							?>
                         </div>
@@ -1354,7 +1354,7 @@ function cnf_pwd_validation(params) {
 <script>
  $("#login_type").change(function () { 
 	 var login_type = $("#login_type").val(); 
-	 if(login_type == 'Host'){ 
+	 if(login_type == 'Seller'){ 
 		 $("#host_details").show();
 	 }else{
 		 $("#host_details").hide();
