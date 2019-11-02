@@ -719,7 +719,7 @@ $this->load->view('admin/templates/header.php');
 							<li>
 								<div class="form_grid_12">
 									<?php										
-										echo form_label('Account Name','accname', 
+										echo form_label('Stripe Account Name','accname', 
 												$commonclass);	
 								    ?>
 									<div class="form_input">
@@ -766,7 +766,7 @@ $this->load->view('admin/templates/header.php');
 									</div>
 								</div>
 							</li>
-							<li>
+							<li style="display:none;">
 								<div class="form_grid_12">
 									<?php										
 										echo form_label('Bank Name','bankname', 

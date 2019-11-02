@@ -412,7 +412,7 @@ $this->load->view('admin/templates/header.php');
 							<li>
 								<div class="form_grid_12">
 									<?php
-									echo form_label('Account Name <span class="req">*</span>', 'acc_name', $commonclass);
+									echo form_label('Stripe Account Name <span class="req">*</span>', 'acc_name', $commonclass);
 									?>
 									<div class="form_input">
 										<?php
@@ -455,10 +455,10 @@ $this->load->view('admin/templates/header.php');
 									</div>
 								</div>
 							</li>
-							<li>
+							<li style="display:none;">
 								<div class="form_grid_12">
 									<?php
-									echo form_label('Bank Name <span class="req">*</span>', 'bankname', $commonclass);
+									echo form_label('Stripe Account User Name <span class="req">*</span>', 'bankname', $commonclass);
 									?>
 									<div class="form_input">
 										<?php
@@ -468,7 +468,7 @@ $this->load->view('admin/templates/header.php');
 											'id' => 'bankname',
 											'required' => 'required',
 											'class' => 'tipTop large',
-											'title' => 'Enter the bank name',
+											'title' => 'Enter the Stripe Account name',
 											'value' => $seller_details->row()->bankname,
                                         ));
 										$accnolbl = array('id' => 'bankname_error', 'style' => 'font-size:12px;display:none;', 'class' => 'error');
@@ -478,7 +478,7 @@ $this->load->view('admin/templates/header.php');
 									</div>
 								</div>
 							</li>
-							<li>
+							<li style="display:none;">
 								<div class="form_grid_12">
 									<?php
 									echo form_label('Paypal Email <span class="req">*</span>', 'paypal_email', $commonclass);

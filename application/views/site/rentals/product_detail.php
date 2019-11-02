@@ -675,11 +675,11 @@ div#timer span {
 								echo stripslashes($this->lang->line('Reviews'));
 
 							} else echo "Reviews"; ?></a></li> -->
-				  <li><a data-toggle="tab" href="#host-tab"><?php if ($this->lang->line('the_host') != '') {
+				  <li><a data-toggle="tab" href="#host-tab"><?php if ($this->lang->line('property_managed_by') != '') {
 
-								echo stripslashes($this->lang->line('the_host'));
+								echo stripslashes($this->lang->line('property_managed_by'));
 
-							} else echo "The Host"; ?></a></li>
+							} else echo "Property Managed By"; ?></a></li>
 				</ul>
 
 
@@ -1668,11 +1668,11 @@ div#timer span {
 
 						<div class="col-sm-8 left">
 
-							<h3 id="host"><?php if ($this->lang->line('hosted_by') != '') {
+							<h3 id="host"><?php if ($this->lang->line('property_managed_by') != '') {
 
-									echo stripslashes($this->lang->line('hosted_by'));
+									echo stripslashes($this->lang->line('property_managed_by'));
 
-								} else echo "Hosted by  ";
+								} else echo "Proeprty Managed by  ";
 
 								if ($product->user_id > 0 && $product->user_id != '') {
 
@@ -1694,21 +1694,21 @@ div#timer span {
 
 									echo ($product->s_state != "") ? ucfirst($product->s_state) . '. ' : '';
 
-									if ($this->lang->line('joined_in') != '') {
+									/* if ($this->lang->line('joined_in') != '') {
 
 										echo stripslashes($this->lang->line('joined_in'));
 
 									} else echo "Joined in ";
 
-									echo ' '. date('F Y', strtotime($product->user_created));
-
+									echo ' '. date('F Y', strtotime($product->user_created)); */
+									
 								}
 
 								?></p>
 
 							<?php
 
-							if ($product->user_id > 0 && $product->user_id != '') {
+							/* if ($product->user_id > 0 && $product->user_id != '') {
 
 								?>
 
@@ -1733,9 +1733,9 @@ div#timer span {
 
 								<?php
 
-							}
+							} */ ?>
 
-							if ($product->user_id > 0 && $product->user_id != '') {
+							<?php if ($product->user_id > 0 && $product->user_id != '') {
 
 								if ($proof_verify->num_rows() > 0) {
 
@@ -2742,32 +2742,36 @@ if($host_status != 'Inactive')
 										</p>
                                     </div>
 									
-									
-                                    <div class="bottom-icons">
-                                        <span class="guest-limit"><?php echo $similar_Rentals->guestcapacity;?></span>
-                                  
-									
-									<?php $finalsListing = json_decode($similar_Rentals->listings);
-									  foreach ($finalsListing as $listingResult => $FinalValues) {
-										  $resultArr[$listingResult] = $FinalValues;
-										  if(trim($FinalValues) != '') {
-											$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
-												if ($list_type_value->row()->parent_id == "78") { ?>
-												<span class="bed-limit">
-													<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
-												</span>
-												<?php }
+									<div class="bottom-icons">
+									<?php $list_type_value = $this->product_model->get_listing_child(); 
+										$finalsListing = json_decode($similar_Rentals->listings);
+										foreach ($finalsListing as $listingResult => $FinalValues) {
+											$resultArr[$listingResult] = $FinalValues;		 
+										} 
+										//print_r($list_type_value->result()); 
+										if($list_type_value->num_rows() > 0){
+											foreach($list_type_value->result() as $list_val){
+												 if($resultArr[$list_val->list_id] != ''){ 
+												 $list_child_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $resultArr[$list_val->list_id]));
+													
+													if($list_val->type == 'option'){ ?>
+														<span class="<?= $list_val->name; ?>">
+															<?php echo stripslashes(ucfirst($list_child_value->row()->child_name)); ?>
+														</span>
+													
+													<?php  } elseif($list_val->type == 'text') { ?>
+														<span class="<?= $list_val->name; ?>">
+															<?php echo stripslashes(ucfirst($resultArr[$list_val->list_id])); ?>
+														</span>
+													<?php }
+													}else{ ?>
 												
-												if ($list_type_value->row()->parent_id == "79") { ?>
-												<span class="bed-limit">
-													<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
-												</span>
+													  <span class="<?= $list_val->name; ?>"> 0</span>
+												<?php  }?>
 												<?php }
-											
-										  }
-										  
-									  }		  
-									?>	
+											}
+										
+									?>
 									</div>
 									
 									<div class="clear">

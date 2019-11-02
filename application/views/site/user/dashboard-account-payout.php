@@ -39,18 +39,18 @@ $currency_result = $this->session->userdata('currency_result');
                                 <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <tr>
-                                        <th><?php if ($this->lang->line('AccountName') != '') {
-                                                echo stripslashes($this->lang->line('AccountName'));
-                                            } else echo "Account Name"; ?></th>
+                                        <th><?php if ($this->lang->line('stripe_acc_name') != '') {
+                                                echo stripslashes($this->lang->line('stripe_acc_name'));
+                                            } else echo "Stripe Account User Name"; ?></th>
                                         <th><?php if ($this->lang->line('AccountNumber') != '') {
                                                 echo stripslashes($this->lang->line('AccountNumber'));
                                             } else echo "Account Number"; ?></th>
-                                        <th><?php if ($this->lang->line('BankName') != '') {
-                                                echo stripslashes($this->lang->line('BankName'));
-                                            } else echo "Bank Name"; ?></th>
+                                        <?php /* <th><?php if ($this->lang->line('stripe_acc_name') != '') {
+                                                echo stripslashes($this->lang->line('stripe_acc_name'));
+                                            } else echo "Stripe Account User Name"; ?></th>
                                         <th><?php if ($this->lang->line('Paypal_Email') != '') {
                                                 echo stripslashes($this->lang->line('Paypal_Email'));
-                                            } else echo " Paypal Email"; ?></th>
+                                            } else echo " Paypal Email"; ?></th> */?> 
                                         
                                         <th><?php if ($this->lang->line('settings_new') != '') {
                                                 echo stripslashes($this->lang->line('settings_new'));
@@ -59,8 +59,8 @@ $currency_result = $this->session->userdata('currency_result');
                                     <tr>
                                         <td><?php echo $userpay->row()->accname; ?></td>
                                         <td><?php echo $userpay->row()->accno; ?></td>
-                                        <td><?php echo $userpay->row()->bankname; ?></td>
-                                        <td><?php echo $userpay->row()->paypal_email; ?></td>
+                                       <!-- <td><?php echo $userpay->row()->bankname; ?></td>
+                                        <td><?php echo $userpay->row()->paypal_email; ?></td>-->
 
                                         <td>
                                             <div class="dropdown">
@@ -97,9 +97,9 @@ $currency_result = $this->session->userdata('currency_result');
                 <div class="modal-body">
                     <?php echo form_open('site/user/account_update', array('class' => 'formFields', 'onsubmit' => 'return validate_form()')); ?>
                     <div class="form-group">
-                        <label><?php if ($this->lang->line('AccountName') != '') {
-                                echo stripslashes($this->lang->line('AccountName'));
-                            } else echo "Account Name"; ?></label>
+                        <label><?php if ($this->lang->line('stripe_acc_name') != '') {
+                                echo stripslashes($this->lang->line('stripe_acc_name'));
+                            } else echo "Stripe Account User Name"; ?></label>
                         <?php
                         if ($this->lang->line('account_name_here') != '') {
                             $accountNamePlaceHolder = stripslashes($this->lang->line('account_name_here'));
@@ -108,7 +108,7 @@ $currency_result = $this->session->userdata('currency_result');
                         echo form_hidden('hid', $userpay->row()->id, array('id' => 'hid'));
                         ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display:none;">
                         <label><?php if ($this->lang->line(' Paypal_Email') != '') {
                                 echo stripslashes($this->lang->line(' Paypal_Email'));
                             } else echo "  Paypal Email"; ?></label>
@@ -120,7 +120,7 @@ $currency_result = $this->session->userdata('currency_result');
                         ?>
                         <small id="email_error" style="display: none;color: red;font-size: 12px;">Enter Valid Email</small>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"style="display:none;">
                         <label><?php if ($this->lang->line('BankName') != '') {
                                 echo stripslashes($this->lang->line('BankName'));
                             } else echo "Bank Name"; ?></label>

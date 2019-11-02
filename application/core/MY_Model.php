@@ -1294,6 +1294,16 @@ class MY_Model extends CI_Model
 
     }
 
-
+	public function get_listing_child()
+    {
+		$this->db->select('l.id as list_id,l.name,l.type');
+		$this->db->from(LISTING_TYPES . ' as l');
+		$this->db->join(LISTING_CHILD . ' as lc', "lc.parent_id=l.id", "LEFT");
+		$this->db->where_in('l.name', array('No_of_beds','No_of_bathrooms','car_parking','SPACE_SIZE'));
+		$this->db->where('l.status', 'Active');
+		$this->db->group_by('l.id', 'Active');
+		return $this->db->get();
+		
+	}
 
 }

@@ -512,26 +512,35 @@ class Rentals extends MY_Controller
 				
 				/*Listing Details*/
 				
-				
-				$finalsListing = json_decode($rentals->listings);
-				if(count($finalsListing) > 0){
-					foreach ($finalsListing as $listingResult => $FinalValues) {
-						$resultArr[$listingResult] = $FinalValues;
-						if(trim($FinalValues) != '') {
-							$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
-							if ($list_type_value->row()->parent_id == "78") {
-								
-								
-							}
-						}
-					}
-				}
-				
-				
 				$userDetails_r = $this->user_model->get_all_details(USERS, ['id'=>$this->checkLogin('U')]);
-				
 				$userDetails_group = $userDetails_r->row()->group;
-				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'","'. $pro_description .'","'. $userDetails_group .'"]';
+				
+				$location_card = '';	
+				$list_type_value = $this->product_model->get_listing_child(); 
+				$finalsListing = json_decode($rentals->listings);
+				foreach ($finalsListing as $listingResult => $FinalValues) {
+					$resultArr[$listingResult] = $FinalValues;		 
+				} 
+						
+				if($list_type_value->num_rows() > 0){
+				foreach($list_type_value->result() as $list_val){
+					if($resultArr[$list_val->list_id] != ''){ 
+					$list_child_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $resultArr[$list_val->list_id]));
+									
+					if($list_val->type == 'option'){ 
+						 $location_card .= '<span class='.$list_val->name.'>'.stripslashes(ucfirst($list_child_value->row()->child_name)).'</span>';
+					} elseif($list_val->type == 'text') { 
+						 $location_card .= '<span class='.$list_val->name.'>'.stripslashes(ucfirst($resultArr[$list_val->list_id])).'</span>';
+					} }else{ 
+						 $location_card .= '<span class='.$list_val->name.'>0</span>';
+					 }
+				  }
+				}
+						
+				
+				
+				
+				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'","'. $pro_description .'","'. $userDetails_group .'","'. $location_card .'"]';
 				if ($i != $productList->num_rows()) {
 					$result .= ',';
 				};

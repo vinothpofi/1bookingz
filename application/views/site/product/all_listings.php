@@ -156,7 +156,38 @@ $currency_result = $this->session->userdata('currency_result');
                                                 </p>
                                         </div>
                                         <div class="bottom-icons">
-                                                <span class="guest-limit">8</span>
+										
+											<?php $list_type_value = $this->product_model->get_listing_child(); 
+												$finalsListing = json_decode($product_image['listings']);
+												foreach ($finalsListing as $listingResult => $FinalValues) {
+													$resultArr[$listingResult] = $FinalValues;		 
+												} 
+												
+												if($list_type_value->num_rows() > 0){
+													foreach($list_type_value->result() as $list_val){
+														 if($resultArr[$list_val->parent_id] != ''){ 
+														 $list_child_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $resultArr[$list_val->parent_id]));
+															
+															if($list_val->type == 'option'){ ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($list_child_value->row()->child_name)); ?>
+																</span>
+															
+															<?php  } elseif($list_val->type == 'text') { ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($resultArr[$list_val->parent_id])); ?>
+																</span>
+															<?php }
+															}else{ ?>
+														
+															  <span class="<?= $list_val->name; ?>"> 0</span>
+														<?php  }?>
+														<?php }
+													}
+												
+											?>
+													
+                                                
                                         </div>
 										<div class="clear">
 											<div class="starRatingOuter">
@@ -462,9 +493,42 @@ $currency_result = $this->session->userdata('currency_result');
 												} ?>
                                                 </p>
                                         	</div>
+											
                                         	<div class="bottom-icons">
-                                                <span class="guest-limit">8</span>
-                                        	</div>
+										
+											<?php $list_type_value = $this->product_model->get_listing_child(); 
+												$finalsListing = json_decode($CityRowss->listings);
+												foreach ($finalsListing as $listingResult => $FinalValues) {
+													$resultArr[$listingResult] = $FinalValues;		 
+												} 
+												
+												if($list_type_value->num_rows() > 0){
+													foreach($list_type_value->result() as $list_val){
+														 if($resultArr[$list_val->list_id] != ''){ 
+														 $list_child_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $resultArr[$list_val->list_id]));
+															
+															if($list_val->type == 'option'){ ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($list_child_value->row()->child_name)); ?>
+																</span>
+															
+															<?php  } elseif($list_val->type == 'text') { ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($resultArr[$list_val->list_id])); ?>
+																</span>
+															<?php }
+															}else{ ?>
+														
+															  <span class="<?= $list_val->name; ?>"> 0</span>
+														<?php  }?>
+														<?php }
+													}
+												
+											?>
+													
+                                                
+                                        </div>
+											
                                             <div class="clear">
                                                 <div class="starRatingOuter">
                                                     <div class="starRatingInner"

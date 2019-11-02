@@ -836,42 +836,45 @@ if ($CityDetails->num_rows() > 0) {
                                             </div>
 											
                                             <div class="bottom-icons">
-                                                <span class="guest-limit"><?php echo $CityRowss->guestcapacity;?></span>
+                                                <!--<span class="guest-limit"><?php echo $CityRowss->guestcapacity;?></span>--> 
                                                 
-												<?php $finalsListing = json_decode($CityRowss->listings);
-												  foreach ($finalsListing as $listingResult => $FinalValues) {
-													  $resultArr[$listingResult] = $FinalValues;
-													  //if(trim($FinalValues) != '') {
-														$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
+												
+												<div class="bottom-icons">
+										
+											<?php $list_type_value = $this->product_model->get_listing_child(); 
+												$finalsListing = json_decode($CityRowss->listings);
+												foreach ($finalsListing as $listingResult => $FinalValues) {
+													$resultArr[$listingResult] = $FinalValues;		 
+												} 
+												
+												if($list_type_value->num_rows() > 0){
+													foreach($list_type_value->result() as $list_val){
+														 if($resultArr[$list_val->list_id] != ''){ 
+														 $list_child_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $resultArr[$list_val->list_id]));
 															
-															if ($list_type_value->row()->parent_id == "78") { ?>
-															<span class="No_of_beds">
-																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
-															</span>
-															<?php }
+															if($list_val->type == 'option'){ ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($list_child_value->row()->child_name)); ?>
+																</span>
 															
-															if ($list_type_value->row()->parent_id == "79") { ?>
-															<span class="car_parking">
-																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
-															</span>
+															<?php  } elseif($list_val->type == 'text') { ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($resultArr[$list_val->list_id])); ?>
+																</span>
 															<?php }
-															
-															if ($list_type_value->row()->parent_id == "80") { ?>
-															<span class="No_of_bathrooms">
-																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
-															</span>
-															<?php }
-															
-															if ($listingResult == "76") { ?>
-															<span class="SPACE_SIZE">
-																<?= stripslashes(ucfirst($FinalValues)); ?>
-															</span>
-															<?php }
-													  //}
-													  
-												  }
-												  
-											?>	
+															}else{ ?>
+														
+															  <span class="<?= $list_val->name; ?>"> 0</span>
+														<?php  }?>
+														<?php }
+													}
+												
+											?>
+													
+                                                
+                                        </div>
+										
+											
 												
                                             </div>
                                                 <div class="clear">
