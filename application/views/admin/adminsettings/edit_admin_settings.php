@@ -247,7 +247,7 @@ $this->load->view('admin/templates/header.php');
 								<li>
 									<div class="form_grid_12">
 										<?php
-										echo form_label('Logo (Below 50*50)', 'logo_image', $commonclass);
+										echo form_label('Logo (Must Be 240*40)', 'logo_image', $commonclass);
 										?>
 										<div class="form_input">
 											<?php

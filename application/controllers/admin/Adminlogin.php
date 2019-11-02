@@ -502,8 +502,8 @@ foreach(language_dynamic_enable("email_title","") as $dynlang) {
 					$config = array();
                     $config['overwrite'] = FALSE;
                     $config['allowed_types'] = 'jpg|jpeg|gif|png';
-                    $config ['max_width'] = '50';
-                    $config ['max_height'] = '50';
+                    $config ['max_width'] = '240';
+                    $config ['max_height'] = '40';
                     $config['upload_path'] = './images/logo';
                     $this->load->library('upload', $config);
 					$this->upload->initialize($config);
@@ -511,7 +511,7 @@ foreach(language_dynamic_enable("email_title","") as $dynlang) {
                         $logoDetails = $this->upload->data();
                         $dataArr['logo_image'] = $logoDetails['file_name'];
                     } else {
-                        $this->setErrorMessage('error', 'File Should be JPEG,JPG,PNG and below 50*50');
+                        $this->setErrorMessage('error', 'Logo Should be JPEG,JPG,PNG and below 240*40');
                         redirect('admin/adminlogin/admin_global_settings_form');
                     }
                 }
