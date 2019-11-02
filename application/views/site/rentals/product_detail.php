@@ -209,7 +209,7 @@ div#timer span {
 
 	<div class="outerBlock">
 
-		<div class="closeLightBox">X</div>
+		<div class="closeLightBox"><i class="fa fa-times"></i></div>
 		<div class="slider-container">
 
 			<div id="slider" class="slider owl-carousel owl-theme lightBoxSlider">
@@ -670,11 +670,11 @@ div#timer span {
 				<ul class="nav nav-tabs">
 				  <li class="active"><a data-toggle="tab" href="#description-tab">Description</a></li>
 				  <li><a data-toggle="tab" href="#detail-tab">Details</a></li>
-				  <li><a data-toggle="tab" href="#review-tab"><?php if ($this->lang->line('Reviews') != '') {
+				  <!-- <li><a data-toggle="tab" href="#review-tab"><?php if ($this->lang->line('Reviews') != '') {
 
 								echo stripslashes($this->lang->line('Reviews'));
 
-							} else echo "Reviews"; ?></a></li>
+							} else echo "Reviews"; ?></a></li> -->
 				  <li><a data-toggle="tab" href="#host-tab"><?php if ($this->lang->line('the_host') != '') {
 
 								echo stripslashes($this->lang->line('the_host'));
