@@ -48,7 +48,7 @@ $currency_result = $this->session->userdata('currency_result');
         </div>
 
         <div class="clearfix"></div>
-			<div class="row listings card-section-bg">
+			<div class="row listings card-section-bg explore-card-sec">
 			<?php
 				if ($product->num_rows() > 0) {
 					foreach ($product->result_array() as $product_image) {
@@ -596,7 +596,7 @@ $currency_result = $this->session->userdata('currency_result');
 	
 		<div class="row">
 			<div class="col-lg-12">
-				<p class="text-center" id="ajax-load" style="display:none;"><?php if ($this->lang->line('loading') != '') {
+				<p class="text-center" id="ajax-load" style="display:none;"> <i class="fa fa-spin fa-spinner"></i> <?php if ($this->lang->line('loading') != '') {
 												echo stripslashes($this->lang->line('loading'));
 											} else echo "Loading"; ?> .. </p>
 			</div>
