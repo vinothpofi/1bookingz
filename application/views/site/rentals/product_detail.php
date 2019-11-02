@@ -294,7 +294,7 @@ div#timer span {
 
 		</div>
 
-		<!-- <div class="thumbnail-slider-container">
+		<?php /* <div class="thumbnail-slider-container">
 
 			<div id="thumbnailSlider" class="thumbnail-slider owl-carousel">
 
@@ -352,7 +352,7 @@ div#timer span {
 
 			</div>
 
-		</div> -->
+		</div> */ ?>
 
 	</div>
 
@@ -360,26 +360,13 @@ div#timer span {
 
 
 
-
-
-<section style="display: none;">
-
-	<!--<div class="container-fluid lightboxBanner" style="background-image: url('<?php echo base_url(); ?>images/rental/<?php echo $banner_background; ?>')">
-
-		<button class="viewPhotos"><?php if ($this->lang->line('view_photos') != '') {
-
-								echo stripslashes($this->lang->line('view_photos'));
-
-							} else echo "View Photos"; ?></button>
-
-	</div>--->
-
-
+<?php /* <section style="display: none;">
     <div class="container-fluid lightboxBanner" style="cursor: pointer;">
         <?php
         $img_ar=$productImages->result_array();
-        if ($productImages->num_rows() > 0) {
-            for($i=0;$i<5;$i++){
+        if ($productImages->num_rows() > 0) {  
+            //for($i=0;$i<5;$i++){
+            for($i=0;$i<$productImages->num_rows();$i++){
                 if (isset($img_ar[$i]['product_image'])){
                     if($img_ar[$i]['product_image']!= "" && file_exists('images/rental/' . $img_ar[$i]['product_image'])) {
                         ${"banner_background".$i} = $img_ar[$i]['product_image'];
@@ -391,8 +378,6 @@ div#timer span {
                 }
             }
         }
-
-        //echo $banner_background0;
 
         ?>
 
@@ -426,49 +411,48 @@ div#timer span {
             } else echo "View Photos"; ?></button>
 
     </div>
-
-
-</section>
+</section>  */?>
 
 
 
 <section>
+
+	<?php $banner_background = [];
+        $img_ar=$productImages->result_array();
+        if ($productImages->num_rows() > 0) {  
+            for($i=0;$i<$productImages->num_rows();$i++){
+                if (isset($img_ar[$i]['product_image'])){
+                    if($img_ar[$i]['product_image']!= "" && file_exists('images/rental/' . $img_ar[$i]['product_image'])) {
+                        $banner_background[$i] = $img_ar[$i]['product_image'];
+                    }else{
+						$banner_background[$i] = 'dummyProductImage.jpg';
+					}
+                } else {
+                    $banner_background[$i] = 'dummyProductImage.jpg';
+                }
+            }
+        } 
+    ?>
+		
 	<div class="outer owl-thumb">
 		<div id="big" class="owl-carousel owl-theme">
-		  <div class="item lightboxBanner">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background0; ?>">
-		  </div>
-		  <div class="item lightboxBanner">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background1; ?>">
-		  </div>
-		  <div class="item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background2; ?>">
-		  </div>
-		  <div class="item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background3; ?>">
-		  </div>
-		  <div class="item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background4; ?>">
-		  </div>		  
+		<?php if ($productImages->num_rows() > 0) {  
+            for($i=0;$i<$productImages->num_rows();$i++){ ?>
+			  <div class="item lightboxBanner" onclick="init_slider(<?= $i; ?>)">
+				<img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background[$i]; ?>">
+			  </div>
+		<?php } } ?>
 		</div>
+		
 		<div id="thumbs" class="owl-carousel owl-theme">
-		  <div class="list-item item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background0; ?>">
-		  </div>
-		  <div class="list-item item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background1; ?>">
-		  </div>
-		  <div class="list-item item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background2; ?>">
-		  </div>
-		  <div class="list-item item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background3; ?>">
-		  </div>
-		  <div class="list-item item">
-		    <img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background4; ?>">
-		  </div>		 
+		<?php if ($productImages->num_rows() > 0) {  
+            for($i=0;$i<$productImages->num_rows();$i++){ ?>
+			  <div class="list-item item">
+				<img src="<?php echo base_url(); ?>images/rental/<?php echo $banner_background[$i]; ?>">
+			  </div>
+		<?php } } ?>			  
 		</div>
-		</div>
+	</div>
 </section>
 
 

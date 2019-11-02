@@ -62,7 +62,7 @@ $this->load->view('site/includes/header');
             </p>
 			<p class="text center text-danger"><?php if ($this->lang->line('image_h400_w600') != '') {
                     echo stripslashes($this->lang->line('image_h400_w600'));
-                } else echo "Please  use an image that's at least 600px in width and 400px in height."; ?></p>
+                } else echo "Please  use an image that's at least 1400px in width and 700px in height."; ?></p>
             <div class="error-display" id="errordisplay" style="text-align: center; display: none;">
                 <p class="text center text-danger" id="danger"></p>
                 <p class="text center text-success" id="success"></p>
@@ -218,8 +218,8 @@ $this->load->view('site/includes/header');
             imageBackground: false,
             allowDragNDrop: true,
             imageBackgroundBorderWidth: 20,
-            width: 600,
-            height: 400,
+            width: 1400,
+            height: 700,
             onImageError: function (e) { 
                 if (e.code === 1) 
                 {
