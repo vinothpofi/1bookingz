@@ -112,7 +112,7 @@ form[name="search_properties"] #mic_pic_list{ position: absolute; top: 10px; rig
 /*.owl-carousel a:hover .myPlace::after, .propertyListing a:hover .myPlace::after {background-color: transparent;}*/
 .bottom { padding: 20px 20px!important; background:#fff; }
 .bottom .loc {display:none; font-size: 12px;font-weight: 400;color: #6e6e6e;margin-bottom: 5px;max-width: 25ch;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;min-height: 20px;}
-.bottom h5 {line-height: 1;margin-bottom: 5px;font-weight: 600;color: #000;text-transform: none;max-width: 25ch;white-space: nowrap;max-height: inherit;height: 20px;font-size: 16px;}
+.bottom h5 {line-height: 1;margin-bottom: 5px;font-weight: 600;color: #000;text-transform: none;max-width: 25ch;white-space: nowrap;max-height: inherit;height: 20px;font-size: 16px; text-overflow: ellipsis; overflow: hidden; }
 .bottom .price {line-height: 1;margin: 10px 0px 0px;color: #6e6e6e;font-size: 12px;min-height: 20px;}
 .bottom .price span.number_s {font-size: 16px !important;letter-spacing: 1.5px;color: #cc0000; font-weight: 600; }
 .bottom .price span {font-size: 12px !important;} 
@@ -398,9 +398,9 @@ p#ajax-load{ width:100%; text-align: center; margin: 20px 0; font-size: 16px; }
 /*Product Detail Tab*/
 .product-detail-tab{ padding: 50px 0; }
 .product-detail-tab .nav-tabs{ border-bottom: 0; }
-.product-detail-tab .nav-tabs li{ width: 20%; text-align: center; }
+.product-detail-tab .nav-tabs li{ width: 26%; text-align: center; }
 .product-detail-tab .nav-tabs a, .product-detail-tab .nav-tabs li.active a{ border: 0; color: #333; }
-.product-detail-tab .nav-tabs a{ background: #cc0000; border-radius: 0; color: #ffff; font-size: 15px; font-weight: 500; padding: 10px 20px; }
+.product-detail-tab .nav-tabs a{ background: #cc0000; border-radius: 0; color: #ffff; font-size: 15px; font-weight: 500; padding: 10px 10px; }
 .product-detail-tab .nav-tabs a:hover{ color: #333; }
 .product-detail-tab .tab-pane{ padding: 20px 0px; }
 .product-detail-tab .divider{ background: #efefef; }
