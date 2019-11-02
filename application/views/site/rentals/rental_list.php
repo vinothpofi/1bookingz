@@ -457,7 +457,7 @@ if(!empty($roomType)){
 						echo $pages;
 						?>
 					</div>
-					<div class="text-center h7">
+					<div class="text-center h7 search-page-pagination">
 						<span class="number_s120" id="num_of_results_showing">
 							<?php
 							//print_r($totalShowed);
