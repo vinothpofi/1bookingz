@@ -130,6 +130,7 @@ class Landing extends MY_Controller
 			$seourl = $this->product_model->get_product_id($seourl);
 		}
 		$user_status_is = $this->product_model->get_all_details(USERS, array('id' => $this->checkLogin('U')));
+		$this->data['user_group']  = $user_status_is->row()->group; 
 		if($user_status_is->row()->email == 'undefined'){
 			if ($this->lang->line('add_email') != '') {
                 $message = stripslashes($this->lang->line('add_email'));

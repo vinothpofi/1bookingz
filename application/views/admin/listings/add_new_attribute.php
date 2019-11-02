@@ -15,7 +15,7 @@ if (isset($details))
 						<?php
 						$attributes = array('class' => 'form_container left_label', 'id' => 'addattribute_form', 'enctype' => 'multipart/form-data', 'accept-charset' => 'UTF-8');
 						echo form_open_multipart('admin/listings/insert_attribute', $attributes);
-						if ($details->row()->name == 'accommodates' || $details->row()->name == 'can_policy' || $details->row()->name == 'minimum_stay' || $details->row()->name == 'SPACE_SIZE' || $details->row()->name == 'No_of_beds') 
+						if ($details->row()->name == 'accommodates' || $details->row()->name == 'can_policy' || $details->row()->name == 'minimum_stay' || $details->row()->name == 'SPACE_SIZE' || $details->row()->name == 'No_of_beds' || $details->row()->name == 'car_parking' || $details->row()->name == 'No_of_bathrooms') 
 						{
 							$disabled = 'Yes';
 						}

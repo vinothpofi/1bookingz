@@ -79,7 +79,7 @@ extract($privileges);
 									<tr>
 										<td class="center tr_select ">                    
 										<?php 
-										if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity') 
+										if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity' && $row->name != 'SPACE_SIZE' && $row->name != 'No_of_beds' && $row->name != 'car_parking' && $row->name != 'No_of_bathrooms') 
 										{ 
 											echo form_input([
 													'type'     => 'checkbox',
@@ -100,7 +100,7 @@ extract($privileges);
 											<?php
 											if ($allPrev == '1' || in_array('2', $Listing)) 
 											{
-												if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity')
+												if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity' && $row->name != 'SPACE_SIZE' && $row->name != 'No_of_beds' && $row->name != 'car_parking' && $row->name != 'No_of_bathrooms')
 												{
 													$mode = ($row->status == 'Active') ? '0' : '1';
 													if ($mode == '0')
@@ -165,7 +165,7 @@ extract($privileges);
 											<?php 
 											} 
 
-											if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity' && $row->name != 'SPACE_SIZE' && $row->name != 'No_of_beds') { ?>
+											if ($row->name != 'accommodates' && $row->name != 'can_policy' && $row->name != 'minimum_stay' && $row->name != 'guest_capacity' && $row->name != 'SPACE_SIZE' && $row->name != 'No_of_beds' && $row->name != 'car_parking' && $row->name != 'No_of_bathrooms') { ?>
 												<?php if ($allPrev == '1' || in_array('3', $Listing)) { ?>
 													<span>
 														<a class="action-icons c-delete"

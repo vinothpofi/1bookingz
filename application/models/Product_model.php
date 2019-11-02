@@ -427,12 +427,18 @@ public function get_all_cancelled_users()
         if(count($list_valuelangarray)>0) {
             $list_valuelangarray=",".implode(",",$list_valuelangarray);
         } else $list_valuelangarray="";
+		
+		$listdesc_valuelangarray=language_dynamic_admin_enable_submit(array('p.description'),2); //Need to Update here
+        if(count($listdesc_valuelangarray)>0) {
+            $listdesc_valuelangarray=",".implode(",",$listdesc_valuelangarray);
+        } else $listdesc_valuelangarray="";
+		
 		$aLong = $lon + 0.05;
 		$bLong = $lon - 0.05;
 		$aLat = $lat + 0.05;
 		$bLat = $lat - 0.05;
 		$whereNew = 'where (pa.lat < ' . $aLat . ' AND pa.lat > ' . $bLat . ' AND pa.lang < ' . $aLong . ' AND pa.lang >' . $bLong . ') AND ' . $condition;
-		$select_qry = "select p.id,p.product_title".$list_valuelangarray.",p.seourl, (select AVG(c.total_review) FROM fc_review c where c.review_type='0' and c.product_id=p.id and c.status='Active') as rate, (select count(c.id) FROM fc_review c where c.review_type='0' and c.product_id=p.id and c.status='Active') as num_reviewers, p.room_type, p.product_title, p.currency, pa.city as city_name, pa.lat as latitude, pa.lang as longitude, u.firstname, u.lastname, u.image as user_image, u.id as userId, ph.product_image as PImg, p.price
+		$select_qry = "select p.id,p.product_title".$list_valuelangarray.",p.description".$listdesc_valuelangarray.",p.seourl, (select AVG(c.total_review) FROM fc_review c where c.review_type='0' and c.product_id=p.id and c.status='Active') as rate, (select lc.child_name from " . LISTING_CHILD . " as lc where lc.id=p.accommodates) as guestcapacity ,(select count(c.id) FROM fc_review c where c.review_type='0' and c.product_id=p.id and c.status='Active') as num_reviewers, p.room_type, p.product_title, p.currency, pa.city as city_name, pa.lat as latitude, pa.lang as longitude,p.listings, u.firstname, u.lastname, u.image as user_image, u.id as userId, ph.product_image as PImg, p.price
         FROM " . PRODUCT . " p 
 		LEFT JOIN " . PRODUCT_ADDRESS_NEW . " pa on pa.productId=p.id
 		LEFT JOIN " . PRODUCT_PHOTOS . " ph on p.id=ph.product_id
