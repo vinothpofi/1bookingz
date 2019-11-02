@@ -519,7 +519,7 @@
 								if ($this->lang->line('signup_license_number') != '') {
 									$lic_num = stripslashes($this->lang->line('signup_license_number'));
 								} else $lic_num = "License Number";
-								echo form_input('license_no', '', array("id" => "license_no", "placeholder" => $lic_num)); ?>                            
+								echo form_input('license_no', '', array("id" => "license_no", "placeholder" => $lic_num,"maxlength"=>15)); ?>                            
 							</div>
 							
 							<div class="image_box">

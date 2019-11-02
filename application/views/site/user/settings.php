@@ -85,7 +85,7 @@ $currency_result = $this->session->userdata('currency_result');
                                         } else echo "This is only shared once you have a confirmed booking with another user."; ?></p>
                                 </div>
                             </div>
-                            <div class="formList">
+                            <div class="formList" style="display:none;">
                                 <label><?php if ($this->lang->line('IAm') != '') {
                                         echo stripslashes($this->lang->line('IAm'));
                                     } else echo "I Am"; ?></label>
@@ -112,7 +112,7 @@ $currency_result = $this->session->userdata('currency_result');
                                         } else echo "We use this data for analysis and never share it with other users."; ?></p>
                                 </div>
                             </div>
-                            <div class="formList">
+                            <div class="formList" style="display:none;">
                                 <label><?php if ($this->lang->line('BirthDate') != '') {
                                         echo stripslashes($this->lang->line('BirthDate'));
                                     } else echo "Birth Date"; ?></label>
@@ -179,7 +179,75 @@ $currency_result = $this->session->userdata('currency_result');
                                     </p>
                                 </div>
                             </div>
-                            <div class="formList">
+							
+							<?php if (!empty($userDetails)) if($userDetails->row()->group == 'Seller'){ ?>
+							<div class="formList">
+                                <label><?php if ($this->lang->line('signup_business_name') != '') {
+                                        echo stripslashes($this->lang->line('signup_business_name'));
+                                    } else echo "Business Name"; ?></label>
+                                <div class="right">
+                                    <?php
+                                    $userbusinessname = "";
+                                    if($this->lang->line('Enter_your_business_name') != ''){
+                                        $enterBusinessName= stripslashes($this->lang->line('Enter_your_business_name'));
+                                    } else $enterBusinessName ='Enter your Business Name';
+                                    if (!empty($userDetails)) $userbusinessname = $userDetails->row()->business_name;
+                                    echo form_input(array('name' => 'business_name', 'type' => 'text', 'placeholder' => $enterBusinessName, 'value' => $userbusinessname));
+                                    ?>
+                                </div>
+                            </div>
+							
+							<div class="formList">
+                                <label><?php if ($this->lang->line('signup_business_description') != '') {
+                                        echo stripslashes($this->lang->line('signup_business_description'));
+                                    } else echo "Business Description"; ?></label>
+                                <div class="right">
+                                    <?php
+                                    $userbusinessdesc = "";
+                                    if($this->lang->line('Enter_your_business_desc') != ''){
+                                        $enterBusinessdesc= stripslashes($this->lang->line('Enter_your_business_desc'));
+                                    } else $enterBusinessdesc ='Enter your Business Description';
+                                    if (!empty($userDetails)) $userbusinessdesc = $userDetails->row()->description;
+                                    echo form_textarea(array('name' => 'business_desc', 'type' => 'text', 'placeholder' => $enterBusinessdesc, 'value' => $userbusinessdesc,'rows'=>3));
+                                    ?>
+                                </div>
+                            </div>
+							
+							<div class="formList">
+                                <label><?php if ($this->lang->line('signup_license_number') != '') {
+                                        echo stripslashes($this->lang->line('signup_license_number'));
+                                    } else echo "License Number"; ?></label>
+                                <div class="right">
+                                    <?php
+                                    $userlicno = "";
+                                    if($this->lang->line('Enter_license_number') != ''){
+                                        $enterlicno= stripslashes($this->lang->line('Enter_license_number'));
+                                    } else $enterlicno ='Enter License Number';
+                                    if (!empty($userDetails)) $userlicno = $userDetails->row()->license_number;
+                                    echo form_input(array('name' => 'license_no', 'type' => 'text', 'placeholder' => $enterlicno, 'value' => $userlicno));
+                                    ?>
+                                </div>
+                            </div>
+							
+							<div class="formList">
+                                <label><?php if ($this->lang->line('signup_business_address') != '') {
+                                        echo stripslashes($this->lang->line('signup_business_address'));
+                                    } else echo "Business Address"; ?></label>
+                                <div class="right">
+                                    <?php
+                                    $userbusinessaddr = "";
+                                    if($this->lang->line('Enter_business_address') != ''){
+                                        $enterbusinaddr= stripslashes($this->lang->line('Enter_business_address'));
+                                    } else $enterbusinaddr ='Enter Business Address';
+                                    if (!empty($userDetails)) $userbusinessaddr = $userDetails->row()->business_address;
+                                    echo form_textarea(array('name' => 'license_no', 'type' => 'text', 'placeholder' => $enterbusinaddr, 'value' => $userbusinessaddr,'rows'=>3));
+                                    ?>
+                                </div>
+                            </div>
+							
+							<?php } ?>
+							
+                            <div class="formList" style="display:none;">
                                 <label><?php if ($this->lang->line('Paypal_Email') != '') {
                                         echo stripslashes($this->lang->line('Paypal_Email'));
                                     } else echo "Paypal Email-ID"; ?></label>
@@ -194,7 +262,7 @@ $currency_result = $this->session->userdata('currency_result');
                                     ?>
                                 </div>
                             </div>
-                            <div class="formList">
+                            <div class="formList" style="display:none;">
                                 <label><?php if ($this->lang->line('WhereYouLive') != '') {
                                         echo stripslashes($this->lang->line('WhereYouLive'));
                                     } else echo "Where You Live"; ?></label>
@@ -209,7 +277,7 @@ $currency_result = $this->session->userdata('currency_result');
                                     ?>
                                 </div>
                             </div>
-                            <div class="formList noMargin">
+                            <div class="formList noMargin" style="display:none;">
                                 <label><?php if ($this->lang->line('DescribeYourself') != '') {
                                         echo stripslashes($this->lang->line('DescribeYourself'));
                                     } else echo "DescribeYourself"; ?></label>

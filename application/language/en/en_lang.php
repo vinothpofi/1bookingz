@@ -750,7 +750,7 @@ $lang['Amenities']='Amenities';
 $lang['Extras']='Extras'; 
 $lang['accesability']='accesability'; 
 $lang['check_in']='check in'; 
-$lang['contact_host']='contact'; 
+$lang['contact_host']='Contact Real Estate'; 
 $lang['Price_for_per_night']='Price for per night'; 
 $lang['You_Stay']='You Stay'; 
 $lang['Book Now']='Book Now'; 
@@ -2396,6 +2396,10 @@ $lang['pls_select_login_type']='Please Select Login Type';
 $lang['recomendes_you']='Recommended for you'; 
 $lang['stripe_acc_name']='Stripe Account User Name'; 
 $lang['property_managed_by']='Property Managed By'; 
+$lang['Enter_your_business_name']='Enter Your Business Name'; 
+$lang['Enter_your_business_desc']='Enter Your Business Description'; 
+$lang['Enter_license_number']='Enter Your License Number'; 
+$lang['Enter_business_address']='Enter Your Business Address'; 
 
 
 

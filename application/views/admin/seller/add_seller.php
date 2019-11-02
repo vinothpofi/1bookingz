@@ -441,7 +441,7 @@ $this->load->view('admin/templates/header.php');
 												'tabindex'	  => '3',
 												'class'		  => 'required tipTop',
 												'title'		  => 'Please enter license number',
-												'maxlength'	  => 30
+												'maxlength'	  => 15
 									        ]);
 									    ?>
 									</div>

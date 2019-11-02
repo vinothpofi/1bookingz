@@ -131,7 +131,7 @@ $this->load->view('admin/templates/header.php');
 									</div>
 								</div>
 							</li>
-							<li>
+							<?php /* <li>
 								<div class="form_grid_12">
 									<?php
 									echo form_label('I Am ', 'gender', $commonclass);
@@ -163,7 +163,7 @@ $this->load->view('admin/templates/header.php');
 									?>
 									<div class="form_input">
 										<?php
-										/*drop down for months*/
+										
 										$mnth = array();
 										$mnth[''] = '--Select--';
 										for ($i = 1; $i <= 12; $i++) {
@@ -176,7 +176,7 @@ $this->load->view('admin/templates/header.php');
 										);
 										echo form_dropdown('dob_month', $mnth,
 											$mnth[$seller_details->row()->dob_month], $mnthattr);
-										/*drop down for days*/
+										
 										$days = array();
 										$days[''] = '--Select--';
 										for ($i = 1; $i <= 31; $i++) {
@@ -187,7 +187,7 @@ $this->load->view('admin/templates/header.php');
 										);
 										echo form_dropdown('dob_date', $days,
 											$days[$seller_details->row()->dob_date], $daysattr);
-										/*drop down for year*/
+										
 										$year = array();
 										$year[''] = '--Select--';
 										for ($i = 2005; $i > 1920; $i--) {
@@ -201,7 +201,8 @@ $this->load->view('admin/templates/header.php');
 										?>
 									</div>
 								</div>
-							</li>
+							</li> */ ?>
+							
 							<li>
 								<div class="form_grid_12">
 									<?php
@@ -227,7 +228,121 @@ $this->load->view('admin/templates/header.php');
 									</div>
 								</div>
 							</li>
+							
 							<li>
+							    <div class="form_grid_12">
+							    	<?php echo form_label('Business Name <span
+											class="req">*</span>','business_name', $commonclass);?>
+							    	<div class="form_input">
+										<?php
+											echo form_input([
+												'type'        => 'text',      
+									            'name' 	      => 'business_name',
+									            'style'   	  => 'width:295px',
+									            'id'          => 'business_name',
+												'required'	  => 'required',
+												'tabindex'	  => '3',
+												'class'		  => 'required tipTop',
+												'title'		  => 'Please enter business name',
+												'value' => $seller_details->row()->business_name,
+												'maxlength'	  => 100
+									        ]);
+											
+											$busnamelbl = array('id' => 'business_name_error', 'style' => 'font-size:12px;display:none;','class' => 'error','generated' => 'true');
+
+											echo form_label('Numbers are not allowed','', 
+												$busnamelbl);
+									    ?>
+										
+							    	</div>
+							    </div>
+							</li>
+							
+							<li>
+								<div class="form_grid_12">
+									<?php										
+										echo form_label('short Business Description <span
+											class="req">*</span>','description', 
+												$commonclass);	
+								    ?>
+									<div class="form_input">
+										<?php
+											
+									        $descattr = array(
+											    'name' 	      => 'description',
+									            'style'   	  => 'width:295px',
+									            'tabindex'    => '5',
+												'required'	  => 'required',
+												'rows'	      => 3,
+												'class'		  => 'required tipTop',
+												'value' => $seller_details->row()->description,
+												'title'		  => 'Please enter your Business
+												                  details'
+											);
+											echo form_textarea($descattr);
+									    ?>
+									</div>
+								</div>
+							</li>
+							
+							<li>
+								<div class="form_grid_12">
+									<?php										
+										echo form_label('Real Estate License number <span
+											class="req">*</span>','license_number', 
+												$commonclass);	
+								    ?>
+									<div class="form_input">
+										<?php
+											echo form_input([
+												'type'        => 'text',      
+									            'name' 	      => 'license_number',
+									            'style'   	  => 'width:295px',
+									            'id'          => 'license_number',
+												'required'	  => 'required',
+												'tabindex'	  => '3',
+												'class'		  => 'required tipTop',
+												'value' => $seller_details->row()->license_number,
+												'title'		  => 'Please enter license number',
+												'maxlength'	  => 15
+									        ]);
+									    ?>
+									</div>
+								</div>
+							</li>
+							
+							<li>
+								<div class="form_grid_12">
+									<?php										
+										echo form_label('Business Address <span
+											class="req">*</span>','business_address', 
+												$commonclass);	
+								    ?>
+									<div class="form_input">
+										<?php
+									        $descattr = array(
+											    'name' 	      => 'business_address',
+									            'style'   	  => 'width:295px',
+									            'tabindex'    => '5',
+												'required'	  => 'required',
+												'rows'	      => 3,
+												'class'		  => 'required tipTop',
+												'value' => $seller_details->row()->business_address,
+												'title'		  => 'Please enter business address'
+											);
+											echo form_textarea($descattr);
+											
+											$citylbl = array('id' => 's_city_error', 'style' => 'font-size:12px;display:none;','class' => 'error');
+
+											echo form_label('Only Alphabets are allowed','', 
+												$citylbl);
+										?>
+									</div>
+								</div>
+							</li>
+							
+							
+							<?php /* <li>
 								<div class="form_grid_12">
 									<?php
 									echo form_label('Where You Live', 's_city',
@@ -303,7 +418,7 @@ $this->load->view('admin/templates/header.php');
 										?>
 									</div>
 								</div>
-							</li>
+							</li> */ ?>
 							<li>
 								<div class="form_grid_12">
 									<?php

@@ -365,5 +365,9 @@ $lang['pls_select_login_type']='Please Select Login Type';
 $lang['recomendes_you']='Recommended for you'; 
 $lang['stripe_acc_name']='Stripe Account User Name'; 
 $lang['property_managed_by']='Property Managed By'; 
+$lang['Enter_your_business_name']='Enter Your Business Name';
+$lang['Enter_your_business_desc']='Enter Your Business Description';  
+$lang['Enter_license_number']='Enter Your License Number'; 
+$lang['Enter_business_address']='Enter Your Business Address';
 
 ?>
