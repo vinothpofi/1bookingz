@@ -1,4 +1,4 @@
-<h3>Rentals</h3>
+<!-- <h3>Rentals</h3> -->
 <ul class="sideBarMenu">
                         <li>
                             <a href="<?php echo base_url(); ?>inbox" <?php if ($this->uri->segment(1) == 'inbox') { ?> class="active" <?php } ?>><?php if ($this->lang->line('front_all_messages') != '') {
@@ -25,7 +25,7 @@
                                     echo stripslashes($this->lang->line('front_archived'));
                                 } else echo "Archived"; ?></a></li>
 </ul>
-<h3>Experience</h3>
+<!-- <h3>Experience</h3>
 <ul class="sideBarMenu">
                         <li>
                             <a href="<?php echo base_url(); ?>experience_inbox" <?php if ($this->uri->segment(1) == 'experience_inbox') { ?> class="active" <?php } ?>><?php if ($this->lang->line('front_all_messages') != '') {
@@ -48,4 +48,4 @@
                             <a href="<?php echo base_url(); ?>experience-msg-archived" <?php if ($this->uri->segment(1) == 'experience-msg-archived') { ?> class="active" <?php } ?>><?php if ($this->lang->line('front_archived') != '') {
                                     echo stripslashes($this->lang->line('front_archived'));
                                 } else echo "Archived"; ?></a></li>
-</ul>
+</ul> -->
