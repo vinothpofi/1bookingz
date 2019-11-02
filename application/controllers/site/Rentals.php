@@ -528,8 +528,10 @@ class Rentals extends MY_Controller
 				}
 				
 				
+				$userDetails_r = $this->user_model->get_all_details(USERS, ['id'=>$this->checkLogin('U')]);
 				
-				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'","'. $pro_description .'","'. $this->data['userDetails']->row()->group .'"]';
+				$userDetails_group = $userDetails_r->row()->group;
+				$result .= '["' . ucfirst($rentals->product_title) . '",' . $rentals->latitude . ',' . $rentals->longitude . ',' . $i . ',"' . $rentals->city_name . '","' . $rentals->num_reviewers . ' Reviews","' . $rentals->avg_val * 20 . '","' . number_format($price, 2) . '","' . $rent_image . '","' . $rentals->seourl . '","'. $wishlist . '","'. $rentals->list_value . " . " .'","'. $rentals->instant_pay .'","'. $pro_description .'","'. $userDetails_group .'"]';
 				if ($i != $productList->num_rows()) {
 					$result .= ',';
 				};

@@ -83,12 +83,12 @@ class Signupsignin extends MY_Controller
         $birth_year = md5($this->input->post('birth_year'));
         $invite_reference = $this->input->post('invite_reference');
 		
-        $acc_group_type = $this->input->post('login_type');
+        $acc_group_type = $this->input->post('group_type'); 
         $business_name = $this->input->post('business_name');
-        $business_desc = $this->input->post('business_desc');
+        $business_desc = $this->input->post('business_desc'); 
         $license_no = $this->input->post('license_no');
         $business_addr = $this->input->post('business_addr');
-		
+		//print_r($_POST); exit;
 		//echo $invite_reference; exit;
         $expireddate = date('Y-m-d', strtotime('+15 days'));
         if (valid_email($email)) {

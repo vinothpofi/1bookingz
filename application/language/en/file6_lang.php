@@ -361,5 +361,7 @@ $lang['signup_license_number']='Real Estate License Number';
 $lang['pls_entr_business_name']='Please Enter Business Name';
 $lang['pls_entr_business_addr']='Please Enter Business Address';   
 $lang['signup_login_type']='Login Type'; 
+$lang['pls_select_login_type']='Please Select Login Type'; 
+$lang['recomendes_you']='Recommended for you'; 
 
 ?>

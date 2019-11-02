@@ -112,6 +112,10 @@ class User_model extends My_Model
             'status' => 'Active',
             'expired_date' => $expireddate,
             'is_verified' => 'No',
+            'business_name' => $business_name,
+            'business_address' => $business_addr,
+            'license_number' => $license_no,
+            'description' => $business_desc,
             'created' => mdate($this->data['datestring'], time())
         );
     

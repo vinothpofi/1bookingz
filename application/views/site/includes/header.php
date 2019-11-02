@@ -364,7 +364,7 @@ $(document).ready(function(){
                                   <?php } else { ?>
 
                                   <li><a data-toggle="modal" data-target="#signUp"
-                                         onclick="javascript:set_signup_and_login_link('list_space'),manage_register_form();"><?php echo $listSpace; ?></a>
+                                         onclick="javascript:set_signup_and_login_link('list_space');"><?php echo $listSpace; ?></a>
                                   </li>
                            
                                   <?php } ?>
@@ -813,14 +813,14 @@ $(document).ready(function(){
                            <?php
                               if ($this->session->userdata('fc_session_user_id')) { ?>
                            <li><?php echo anchor('list_space', $listSpace); ?></li>
-                           <li><?php echo anchor('manage_experience', $listExprience); ?></li>
+                           <?php /* <li><?php echo anchor('manage_experience', $listExprience); ?></li>  */?>
                            <?php } else { ?>
                            <li><a data-toggle="modal" data-target="#signUp"
                               onclick="javascript:set_signup_and_login_link('list_space');"><?php echo $listSpace; ?></a>
                            </li>
-                           <li><a data-toggle="modal" data-target="#signUp"
+                           <?php /* <li><a data-toggle="modal" data-target="#signUp"
                               onclick="javascript:set_signup_and_login_link('manage_experience');"><?php echo $listExprience; ?></a>
-                           </li>
+                           </li> */ ?>
                            <?php } ?>
                         </ul>
                      </div>

@@ -478,11 +478,11 @@
                         </div>
                         <label>Example: +1 999-999-9999</label>
 						
-						<div class="image_box">
+						<div class="image_box" id="group">
                             <?php
                             if ($this->lang->line('signup_login_type') != '') {
-                                $login_type = stripslashes($this->lang->line('signup_login_type'));
-                            } else $login_type = "Login Type";
+                                $group_type = stripslashes($this->lang->line('signup_login_type'));
+                            } else $group_type = "Login Type";
 							
 							if ($this->lang->line('Host') != '') {
                                 $host_labe = stripslashes($this->lang->line('Host'));
@@ -492,8 +492,8 @@
                                 $guest_labe = stripslashes($this->lang->line('guest_s'));
                             } else $guest_labe = "Guest";
 							
-								$options = array('' => $login_type, 'Seller' => $host_labe, 'User' => $guest_labe);
-							    echo form_dropdown('login_type', $options, '', array("id" => "login_type"));
+								$options = array('' => $group_type, 'Seller' => $host_labe, 'User' => $guest_labe);
+							    echo form_dropdown('group_type', $options, '', array("id" => "group_type"));
 							?>
                         </div>
 						
@@ -511,7 +511,7 @@
 								if ($this->lang->line('signup_business_description') != '') {
 									$bus_desc = stripslashes($this->lang->line('signup_business_description'));
 								} else $bus_desc = "Business Description";
-								echo form_input('business_desc', '', array("id" => "business_desc", "placeholder" => $bus_desc)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+								echo form_textarea('business_desc', '', array("id" => "business_desc", "placeholder" => $bus_desc,"rows"=>3)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
 							</div>
 							
 							<div class="image_box">
@@ -944,6 +944,15 @@ if ($this->lang->line('must_accept_term') != '') {
 <input type="hidden" name="" id="must_accept" value="<?php echo $must_accept; ?>">
 
 <?php
+if ($this->lang->line('pls_select_login_type') != '') {
+    $select_group_type = stripslashes($this->lang->line('pls_select_login_type'));
+} else {
+    $select_group_type = "Please Select Login Type";
+}
+?>
+<input type="hidden" name="" id="select_group_type" value="<?php echo $select_group_type; ?>">
+
+<?php
 if ($this->lang->line('pls_entr_business_name') != '') {
     $entr_bus_name = stripslashes($this->lang->line('pls_entr_business_name'));
 } else {
@@ -993,6 +1002,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
         var confirmS = $("#confirm_pas").val();
         var not_matchedS = $("#not_matched").val();
         var must_accept = $("#must_accept").val();
+        var select_group_typeS = $("#select_group_type").val();
         var entr_bus_nameS = $("#entr_bus_name").val();
         var entr_bus_descS = $("#entr_bus_desc").val();
         var entr_licen_noS = $("#entr_licen_no").val();
@@ -1004,6 +1014,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
         var first_name = $("#first_name").val();
         var last_name = $("#last_name").val();
         var phone = $("#phone").val();
+		var group_type = $("#group_type").val();
 		var business_name = $("#business_name").val();
         var business_desc = $("#business_desc").val();
         var license_no = $("#license_no").val();
@@ -1034,6 +1045,10 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
         } else if (phone == "") {
             $("#phone").focus();
             $("#signup_error_message").html(enter_phone);
+            return false;
+        } else if (group_type != "User" && group_type != "Seller") {
+            $("#group_type").focus();
+            $("#signup_error_message").html(select_group_typeS)
             return false;
         } else if (business_name == "") {
             $("#business_name").focus();
@@ -1085,7 +1100,12 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
                 invite_reference: invite_reference,
                 user_password: user_password,
                 last_name: last_name,
-                phone: phone
+                phone: phone,
+                group_type: group_type,
+                business_name: business_name,
+                business_desc: business_desc,
+                license_no: license_no,
+                business_addr: business_addr
             }, function (result) {
                 var data = result.split("::");
                 var resp = "Success";
@@ -1243,12 +1263,16 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
     function set_signup_and_login_link(link_to) {
         $("#to_url_value").val(link_to);
         $.post("<?= base_url(); ?>site/user/set_redirect_session", {'to_url': link_to});
+		
+		if(link_to == 'list_space'){
+			$('#group').hide();
+			$('#host_details').show();
+		}else{
+			$('#group').show();
+			$('#host_details').hide();
+		}
     }
 	
-	function manage_register_form() {
-       
-    }
-
 </script>
 <script type="text/javascript">
     $(function () {
@@ -1352,9 +1376,9 @@ function cnf_pwd_validation(params) {
 </script>
 
 <script>
- $("#login_type").change(function () { 
-	 var login_type = $("#login_type").val(); 
-	 if(login_type == 'Seller'){ 
+ $("#group_type").change(function () { 
+	 var group_type = $("#group_type").val(); 
+	 if(group_type == 'Seller'){ 
 		 $("#host_details").show();
 	 }else{
 		 $("#host_details").hide();
