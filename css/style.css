@@ -73,7 +73,7 @@ header.posHeader.fixedHeader {height: 60px;background-color: #ffffff;box-shadow:
 header.posHeader.pageHeader nav.navbar ul.navbar-nav li a {color: #151515;}
 header.posHeader.fixedHeader nav.navbar {padding: 5px;} 
 header.posHeader.fixedHeader nav.navbar ul.navbar-nav li a {color: #333333;}
-header.posHeader .searchLocation {padding: 5px 0 0;margin: 0;float: right;width: 45%;transition: all 0.5s ease;}
+header.posHeader .searchLocation {padding: 5px 0 0;margin: 0;float: right;width: 40%;transition: all 0.5s ease;}
 header.posHeader .searchLocation form {border: 0px solid #ddd;box-shadow: none;border-radius: 5px;margin: 0;}
 header.posHeader .searchLocation .searchInput {height: auto;line-height: 1;padding: 14px;border: 1px solid #cc0000;border-radius: 1px;font-size: 13px;}
 header.posHeader.fixedHeader .searchLocation .searchInput {border-color: #cc0000;}
@@ -208,13 +208,13 @@ footer select {border: 0px solid #ddd;background-color: rgba(255, 255, 255, 0.08
 .select-selected:after {
   position: absolute;
   content: "\f107"; font-family: 'FontAwesome';
-  top: 5px;
-  right: 18px;
+  top: 7px;
+  right: 23px;
   width: 0;
   height: 0; font-size: 20px;  
 }
 .select-selected.select-arrow-active:after {  
-  transform: rotate(180deg); top: 33px; right: 5px;
+  transform: rotate(180deg); top: 34px; right: 11px;
 }
 .select-items div,.select-selected {
   font-size: 13px;
@@ -686,7 +686,7 @@ footer .selectBox select option{ color: #6e6e6e; }
 
 /*signin register form*/
 .signUpIn .reduceFont.marginTop3{ margin-top: 10px; }
-.signUpIn label span.checkboxStyle{ top: 10px; }
+.signUpIn label span.checkboxStyle{ top: 2px; }
 
 
 
