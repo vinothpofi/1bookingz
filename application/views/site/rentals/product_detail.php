@@ -581,7 +581,7 @@ div#timer span {
 							</div>
                             <div class="clearfix"></div>
                          <div class="product-detail-social">
-							<div class="starRatingOuter">
+							<!-- <div class="starRatingOuter">
 
 								<div class="starRatingInner"
 
@@ -599,7 +599,7 @@ div#timer span {
 
 								} else echo "Reviews"; ?>
 
-							</div>
+							</div> -->
 
 							<div class="right">
 
