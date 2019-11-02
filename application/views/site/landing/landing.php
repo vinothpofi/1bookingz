@@ -851,13 +851,13 @@ if ($CityDetails->num_rows() > 0) {
 															<?php }
 															
 															if ($list_type_value->row()->parent_id == "79") { ?>
-															<span class="bed-limit">
+															<span class="car-limit">
 																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
 															</span>
 															<?php }
 															
 															if ($list_type_value->row()->parent_id == "80") { ?>
-															<span class="bed-limit">
+															<span class="bath-limit">
 																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
 															</span>
 															<?php }
