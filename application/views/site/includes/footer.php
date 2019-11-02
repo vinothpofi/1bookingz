@@ -1376,14 +1376,14 @@ function cnf_pwd_validation(params) {
 </script>
 
 <script>
- $("#group_type").change(function () { 
+ function group_type_append(){
 	 var group_type = $("#group_type").val(); 
 	 if(group_type == 'Seller'){ 
 		 $("#host_details").show();
 	 }else{
 		 $("#host_details").hide();
 	 }
- });
+ }
 </script>
 
 
@@ -1432,6 +1432,7 @@ function cnf_pwd_validation(params) {
       a.addEventListener("click", function(e) {
         /* When the select box is clicked, close any other select boxes,
         and open/close the current select box: */
+		group_type_append();
         e.stopPropagation();
         closeAllSelect(this);
         this.nextSibling.classList.toggle("select-hide");

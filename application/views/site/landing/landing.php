@@ -841,9 +841,22 @@ if ($CityDetails->num_rows() > 0) {
 												<?php $finalsListing = json_decode($CityRowss->listings);
 												  foreach ($finalsListing as $listingResult => $FinalValues) {
 													  $resultArr[$listingResult] = $FinalValues;
-													  if(trim($FinalValues) != '') {
+													  //if(trim($FinalValues) != '') {
 														$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
+															
 															if ($list_type_value->row()->parent_id == "78") { ?>
+															<span class="bed-limit">
+																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
+															</span>
+															<?php }
+															
+															if ($list_type_value->row()->parent_id == "79") { ?>
+															<span class="bed-limit">
+																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
+															</span>
+															<?php }
+															
+															if ($list_type_value->row()->parent_id == "80") { ?>
 															<span class="bed-limit">
 																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
 															</span>
@@ -854,7 +867,7 @@ if ($CityDetails->num_rows() > 0) {
 																<?= stripslashes(ucfirst($FinalValues)); ?>
 															</span>
 															<?php }
-													  }
+													  //}
 													  
 												  }
 												  
