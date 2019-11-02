@@ -503,7 +503,7 @@
 								if ($this->lang->line('signup_business_name') != '') {
 									$bus_name = stripslashes($this->lang->line('signup_business_name'));
 								} else $bus_name = "Business Name";
-								echo form_input('business_name', '', array("id" => "business_name", "placeholder" => $bus_name)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+								echo form_input('business_name', '', array("id" => "business_name", "placeholder" => $bus_name)); ?>                            
 							</div>
 							
 							<div class="image_box">
@@ -511,7 +511,7 @@
 								if ($this->lang->line('signup_business_description') != '') {
 									$bus_desc = stripslashes($this->lang->line('signup_business_description'));
 								} else $bus_desc = "Business Description";
-								echo form_textarea('business_desc', '', array("id" => "business_desc", "placeholder" => $bus_desc,"rows"=>3)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+								echo form_textarea('business_desc', '', array("id" => "business_desc", "placeholder" => $bus_desc,"rows"=>3)); ?>                            
 							</div>
 							
 							<div class="image_box">
@@ -519,7 +519,7 @@
 								if ($this->lang->line('signup_license_number') != '') {
 									$lic_num = stripslashes($this->lang->line('signup_license_number'));
 								} else $lic_num = "License Number";
-								echo form_input('license_no', '', array("id" => "license_no", "placeholder" => $lic_num)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+								echo form_input('license_no', '', array("id" => "license_no", "placeholder" => $lic_num)); ?>                            
 							</div>
 							
 							<div class="image_box">
@@ -527,7 +527,7 @@
 								if ($this->lang->line('signup_business_address') != '') {
 									$bus_addr = stripslashes($this->lang->line('signup_business_address'));
 								} else $bus_addr = "Business Address";
-								echo form_input('business_addr', '', array("id" => "business_addr", "placeholder" => $bus_addr)); ?>                            <i class="fa fa-lock" aria-hidden="true"></i>
+								echo form_input('business_addr', '', array("id" => "business_addr", "placeholder" => $bus_addr)); ?>                            
 							</div>
 						</div>
 						

@@ -845,25 +845,25 @@ if ($CityDetails->num_rows() > 0) {
 														$list_type_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $FinalValues));
 															
 															if ($list_type_value->row()->parent_id == "78") { ?>
-															<span class="bed-limit">
+															<span class="No_of_beds">
 																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
 															</span>
 															<?php }
 															
 															if ($list_type_value->row()->parent_id == "79") { ?>
-															<span class="car-limit">
+															<span class="car_parking">
 																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
 															</span>
 															<?php }
 															
 															if ($list_type_value->row()->parent_id == "80") { ?>
-															<span class="bath-limit">
+															<span class="No_of_bathrooms">
 																<?= stripslashes(ucfirst($list_type_value->row()->child_name)); ?>
 															</span>
 															<?php }
 															
 															if ($listingResult == "76") { ?>
-															<span class="size-limit">
+															<span class="SPACE_SIZE">
 																<?= stripslashes(ucfirst($FinalValues)); ?>
 															</span>
 															<?php }
