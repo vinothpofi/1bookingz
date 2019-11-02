@@ -835,7 +835,7 @@ if ($CityDetails->num_rows() > 0) {
                                                 </p>
                                             </div>
 											
-                                            <div class="bottom-icons">
+                                            
                                                 <!--<span class="guest-limit"><?php echo $CityRowss->guestcapacity;?></span>--> 
                                                 
 												
@@ -876,7 +876,7 @@ if ($CityDetails->num_rows() > 0) {
 										
 											
 												
-                                            </div>
+                                            
                                                 <div class="clear">
                                                     <div class="starRatingOuter">
                                                         <div class="starRatingInner"

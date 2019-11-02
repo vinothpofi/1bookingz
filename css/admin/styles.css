@@ -8000,7 +8000,7 @@ table.display .even td {
     clear: both;
 }
 
-.log-butt {background: #ffc21f;color: #fff;padding: 12px;font-size: 15px;border: none;text-align: center;margin-bottom: 10px;margin-top: 10px;cursor: pointer;text-transform: uppercase;width: 90%;letter-spacing: 1.5px;border-radius: 5px;font-weight: bolder;}
+.log-butt {background: #cc0000;color: #fff;padding: 12px;font-size: 15px;border: none;text-align: center;margin-bottom: 10px;margin-top: 10px;cursor: pointer;text-transform: uppercase;width: 90%;letter-spacing: 1.5px;border-radius: 5px;font-weight: bolder;}
 
 .dragndrop1 {
     background: #f5f5f5;
