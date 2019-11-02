@@ -79,7 +79,7 @@ if ($currentPage == '') {
 <div id="left_bar" class="sideIn">
     <div class="logoDiv" style="">
         <div class="logo">
-            <img src="images/logo/<?php echo $logo; ?>" alt="<?php echo $siteTitle; ?>" height="38px"
+            <img src="images/logo/<?php echo $logo; ?>" alt="<?php echo $siteTitle; ?>" 
                  title="<?php echo $siteTitle; ?>" style="float: left;">
             <span style="float: left;line-height: 15px;font-size: 16px;padding: 10px;color: #fff;font-weight: bold;">HomestayDNN</span>
             <div class="sideBarIcon" >

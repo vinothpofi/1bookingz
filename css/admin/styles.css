@@ -25,6 +25,8 @@
     float: left;
     padding-left: 12px;
 }
+.logo img{ float: left; max-width: 177px; margin-top: 4px; }
+.logo span{ display: none; }
 
 .logo_small {
     margin-left: 0px;
