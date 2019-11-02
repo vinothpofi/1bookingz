@@ -1050,19 +1050,19 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
             $("#group_type").focus();
             $("#signup_error_message").html(select_group_typeS)
             return false;
-        } else if (business_name == "") {
+        } else if (business_name == "" && group_type == "Seller") {
             $("#business_name").focus();
             $("#signup_error_message").html(entr_bus_nameS)
             return false;
-        } else if (business_desc == "") {
+        } else if (business_desc == "" && group_type == "Seller") {
             $("#business_desc").focus();
             $("#signup_error_message").html(entr_bus_descS)
             return false;
-        } else if (license_no == "") {
+        } else if (license_no == "" && group_type == "Seller") {
             $("#license_no").focus();
             $("#signup_error_message").html(entr_licen_noS)
             return false;
-        } else if (business_addr == "") {
+        } else if (business_addr == "" && group_type == "Seller") {
             $("#business_addr").focus();
             $("#signup_error_message").html(entr_bus_addrS)
             return false;

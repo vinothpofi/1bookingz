@@ -9,7 +9,7 @@ $lang['Current Status']='Current Status';
 $lang['Enabled']='Enabled'; 
 $lang['Disabled']='Disabled'; 
 
-$lang['image_h400_w600']='Please  use an image that is at least 1400px in width and 700px in height.'; 
+$lang['image_h400_w600']='Please  use an image that is at least 1300px in width and 650px in height.'; 
 
 $lang['Phone_Number_Should_be_10_Digit_Number']='Phone Number Should be 10 Digit Number'; 
 
