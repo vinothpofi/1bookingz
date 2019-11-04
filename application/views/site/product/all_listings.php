@@ -54,7 +54,7 @@ $currency_result = $this->session->userdata('currency_result');
 					foreach ($product->result_array() as $product_image) {
 						/*print_r($newArr);;die;*/
 						?>
-						<div class="col-sm-4 col-md-4">
+						<div class="col-sm-6 col-md-4">
 							<div class="card-section">
 							<div class="owl-carousel show">
 								<div class="item">
@@ -412,9 +412,9 @@ $currency_result = $this->session->userdata('currency_result');
                                 } else echo "See all"; ?> <span class="icon">></span></a>
                 </div>
                 <div class="clearfix"></div>
-				<div class="row listings card-section-bg">
+				<div class="row listings card-section-bg explore-card-sec">
 				<?php foreach ($CityName[$city_name] as $CityRowss) { ?>
-						<div class="col-sm-4 col-md-4">
+						<div class="col-sm-6 col-md-4">
 							<div class="card-section">
 							<div class="owl-carousel show">
 							<div class="item">
