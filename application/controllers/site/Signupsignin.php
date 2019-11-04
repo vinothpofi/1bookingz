@@ -85,7 +85,6 @@ class Signupsignin extends MY_Controller
 		
         $acc_group_type = $this->input->post('group_type'); 
         $business_name = $this->input->post('business_name');
-        $business_desc = $this->input->post('business_desc'); 
         $license_no = $this->input->post('license_no');
         $business_addr = $this->input->post('business_addr');
 		//print_r($_POST); exit;
@@ -102,7 +101,7 @@ class Signupsignin extends MY_Controller
             } else {
 				$login_type='normal';
 				$rep_code='';
-				$this->user_model->insertUserQuick_user($firstname, $lastname, $phone_number, $email, $pwd, $confirm_password, $expireddate, $login_type, $this->input->post('birth_day'), $this->input->post('birth_month'), $this->input->post('birth_year'), $invite_reference, $rep_code,$acc_group_type,$business_name,$business_desc,$license_no,$business_addr);
+				$this->user_model->insertUserQuick_user($firstname, $lastname, $phone_number, $email, $pwd, $confirm_password, $expireddate, $login_type, $this->input->post('birth_day'), $this->input->post('birth_month'), $this->input->post('birth_year'), $invite_reference, $rep_code,$acc_group_type,$business_name,$license_no,$business_addr);
 
                 /*==================SMS SEND==========================*/ 
                  if ($this->config->item('twilio_status') == '1') {

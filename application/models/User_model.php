@@ -81,7 +81,7 @@ class User_model extends My_Model
         }
     }
 
-     public function insertUserQuick_user($firstname = '', $lastname = '', $phone_number,$email = '', $pwd = '', $confirm_password, $expireddate, $login_type, $dob_date, $dob_month, $dob_year, $invite_reference = '0', $rep_code,$acc_group_type='',$business_name='',$business_desc='',$license_no='',$business_addr='')
+     public function insertUserQuick_user($firstname = '', $lastname = '', $phone_number,$email = '', $pwd = '', $confirm_password, $expireddate, $login_type, $dob_date, $dob_month, $dob_year, $invite_reference = '0', $rep_code,$acc_group_type='',$business_name='',$license_no='',$business_addr='')
     {
         $this->db->reconnect();
         /* if ($rep_code != '') {
@@ -115,7 +115,6 @@ class User_model extends My_Model
             'business_name' => $business_name,
             'business_address' => $business_addr,
             'license_number' => $license_no,
-            'description' => $business_desc,
             'created' => mdate($this->data['datestring'], time())
         );
     

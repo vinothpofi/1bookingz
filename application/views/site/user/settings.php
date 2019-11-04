@@ -240,7 +240,7 @@ $currency_result = $this->session->userdata('currency_result');
                                         $enterbusinaddr= stripslashes($this->lang->line('Enter_business_address'));
                                     } else $enterbusinaddr ='Enter Business Address';
                                     if (!empty($userDetails)) $userbusinessaddr = $userDetails->row()->business_address;
-                                    echo form_textarea(array('name' => 'license_no', 'type' => 'text', 'placeholder' => $enterbusinaddr, 'value' => $userbusinessaddr,'rows'=>3));
+                                    echo form_textarea(array('name' => 'business_address', 'type' => 'text', 'placeholder' => $enterbusinaddr, 'value' => $userbusinessaddr,'rows'=>3));
                                     ?>
                                 </div>
                             </div>

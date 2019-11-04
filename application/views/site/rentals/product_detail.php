@@ -2541,23 +2541,23 @@ if($host_status != 'Inactive')
                                 <div class="owl-carousel show">
                                 	<div class="item" >
 							<?php if ($this->session->userdata('fc_session_user_id')) {
+								if($userDetails->row()->group == 'User'){
+									if (in_array($similar_Rentals->id, $newArr)) { ?>
 
-								if (in_array($similar_Rentals->id, $newArr)) { ?>
+										<div class="wishList_I yes"></div>
 
-									<div class="wishList_I yes"></div>
+									<?php } else {
 
-								<?php } else {
+										?>
 
-									?>
+										<div class="wishList_I"
 
-									<div class="wishList_I"
+											 onclick="loadWishlistPopup('<?php echo $similar_Rentals->id; ?>');"></div>
 
-										 onclick="loadWishlistPopup('<?php echo $similar_Rentals->id; ?>');"></div>
+										<?php
 
-									<?php
-
+									}
 								}
-
 							} else { ?>
 
 								<a data-toggle="modal" data-target="#signIn" class="wishList_I"></a>

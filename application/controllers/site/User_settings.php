@@ -211,6 +211,10 @@
                         'description' => $this->input->post('description'),
                         'school' => $this->input->post('school'),
                         'work' => $this->input->post('work'),
+                        'business_name' => $this->input->post('business_name'),
+                        'description' => $this->input->post('business_desc'),
+                        'license_number' => $this->input->post('license_no'),
+                        'business_address' => $this->input->post('business_address'),
                         'birthday' => $birthday,
                         'timezone' => $this->input->post('timezone')
                         );

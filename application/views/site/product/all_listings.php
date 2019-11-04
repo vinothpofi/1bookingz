@@ -59,13 +59,15 @@ $currency_result = $this->session->userdata('currency_result');
 							<div class="owl-carousel show">
 								<div class="item">
 								<?php if ($this->session->userdata('fc_session_user_id')) {
-									if (in_array($product_image['id'], $newArr)) { ?>
-										<div class="wishList_I yes" style="display: block;"></div>
-									<?php } else {
-										?>
-										<div class="wishList_I" style="display: block;"
-											 onclick="loadWishlistPopup('<?php echo $product_image['id']; ?>');"></div>
-										<?php
+									if($userDetails->row()->group == 'User'){
+										if (in_array($product_image['id'], $newArr)) { ?>
+											<div class="wishList_I yes" style="display: block;"></div>
+										<?php } else {
+											?>
+											<div class="wishList_I" style="display: block;"
+												 onclick="loadWishlistPopup('<?php echo $product_image['id']; ?>');"></div>
+											<?php
+										}
 									}
 								} else { ?>
 									<div data-toggle="modal" data-target="#signIn" class="wishList_I"

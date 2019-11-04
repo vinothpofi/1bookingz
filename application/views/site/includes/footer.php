@@ -73,6 +73,11 @@
         }, {scope: 'email'});
     }
 </script>
+<style>
+.pac-container {
+    z-index: 100000;
+}
+</style>						
 <footer>
     <div class="container">
         <div class="row">
@@ -478,7 +483,7 @@
                         </div>
                         <label>Example: +1 999-999-9999</label>
 						
-						<div class="image_box custom-select" id="group">
+						<?php /* <div class="image_box custom-select" id="group">
                             <?php
                             if ($this->lang->line('signup_login_type') != '') {
                                 $group_type = stripslashes($this->lang->line('signup_login_type'));
@@ -495,7 +500,9 @@
 								$options = array('' => $group_type, 'Seller' => $host_labe, 'User' => $guest_labe);
 							    echo form_dropdown('group_type', $options, '', array("id" => "group_type"));
 							?>
-                        </div>
+                        </div> */ ?>
+						<?php echo form_hidden('group_type', '', array("id" => "group_type","value"=>"User")); ?>                            
+
 						
 						<div id="host_details" style="display:none;">
 							<div class="image_box">
@@ -504,14 +511,6 @@
 									$bus_name = stripslashes($this->lang->line('signup_business_name'));
 								} else $bus_name = "Business Name";
 								echo form_input('business_name', '', array("id" => "business_name", "placeholder" => $bus_name)); ?>                            
-							</div>
-							
-							<div class="image_box">
-								<?php
-								if ($this->lang->line('signup_business_description') != '') {
-									$bus_desc = stripslashes($this->lang->line('signup_business_description'));
-								} else $bus_desc = "Business Description";
-								echo form_textarea('business_desc', '', array("id" => "business_desc", "placeholder" => $bus_desc,"rows"=>3)); ?>                            
 							</div>
 							
 							<div class="image_box">
@@ -527,7 +526,7 @@
 								if ($this->lang->line('signup_business_address') != '') {
 									$bus_addr = stripslashes($this->lang->line('signup_business_address'));
 								} else $bus_addr = "Business Address";
-								echo form_input('business_addr', '', array("id" => "business_addr", "placeholder" => $bus_addr)); ?>                            
+								echo form_input('autocomplete', '', array("id" => "autocomplete_addr","placeholder" => $bus_addr,"class"=>"pac-container")); ?>                            
 							</div>
 						</div>
 						
@@ -961,14 +960,6 @@ if ($this->lang->line('pls_entr_business_name') != '') {
 ?>
 <input type="hidden" name="" id="entr_bus_name" value="<?php echo $entr_bus_name; ?>">
 
-<?php
-if ($this->lang->line('pls_entr_business_desc') != '') {
-    $entr_bus_desc = stripslashes($this->lang->line('pls_entr_business_desc'));
-} else {
-    $entr_bus_desc = "Please Enter Business Description";
-}
-?>
-<input type="hidden" name="" id="entr_bus_desc" value="<?php echo $entr_bus_desc; ?>">
 
 <?php
 if ($this->lang->line('pls_entr_license_no') != '') {
@@ -1004,7 +995,6 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
         var must_accept = $("#must_accept").val();
         var select_group_typeS = $("#select_group_type").val();
         var entr_bus_nameS = $("#entr_bus_name").val();
-        var entr_bus_descS = $("#entr_bus_desc").val();
         var entr_licen_noS = $("#entr_licen_no").val();
         var entr_bus_addrS = $("#entr_bus_addr").val();
         
@@ -1016,7 +1006,6 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
         var phone = $("#phone").val();
 		var group_type = $("#group_type").val();
 		var business_name = $("#business_name").val();
-        var business_desc = $("#business_desc").val();
         var license_no = $("#license_no").val();
         var business_addr = $("#business_addr").val();
         var user_password = $("#user_password").val();
@@ -1053,10 +1042,6 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
         } else if (business_name == "" && group_type == "Seller") {
             $("#business_name").focus();
             $("#signup_error_message").html(entr_bus_nameS)
-            return false;
-        } else if (business_desc == "" && group_type == "Seller") {
-            $("#business_desc").focus();
-            $("#signup_error_message").html(entr_bus_descS)
             return false;
         } else if (license_no == "" && group_type == "Seller") {
             $("#license_no").focus();
@@ -1103,7 +1088,6 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
                 phone: phone,
                 group_type: group_type,
                 business_name: business_name,
-                business_desc: business_desc,
                 license_no: license_no,
                 business_addr: business_addr
             }, function (result) {
@@ -1267,6 +1251,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
 		if(link_to == 'list_space'){
 			$('#group').hide();
 			$('#host_details').show();
+			$('#group_type').val('Seller');
 		}else{
 			$('#group').show();
 			$('#host_details').hide();

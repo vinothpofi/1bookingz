@@ -4,6 +4,10 @@ $(document).ready(function () {
             (document.getElementById('autocomplete')), {
                 types: ['geocode']
             });
+		 var autocomplete_addr = new google.maps.places.Autocomplete(
+            (document.getElementById('autocomplete_addr')), {
+                types: ['geocode']
+            });
         var Url = 'property?city=';
         if (IsExpriencePage == 0) {
             var Url = 'explore-experience?city=';
