@@ -316,6 +316,7 @@ $(document).ready(function(){
 });
 </script>   
       <header class="posHeader">
+	
           <!-- New Menu START -->
           <nav class="navbar navbar-inverse">
               <div class="container">

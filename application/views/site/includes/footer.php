@@ -400,15 +400,15 @@
                                     src="<?php echo base_url(); ?>images/gplus.png"> <?php if ($this->lang->line('signup_google') != '') {
                                 echo stripslashes($this->lang->line('signup_google'));
                             } else echo "Continue with Google"; ?></a>
-                        <?php }
-                        if ($linkedin_id != '' && $linkedin_secert != '') { ?>
+                        <?php } ?>
+                        <?php /* if ($linkedin_id != '' && $linkedin_secert != '') { ?>
                              <a href="<?php echo base_url(); ?>linkedin-login?oauth_init=1" 
                            class="googlePlus hide_signUp" style="color: #ffffff;background:#0288d1 !important;border: none;">
                             <img
                                     src="<?php echo base_url(); ?>images/linkedinIcon.png"> <?php if ($this->lang->line('signup_linkedin') != '') {
                                 echo stripslashes($this->lang->line('signup_linkedin'));
                             } else echo "Continue with Linkedin"; ?></a>
-                        <?php } ?>
+                        <?php } */ ?>
 
 
                         <p class="SignupBlock dd"><?php if ($this->lang->line('sign_up_with') != '') {
@@ -416,17 +416,19 @@
                             } else echo "Sign Up With"; ?> <a
                                     href="<?php echo $fbLoginUrl; ?>"><?php if ($this->lang->line('Facebook') != '') {
                                     echo stripslashes($this->lang->line('Facebook'));
-                                } else echo "Facebook"; ?></a><?php if ($google_id != '' && $google_secert != '') { ?>
+                                } else echo "Facebook"; ?></a><?php if ($google_id != '' && $google_secert != '') { ?> Or
                                 <a id="sgup_tx" class=""
                                    href="<?php echo $googleLoginURL; ?>"><?php if ($this->lang->line('Google') != '') {
                                         echo stripslashes($this->lang->line('Google'));
-                                    } else echo "Google"; ?></a> Or
-                            <?php } ?> <?php if ($linkedin_id != '' && $linkedin_secert != '') { ?>
+                                    } else echo "Google"; ?></a> 
+                            <?php } ?> 
+							<?php /* if ($linkedin_id != '' && $linkedin_secert != '') { ?>
                                 <a id="sgup_tx" href="<?php echo base_url(); ?>linkedin-login?oauth_init=1"
                                    class=""><?php if ($this->lang->line('Linkedin') != '') {
                                         echo stripslashes($this->lang->line('Linkedin'));
                                     } else echo "Linkedin"; ?></a>
-                            <?php } ?></p>
+                            <?php } */ ?>
+						</p>
                         <div class="or"><span>or</span></div>
 
                     <?php } ?>
@@ -453,7 +455,7 @@
                             if ($this->lang->line('signup_full_name') != '') {
                                 $fn_addr = stripslashes($this->lang->line('signup_full_name'));
                             } else $fn_addr = "First Name";
-                            echo form_input('first_name', '', array("id" => "first_name", "placeholder" => $fn_addr)); ?>
+                            echo form_input('first_name','', array("id" => "first_name", "placeholder" => $fn_addr)); ?>
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </div>
                         <div class="image_box">
@@ -500,8 +502,8 @@
 							    echo form_dropdown('group_type', $options, '', array("id" => "group_type"));
 							?>
                         </div> */ ?>
-						<?php echo form_hidden('group_type', '', array("id" => "group_type","value"=>"User")); ?>                            
-
+						<?php //echo form_hidden('group_type','User', array("id" => "group_type")); ?>                            
+						<input type="hidden" name="group_type" id="group_type" value="User">
 						
 						<div id="host_details" style="display:none;">
 							<div class="image_box">
@@ -648,15 +650,15 @@
                                     src="<?php echo base_url(); ?>images/gplus.png"> <?php if ($this->lang->line('signup_google') != '') {
                                 echo stripslashes($this->lang->line('signup_google'));
                             } else echo "Continue with Google"; ?></a>
-                    <?php }
-                    if ($linkedin_id != '' && $linkedin_secert != '') { ?>
+                    <?php } ?>
+                    <?php /* if ($linkedin_id != '' && $linkedin_secert != '') { ?>
                         <a href="<?php echo base_url(); ?>linkedin-login?oauth_init=1"
                            class="googlePlus hide_signUp" style="color: #ffffff;background:#0288d1 !important;border: none;">
                             <img
                                     src="<?php echo base_url(); ?>images/linkedinIcon.png"> <?php if ($this->lang->line('signup_linkedin') != '') {
                                 echo stripslashes($this->lang->line('signup_linkedin'));
                             } else echo "Continue with Linkedin"; ?></a>
-                    <?php } ?>
+                    <?php }  */?>
 
 
                     <div class="or"><span><?php if ($this->lang->line('OR') != '') {
@@ -1003,7 +1005,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
         var first_name = $("#first_name").val();
         var last_name = $("#last_name").val();
         var phone = $("#phone").val();
-		var group_type = $("#group_type").val();
+		var group_type = $("#group_type").val(); 
 		var business_name = $("#business_name").val();
         var license_no = $("#license_no").val();
         var business_addr = $("#autocomplete_addr").val();
@@ -1093,8 +1095,9 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
                 var data = result.split("::");
                 var resp = "Success";
                 if (data[0].trim() == resp) {
-                    var redirect_to = $('#to_url_value').val();
-                    window.location.href = '<?= base_url(); ?>' + redirect_to;
+                    //var redirect_to = $('#to_url_value').val();
+                    //window.location.href = '<?= base_url(); ?>' + redirect_to;
+                    window.location.href = '<?= base_url(); ?>';
                     $("#signup_success_message").html(data[1])
                     $("#signup_error_message").html("");
                     window.location.reload();
@@ -1246,8 +1249,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
     function set_signup_and_login_link(link_to) {
         $("#to_url_value").val(link_to);
         $.post("<?= base_url(); ?>site/user/set_redirect_session", {'to_url': link_to});
-		
-		if(link_to == 'list_space'){
+		if(link_to == 'list_space'){  
 			$('#group').hide();
 			$('#host_details').show();
 			$('#group_type').val('Seller');
@@ -1258,6 +1260,13 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
     }
 	
 </script>
+<script>
+ $( ".normal_login_link" ).on( "click", function() { 
+	$('#host_details').hide();
+	$('#group_type').val('User');
+});
+</script>
+
 <script type="text/javascript">
     $(function () {
         var element = document.getElementById('phone');

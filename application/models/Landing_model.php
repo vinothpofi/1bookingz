@@ -94,37 +94,41 @@ class Landing_model extends My_Model
 
         if ($query->num_rows() > 0) {
             $user_id = $query->row()->id;
-            $this->session->set_userdata('session_user_email', $email);
-            $this->session->set_userdata('fc_session_user_id', $user_id);
-            $this->session->set_userdata('f_id', $fb_id);
-            $this->session->set_userdata('facebook_in_login', $type);
-            $condition = array('f_id' => $fb_id);
-            $dataArr = array('f_id' => $fb_id, 'status' => 'Active', 'expired_date' => $expireddate, 'is_verified' => 'Yes', 'facebook' => 'Yes');
-            $this->user_model->update_details(USERS, $dataArr, $condition);
-
-            return true;
+			
+			if($query->row()->is_verified == 'No'){
+				return Notverified;
+			}else {
+				$this->session->set_userdata('session_user_email', $email);
+				$this->session->set_userdata('fc_session_user_id', $user_id);
+				$this->session->set_userdata('f_id', $fb_id);
+				$this->session->set_userdata('facebook_in_login', $type);
+				$condition = array('f_id' => $fb_id);
+				$dataArr = array('f_id' => $fb_id, 'status' => 'Active', 'expired_date' => $expireddate, 'is_verified' => 'Yes', 'facebook' => 'Yes');
+				$this->user_model->update_details(USERS, $dataArr, $condition);
+				return true;
+			}
+			
         } else {
-             $deactivateMail = $this->db->query("SELECT * FROM `fc_users` WHERE `email` like '" . $email . "' AND status='Inactive' ORDER BY `id` DESC");
-               
-
-                    if ($deactivateMail->num_rows() > 0) {
-
-                    return cancelled;
-                 }
-            $this->db->insert('fc_users', $data);
-            $insert_id =  $this->db->insert_id();
-            $data['id'] = $insert_id;
-            $qry = $this->db->get_where('fc_users',$data);
-            
-            if ($qry->num_rows() > 0) {
-                $this->session->set_userdata('session_user_email', $email);
-                $this->session->set_userdata('fc_session_user_id', $table1_id = $insert_id);
-                $this->session->set_userdata('f_id', $fb_id);
-                $this->session->set_userdata('facebook_in_login', $type);
-                return false;
-            }
-        }
-    }
+            $deactivateMail = $this->db->query("SELECT * FROM `fc_users` WHERE `email` like '" . $email . "' AND status='Inactive' ORDER BY `id` DESC");
+            if ($deactivateMail->num_rows() > 0) {
+                return cancelled;
+            }else if($deactivateMail->row()->is_verified == 'No'){
+				return Notverified;
+			}else {
+				$this->db->insert('fc_users', $data);
+				$insert_id =  $this->db->insert_id();
+				$data['id'] = $insert_id;
+				$qry = $this->db->get_where('fc_users',$data);
+				if ($qry->num_rows() > 0) {
+					$this->session->set_userdata('session_user_email', $email);
+					$this->session->set_userdata('fc_session_user_id', $table1_id = $insert_id);
+					$this->session->set_userdata('f_id', $fb_id);
+					$this->session->set_userdata('facebook_in_login', $type);
+					return false;
+				}
+			}
+		}
+	}
 
     public function get_social_media()
     {

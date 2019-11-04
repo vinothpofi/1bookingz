@@ -2,6 +2,17 @@
 $this->load->view('admin/templates/header.php');
 ?>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/intlTelInput.css">
+<script
+         src="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http'; ?>://maps.googleapis.com/maps/api/js?key=<?php echo $this->config->item('google_developer_key'); ?>&libraries=places&dummy=.js"></script>
+      <!-- Font Awesome -->
+<script>
+$(document).ready(function () {
+	var autocomplete_addr = new google.maps.places.Autocomplete(
+		(document.getElementById('autocomplete_addr')), {
+		types: ['geocode']
+	});
+});
+</script>
 <script>
 	function checkMandatory() 
 	{
@@ -14,7 +25,7 @@ $this->load->view('admin/templates/header.php');
 		var business_name = $("#business_name").val();
 		var business_description = $("#description").val();
 		var license_number = $("#license_number").val();
-		var business_address = $("#business_address").val();
+		var business_address = $("#autocomplete_addr").val();
 		
 		var re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -462,11 +473,11 @@ $this->load->view('admin/templates/header.php');
 									            'style'   	  => 'width:295px',
 									            'tabindex'    => '5',
 												'required'	  => 'required',
-												'rows'	      => 3,
 												'class'		  => 'required tipTop',
-												'title'		  => 'Please enter business address'
+												'title'		  => 'Please enter business address',
+												'id'		  => 'autocomplete_addr',
 											);
-											echo form_textarea($descattr);
+											echo form_input($descattr);
 											
 											$citylbl = array('id' => 's_city_error', 'style' => 'font-size:12px;display:none;','class' => 'error');
 

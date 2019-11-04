@@ -192,8 +192,9 @@ $currency_result = $this->session->userdata('currency_result');
                                         $enterBusinessName= stripslashes($this->lang->line('Enter_your_business_name'));
                                     } else $enterBusinessName ='Enter your Business Name';
                                     if (!empty($userDetails)) $userbusinessname = $userDetails->row()->business_name;
-                                    echo form_input(array('name' => 'business_name', 'type' => 'text', 'placeholder' => $enterBusinessName, 'value' => $userbusinessname));
+                                    echo form_input(array('name' => 'business_name','id'=>'business_name','type' => 'text', 'placeholder' => $enterBusinessName, 'value' => $userbusinessname));
                                     ?>
+									<small id="business_name_err" style="font-size: 12px;color: red;display: none;"></small>
                                 </div>
                             </div>
 							
@@ -208,7 +209,7 @@ $currency_result = $this->session->userdata('currency_result');
                                         $enterBusinessdesc= stripslashes($this->lang->line('Enter_your_business_desc'));
                                     } else $enterBusinessdesc ='Enter your Business Description';
                                     if (!empty($userDetails)) $userbusinessdesc = $userDetails->row()->description;
-                                    echo form_textarea(array('name' => 'business_desc', 'type' => 'text', 'placeholder' => $enterBusinessdesc, 'value' => $userbusinessdesc,'rows'=>3));
+                                    echo form_textarea(array('name' => 'business_desc','id'=>'business_desc','type' => 'text', 'placeholder' => $enterBusinessdesc, 'value' => $userbusinessdesc,'rows'=>3));
                                     ?>
                                 </div>
                             </div>
@@ -224,8 +225,9 @@ $currency_result = $this->session->userdata('currency_result');
                                         $enterlicno= stripslashes($this->lang->line('Enter_license_number'));
                                     } else $enterlicno ='Enter License Number';
                                     if (!empty($userDetails)) $userlicno = $userDetails->row()->license_number;
-                                    echo form_input(array('name' => 'license_no', 'type' => 'text', 'placeholder' => $enterlicno, 'value' => $userlicno,"maxlength"=>15));
+                                    echo form_input(array('name' => 'license_no','id'=>'license_no', 'type' => 'text', 'placeholder' => $enterlicno, 'value' => $userlicno,"maxlength"=>15));
                                     ?>
+									<small id="license_no_err" style="font-size: 12px;color: red;display: none;"></small>
                                 </div>
                             </div>
 							
@@ -240,8 +242,9 @@ $currency_result = $this->session->userdata('currency_result');
                                         $enterbusinaddr= stripslashes($this->lang->line('Enter_business_address'));
                                     } else $enterbusinaddr ='Enter Business Address';
                                     if (!empty($userDetails)) $userbusinessaddr = $userDetails->row()->business_address;
-                                    echo form_textarea(array('name' => 'business_address', 'type' => 'text', 'placeholder' => $enterbusinaddr, 'value' => $userbusinessaddr,'rows'=>3));
+                                    echo form_input(array('name' => 'business_address','id'=>'autocomplete_addr','type' => 'text', 'placeholder' => $enterbusinaddr, 'value' => $userbusinessaddr,'rows'=>3));
                                     ?>
+									<small id="business_address_err" style="font-size: 12px;color: red;display: none;"></small>
                                 </div>
                             </div>
 							
@@ -1103,21 +1106,75 @@ $currency_result = $this->session->userdata('currency_result');
 
         function update_profile(){
             var first_name = $("#firstname").val();
+            var business_name = $("#business_name").val(); 
+            var license_no = $("#license_no").val();
+            var business_address = $("#autocomplete_addr").val();
+			var error = true;
+			
             if(first_name == ''){
-                    $('#firstname_err').show();
-                    $('#firstname_err').html('Please enter the valid First name');
-                    $('html, body').animate({
-                        'scrollTop' : $("#firstname_err").position().top
-                    });
-                    return false;
+				$('#firstname_err').show();
+				$('#firstname_err').html('Please enter the valid First name');
+				$('html, body').animate({
+					'scrollTop' : $("#firstname_err").position().top
+				});
+				error = false;
+				//return false;
             } else{
-                //   alert('Please Enter Your Riding Year');
-                 $('.loading').show();
+                //alert('Please Enter Your Riding Year');
+                //$('.loading').show();
                 $('#firstname_err').show();
                 $('#riding_year_err').hide();
                 $('#firstname_err').html('');
-                $('#update_profile').submit();
+                //$('#update_profile').submit();
             }
+			
+			 if(business_name == ''){
+				$('#business_name_err').show();
+				$('#business_name_err').html('Enter Your Business Name');
+				$('html, body').animate({
+					'scrollTop' : $("#business_name_err").position().top
+				});
+				error = false;
+				//return false;
+            } else{
+                $('#business_name_err').hide();
+                $('#business_name_err').html('');
+            }
+			
+			if(license_no == ''){
+				$('#license_no_err').show();
+				$('#license_no_err').html('Enter Your License Number');
+				$('html, body').animate({
+					'scrollTop' : $("#license_no_err").position().top
+				});
+				error = false;
+				//return false;
+            } else{
+                $('#license_no_err').hide();
+                $('#license_no_err').html('');
+            }
+			
+			if(business_address == ''){
+				$('#business_address_err').show();
+				$('#business_address_err').html('Enter Your Business Address');
+				$('html, body').animate({
+					'scrollTop' : $("#business_address_err").position().top
+				});
+				error = false;
+				//return false;
+            } else{
+                $('#business_address_err').hide();
+                $('#business_address_err').html('');
+            }
+		
+			if(!error){
+				return false;
+			}else{
+				$('.loading').show();
+				$('#update_profile').submit();
+				return true;
+			}
+			
         }
     </script>
 <?php

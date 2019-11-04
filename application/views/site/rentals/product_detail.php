@@ -2323,7 +2323,7 @@ div#timer span {
 
 								//echo form_button('bookNow', $bookNovBtn, array('class' => 'submitBtn','onclick'=>'set_signup_and_login_links_req();'));
 								?>
-								<button class="submitBtn" onclick="set_signup_and_login_links_req();"><i id="spin_req" style="display: none;" class="fa fa-spinner fa-spin"></i><i
+								<button class="submitBtn normal_login_link" onclick="set_signup_and_login_links_req();"><i id="spin_req" style="display: none;" class="fa fa-spinner fa-spin"></i><i
 
 										class="fa fa-heart-o"></i> <?php echo $bookNovBtn ?></button>
 								<?php
@@ -2376,7 +2376,7 @@ if($host_status != 'Inactive')
 
 								<div class="divider"></div>
 
-								<button class="submitBtn" onclick="set_signup_and_login_links_instant();"><i id="spin_in" style="display: none;" class="fa fa-spinner fa-spin"></i><i
+								<button class="submitBtn normal_login_link" onclick="set_signup_and_login_links_instant();"><i id="spin_in" style="display: none;" class="fa fa-spinner fa-spin"></i><i
 
 										class="fa fa-heart-o"></i> <?php if ($this->lang->line('instant_pay') != '') {
 
@@ -2560,7 +2560,7 @@ if($host_status != 'Inactive')
 								}
 							} else { ?>
 
-								<a data-toggle="modal" data-target="#signIn" class="wishList_I"></a>
+								<a data-toggle="modal" data-target="#signIn" class="wishList_I normal_login_link"></a>
 
 							<?php } ?>
 

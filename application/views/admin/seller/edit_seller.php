@@ -12,6 +12,70 @@ $this->load->view('admin/templates/header.php');
 		return true;
 	}
 </script>
+
+<script
+         src="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http'; ?>://maps.googleapis.com/maps/api/js?key=<?php echo $this->config->item('google_developer_key'); ?>&libraries=places&dummy=.js"></script>
+      <!-- Font Awesome -->
+<script>
+$(document).ready(function () {
+	var autocomplete_addr = new google.maps.places.Autocomplete(
+		(document.getElementById('autocomplete_addr')), {
+		types: ['geocode']
+	});
+});
+</script>
+<script>
+	function checkMandatory() 
+	{
+		noMandatory = 0;
+		var firstname = $("#firstname").val();
+		var lastname = $("#lastname").val();
+		var email = $("#email").val();
+		var pwd = $("#new_password").val();
+		var confirmPwd = $("#confirm_password").val();
+		var business_name = $("#business_name").val();
+		var business_description = $("#description").val();
+		var license_number = $("#license_number").val();
+		var business_address = $("#autocomplete_addr").val();
+		
+		var re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+		if ((firstname == '') || (lastname == '') || (email == '') || (pwd == '') || (confirmPwd == '')  || (business_name == '')  || (business_description == '')  || (license_number == '') || (business_address == '')) 
+		{
+			$("#nextBtn").removeClass('nxtTab');
+			noMandatory = 1;
+
+			alert('Some mandatory field remainds empty.Please fill mandatories.');
+			return false;
+		} 
+		else if (!email.match(re)) 
+		{
+			$("#nextBtn").removeClass('nxtTab');
+			noMandatory = 1;
+			alert('Invalid Email Address');			
+			return false;
+		}
+		else if (pwd != confirmPwd) 
+		{
+			$("#nextBtn").removeClass('nxtTab');
+			noMandatory = 1;
+			alert('New password and confirm password miss match');
+			return false;
+		}
+		else if (!pwd.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)) {
+            $("#nextBtn").removeClass('nxtTab');
+			noMandatory = 1;
+			alert('Password must have min 8 characters includes 1 digit and 1 upper case');
+			return false;
+        }
+		else 
+		{
+			noMandatory = 0;
+			$("#nextBtn").addClass('nxtTab');
+			return true;
+		}
+	}
+</script>
 <div id="content">
 	<div class="grid_container">
 		<div class="grid_12">
@@ -30,7 +94,7 @@ $this->load->view('admin/templates/header.php');
 				</div>
 				<div class="widget_content">
 					<?php
-					$attributes = array('class' => 'form_container left_label', 'id' => 'edituser_form', 'enctype' => 'multipart/form-data', 'accept-charset' => 'UTF-8');
+					$attributes = array('class' => 'form_container left_label', 'id' => 'edituser_form', 'enctype' => 'multipart/form-data','onsubmit' => 'return checkMandatory();', 'accept-charset' => 'UTF-8');
 					echo form_open('admin/seller/insertEditSeller', $attributes);
 					?>
 					<div id="tab1">
@@ -325,12 +389,12 @@ $this->load->view('admin/templates/header.php');
 									            'style'   	  => 'width:295px',
 									            'tabindex'    => '5',
 												'required'	  => 'required',
-												'rows'	      => 3,
+												'id'	      => 'autocomplete_addr',
 												'class'		  => 'required tipTop',
 												'value' => $seller_details->row()->business_address,
 												'title'		  => 'Please enter business address'
 											);
-											echo form_textarea($descattr);
+											echo form_input($descattr);
 											
 											$citylbl = array('id' => 's_city_error', 'style' => 'font-size:12px;display:none;','class' => 'error');
 

@@ -225,6 +225,23 @@ class Users extends MY_Controller
 				}else {
 				 	$last_login_date =  date("Y-m-d", strtotime($row->last_login_date));
 				}
+				
+				if ($allPrev == '1' || in_array('2', $Members)){
+					$mode = ($row->is_verified == 'Yes') ? '0' : '1';
+					if ($mode == '0'){
+												
+					$isverified = '<a title="Verified" class="tip_top"><span class="badge_style b_done">Verified</span></a>';
+												
+					} else {
+					$isverified = '<a title="Click to verify" class="tip_top"  href="javascript:confirm_status('."'".'admin/seller/change_user_verification/'.$mode.'/'.$row->id."'".')"><span class="badge_style">'.$row->is_verified.'</span></a>';							
+				    }
+				} 
+				else 
+				{
+					
+					$isverified ='<span class="badge_style b_done">'.$row->is_verified.'
+																</span>';
+				}
 
 				if ($allPrev == '1' || in_array('2', $Members)){
 					$mode = ($row->status == 'Active') ? '0' : '1';
@@ -272,7 +289,7 @@ class Users extends MY_Controller
 				$nestedData[] = $row->firstname;
 				$nestedData[] = $row->lastname;
 				$nestedData[] = $row->email;
-				
+				$nestedData[] = $isverified;
 				
 				$nestedData[] = $loginUserType;
 				$nestedData[] = $row->created;

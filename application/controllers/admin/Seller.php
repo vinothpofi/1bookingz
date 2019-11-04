@@ -280,7 +280,7 @@ class Seller extends MY_Controller
 					} else {
 					$stat = '<a title="Click to active" class="tip_top"  href="javascript:confirm_status('."'".'admin/seller/change_user_status/'.$mode.'/'.$row->id."'".')"><span class="badge_style">'.$row->status.'</span></a>';							
 				    }
-					} 
+				} 
 										else 
 										{
 											
@@ -306,6 +306,24 @@ class Seller extends MY_Controller
 
 			//	$action_2="<span><a class='action-icons c-delete' href='javascript:confirm_delete(".'"'."admin/users/delete_user/".$row->id.'"'.")' title='Delete'>Delete</a></span>";
 				} 
+				
+				if ($allPrev == '1' || in_array('2', $Members)){
+					$mode = ($row->is_verified == 'Yes') ? '0' : '1';
+					if ($mode == '0'){
+												
+					$isverified = '<a title="Verified" class="tip_top"><span class="badge_style b_done">Verified</span></a>';
+												
+					} else {
+					$isverified = '<a title="Click to verify" class="tip_top"  href="javascript:confirm_status('."'".'admin/seller/change_user_verification/'.$mode.'/'.$row->id."'".')"><span class="badge_style">'.$row->is_verified.'</span></a>';							
+				    }
+				} 
+				else 
+				{
+					
+					$isverified ='<span class="badge_style b_done">'.$row->is_verified.'
+																</span>';
+				}
+										
 				if ($row->last_login_ip == '') 
 										{
 											$last_login_ip = '-';
@@ -317,6 +335,7 @@ class Seller extends MY_Controller
 				$nestedData[] = $row->firstname;
 				$nestedData[] = $row->lastname;
 				$nestedData[] = $row->email;
+				$nestedData[] = $isverified;
 				$nestedData[] = $loginUserType;
 				$nestedData[] = $row->created;
 				$nestedData[] = $last_login_date;
@@ -1110,6 +1129,23 @@ class Seller extends MY_Controller
 			$condition = array('id' => $user_id);
 			$this->seller_model->update_details(USERS, $newdata, $condition);
 			$this->setErrorMessage('success', 'Host Status Changed Successfully');
+			redirect('admin/seller/display_seller_list');
+		}
+	}
+	
+	
+	public function change_user_verification()
+	{
+		if ($this->checkLogin('A') == '') {
+			redirect('admin');
+		} else {
+			$mode = $this->uri->segment(4, 0);
+			$user_id = $this->uri->segment(5, 0);
+			$status = ($mode == '0') ? 'No' : 'Yes';
+			$newdata = array('is_verified' => $status);
+			$condition = array('id' => $user_id);
+			$this->seller_model->update_details(USERS, $newdata, $condition);
+			$this->setErrorMessage('success', 'Host Verification Changed Successfully');
 			redirect('admin/seller/display_seller_list');
 		}
 	}

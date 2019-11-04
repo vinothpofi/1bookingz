@@ -99,7 +99,7 @@ extract($privileges);
 							<th class="tip_top" title="Click to sort">Last Name</th>
 							<th class="tip_top" title="Click to sort">Email-ID</th>
 							<!-- <th class="tip_top" title="Click to sort">image</th> -->
-							
+							<th class="tip_top" title="Click to sort">Verify</th>
 							<th class="tip_top" title="Click to sort">Login User Type</th>
 							<th class="tip_top" title="Click to sort">User Created On</th>
 							<th class="tip_top" title="Click to sort">Last Login Date</th>
@@ -125,7 +125,7 @@ extract($privileges);
 							<th>Last Name</th>
 							<th>Email-ID</th>
 							<!-- <th>image</th> -->
-							
+							<th>Verify</th>
 							<th>Login User Type</th>
 							<th>User Created On</th>
 							<th>Last Login Date</th>

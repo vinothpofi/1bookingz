@@ -382,6 +382,12 @@ class Landing extends MY_Controller
 			}); */
 			return 'success';
 		}
+		else if($fb_check=='Notverified')
+		{
+			$message = "Your Account Was Not Verified. Please Contact Admin.";
+            $this->setErrorMessage('success', $message);
+            redirect(base_url());
+		}
 		else if($fb_check=='cancelled')
 		{
 			 $message = "Your Account Was Canceled. Please Contact Admin.";

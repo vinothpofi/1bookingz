@@ -127,7 +127,7 @@ class Signupsignin extends MY_Controller
                 /*Set Session Variable*/
                 $usrDetails = $this->user_model->get_all_details(USERS, $condition);
                 if ($usrDetails->num_rows() == '1') {
-                    $userdata = array(
+                    /* $userdata = array(
                         'fc_session_user_id' => $usrDetails->row()->id,
                         'fc_session_user_login_type' => 'normal',
                         'session_user_email' => $usrDetails->row()->email,
@@ -143,14 +143,19 @@ class Signupsignin extends MY_Controller
                     $condition = array(
                         'id' => $usrDetails->row()->id
                     );
-                    $this->user_model->update_details(USERS, $newdata, $condition);
+                    $this->user_model->update_details(USERS, $newdata, $condition); */
 
-
-					
 					if ($this->lang->line('succ_created') != '') {
                         $succ_created= stripslashes($this->lang->line('succ_created'));
                      } else $succ_created= "Successfully Account Created"; 
 					
+					if ($this->lang->line('once_admin_approve_you_login') != '') {
+						$message = stripslashes($this->lang->line('once_admin_approve_you_login'));
+					} else {
+						$message = "Once an administrator approves it you can login!";
+					}
+					$this->setErrorMessage('success', $message);
+				
                     echo "Success::$succ_created";
                 }
 
@@ -256,10 +261,13 @@ class Signupsignin extends MY_Controller
                 echo 'Error::Invalid Login Details';
             }
             else{
-                echo 'Error::Your Account Was Canceled. Please Contact Admin.';
+                echo 'Error::Your Account Was Canceled. Please Contact Admin.';exit;
             }
-                exit;
-            } else {
+                
+            }else if($isUserFound->row()->is_verified == 'No'){
+				 echo 'Error::Your Account Was Not Verified. Please Contact Admin.';exit;
+
+			} else {
                 if ($isUserFound->num_rows() == '1') {
                     $userdata = array(
                         'fc_session_user_id' => $isUserFound->row()->id,
@@ -389,7 +397,7 @@ class Signupsignin extends MY_Controller
             /*insert or update user data to the database*/
             $duplicateMail = $this->db->query("SELECT * FROM `fc_users` WHERE `email` like '" . $userData['email'] . "' ORDER BY `id` DESC");
              $deactivateMail = $this->db->query("SELECT * FROM `fc_users` WHERE `email` like '" . $userData['email'] . "' AND status='Inactive' ORDER BY `id` DESC");
-            if ($duplicateMail->num_rows() > 0) {
+            if ($duplicateMail->num_rows() > 0 && $duplicateMail->row()->is_verified == 'Yes') {
                 $userdata = array(
                     'fc_session_user_id' => $duplicateMail->row()->id,
                     'session_user_email' => $duplicateMail->row()->email,
@@ -412,13 +420,15 @@ class Signupsignin extends MY_Controller
                     redirect(base_url($redirect_url));
                 }
                 redirect(base_url($this->session->current_page_url));
-            } else {
+            } else if($duplicateMail->row()->is_verified == 'No'){
+					$message = "Your Account Was Not Verified. Please Contact Admin.";
+					$this->setErrorMessage('success', $message);
+					redirect(base_url());
+			} else {
                 if ($deactivateMail->num_rows() > 0) {
-
-                     $message = "Your Account Was Canceled. Please Contact Admin.";
-                $this->setErrorMessage('success', $message);
-
-            redirect(base_url());
+					$message = "Your Account Was Canceled. Please Contact Admin.";
+					$this->setErrorMessage('success', $message);
+					redirect(base_url());
                  }
                 $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
                 $confirm_password = substr( str_shuffle( $alphabet ), 0, 10 );
@@ -434,7 +444,7 @@ class Signupsignin extends MY_Controller
                 );
                 $usrDetails = $this->user_model->get_all_details(USERS, $condition);
                 if ($usrDetails->num_rows() == '1') {
-                    $userdata = array(
+                    /* $userdata = array(
                         'fc_session_user_id' => $usrDetails->row()->id,
                         'session_user_email' => $usrDetails->row()->email,
                         'fc_session_user_login_type' => 'google'
@@ -449,8 +459,14 @@ class Signupsignin extends MY_Controller
                     $condition = array(
                         'id' => $usrDetails->row()->id
                     );
-                    $this->user_model->update_details(USERS, $newdata, $condition);
+                    $this->user_model->update_details(USERS, $newdata, $condition); */
 					
+					if ($this->lang->line('once_admin_approve_you_login') != '') {
+						$message = stripslashes($this->lang->line('once_admin_approve_you_login'));
+					} else {
+						$message = "Once an administrator approves it you can login!";
+					}
+					$this->setErrorMessage('success', $message);
 					
                     if ($this->lang->line('succ_created') != '') {
 							$succ_created= stripslashes($this->lang->line('succ_created'));
