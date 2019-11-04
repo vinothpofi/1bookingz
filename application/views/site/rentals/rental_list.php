@@ -151,14 +151,7 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
   }
 }
 
-    header.posHeader.fixedHeader {height: 80px;}
-    header.posHeader.fixedHeader nav.navbar {padding: 15px;}
-    .listingRow {margin-top: 20px;}
-    @media (min-width: 320px) and (max-width: 480px){
-    	.listingRow{margin-top: 104px;}
-    	.guestFilter, .openFilter.moreFilter, .categoriesBlock{top: 155px;}
-    }
-
+    
 	</style>
 	<?php
 	echo form_open('property', array('method' => 'POST', 'id' => 'search_result_form'));
@@ -803,7 +796,7 @@ $this->load->view('site/includes/footer');
                 lat_lang_inc= lat_lang_inc+0.0111;
 
 				var coords = new google.maps.LatLng(location[1], location[2]);
-				var contentString = '<div class="listingResult col-md-4 col-sm-4 grid-view-listing">\n';
+				var contentString = '<div class="listingResult col-md-4 col-sm-6 grid-view-listing">\n';
 				contentString += '		<div class="card-section">\n';
 
 				if(location[14] == "User"){
