@@ -74,9 +74,8 @@
     }
 </script>
 <style>
-.pac-container {
-    z-index: 100000;
-}
+.pac-container {  z-index: 100000;  }
+.business-address{ box-shadow: none; }
 </style>						
 <footer>
     <div class="container">
@@ -526,7 +525,7 @@
 								if ($this->lang->line('signup_business_address') != '') {
 									$bus_addr = stripslashes($this->lang->line('signup_business_address'));
 								} else $bus_addr = "Business Address";
-								echo form_input('business_addr', '', array("id" => "autocomplete_addr","placeholder" => $bus_addr,"class"=>"pac-container")); ?>                            
+								echo form_input('business_addr', '', array("id" => "autocomplete_addr","placeholder" => $bus_addr,"class"=>"business-address pac-container")); ?>                            
 							</div>
 						</div>
 						
@@ -1449,4 +1448,5 @@ function cnf_pwd_validation(params) {
     then close all select boxes: */
     document.addEventListener("click", closeAllSelect);
 </script>
+
 

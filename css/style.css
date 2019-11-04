@@ -51,7 +51,7 @@ button, input, select, textarea {font-family: 'Montserrat', sans-serif !importan
 button:active {background-color: #cc0000;background-size: 100%;transition: background 0s;}
 body {padding-top: 80px;}
 body.iti-mobile {transition: 0.5s;position: relative;right: 0;}
-body.iti-mobile.active {position: relative;right: 220px;}
+/*body.iti-mobile.active {position: relative;right: 220px;}*/
 body.preloader-site {padding-top: 0px;padding-right: 0 !important;}
 .navbar-inverse .navbar-toggle .icon-bar {transition: 0.5s;transform: rotateZ(0deg) translate(0px,0px);}
 .navbar-inverse .navbar-toggle.active .icon-bar:nth-child(1) {transform: rotateZ(50deg) translate(5px,5px);}
@@ -916,8 +916,8 @@ select#dispute_status {
 	.posHeader nav.navbar ul.navbar-nav li a {color: #151515;border: 0px solid transparent !important;margin: 0;padding: 15px 15px 12px;}
 	.posHeader nav.navbar ul.navbar-nav li.active a, .posHeader nav.navbar ul.navbar-nav li:hover a {background-color: #cc0000;}
 	.navbar-inverse .navbar-collapse {position: fixed;background-color: #fff;border-color: #fff;margin: 7px -30px 0px;box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 0px 0px 0px rgba(0,0,0,0);}
-	.navbar-inverse .navbar-collapse{display: block;right: -250px;top: -7px;width: 250px;bottom: 0px;transition: .5s;}
-	.navbar-inverse .navbar-collapse.in {right: 0px;}
+	.navbar-inverse .navbar-collapse{display: block; left: -250px;top: -7px;width: 250px;bottom: 0px;transition: .5s;}
+	.navbar-inverse .navbar-collapse.in {left: 0px;}
 	.posHeader.fixedHeader .navbar-inverse .navbar-collapse {margin: 0 -30px;}
 	.posHeader nav.navbar ul.navbar-nav li.dropdown.open {background-color: #cc0000;}
 	.posHeader nav.navbar ul.navbar-nav li.dropdown.open ul.dropdown-menu {margin: 0px; background-color: #fff; border-radius: 0;}
