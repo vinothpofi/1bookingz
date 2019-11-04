@@ -70,7 +70,7 @@ $currency_result = $this->session->userdata('currency_result');
 										}
 									}
 								} else { ?>
-									<div data-toggle="modal" data-target="#signIn" class="wishList_I"
+									<div data-toggle="modal" data-target="#signIn" class="wishList_I normal_login_link"
 										 style="display: block;"></div>
 								<?php } ?>
 								<a href="<?php echo base_url(); ?>rental/<?php echo $product_image['seourl']; ?>">
