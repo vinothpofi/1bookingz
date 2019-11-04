@@ -184,7 +184,7 @@ $currency_result = $this->session->userdata('currency_result');
 							<div class="formList">
                                 <label><?php if ($this->lang->line('signup_business_name') != '') {
                                         echo stripslashes($this->lang->line('signup_business_name'));
-                                    } else echo "Business Name"; ?></label>
+                                    } else echo "Business Name"; ?> * </label>
                                 <div class="right">
                                     <?php
                                     $userbusinessname = "";
@@ -216,7 +216,7 @@ $currency_result = $this->session->userdata('currency_result');
 							<div class="formList">
                                 <label><?php if ($this->lang->line('signup_license_number') != '') {
                                         echo stripslashes($this->lang->line('signup_license_number'));
-                                    } else echo "License Number"; ?></label>
+                                    } else echo "License Number"; ?> * </label>
                                 <div class="right">
                                     <?php
                                     $userlicno = "";
@@ -224,7 +224,7 @@ $currency_result = $this->session->userdata('currency_result');
                                         $enterlicno= stripslashes($this->lang->line('Enter_license_number'));
                                     } else $enterlicno ='Enter License Number';
                                     if (!empty($userDetails)) $userlicno = $userDetails->row()->license_number;
-                                    echo form_input(array('name' => 'license_no', 'type' => 'text', 'placeholder' => $enterlicno, 'value' => $userlicno));
+                                    echo form_input(array('name' => 'license_no', 'type' => 'text', 'placeholder' => $enterlicno, 'value' => $userlicno,"maxlength"=>15));
                                     ?>
                                 </div>
                             </div>
@@ -232,7 +232,7 @@ $currency_result = $this->session->userdata('currency_result');
 							<div class="formList">
                                 <label><?php if ($this->lang->line('signup_business_address') != '') {
                                         echo stripslashes($this->lang->line('signup_business_address'));
-                                    } else echo "Business Address"; ?></label>
+                                    } else echo "Business Address"; ?> * </label>
                                 <div class="right">
                                     <?php
                                     $userbusinessaddr = "";

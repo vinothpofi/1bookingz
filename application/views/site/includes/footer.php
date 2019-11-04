@@ -526,7 +526,7 @@
 								if ($this->lang->line('signup_business_address') != '') {
 									$bus_addr = stripslashes($this->lang->line('signup_business_address'));
 								} else $bus_addr = "Business Address";
-								echo form_input('autocomplete', '', array("id" => "autocomplete_addr","placeholder" => $bus_addr,"class"=>"pac-container")); ?>                            
+								echo form_input('business_addr', '', array("id" => "autocomplete_addr","placeholder" => $bus_addr,"class"=>"pac-container")); ?>                            
 							</div>
 						</div>
 						
@@ -1007,7 +1007,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
 		var group_type = $("#group_type").val();
 		var business_name = $("#business_name").val();
         var license_no = $("#license_no").val();
-        var business_addr = $("#business_addr").val();
+        var business_addr = $("#autocomplete_addr").val();
         var user_password = $("#user_password").val();
         var birth_month = $("#birth_month").val();
         var birth_day = $("#birth_day").val();
@@ -1048,7 +1048,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
             $("#signup_error_message").html(entr_licen_noS)
             return false;
         } else if (business_addr == "" && group_type == "Seller") {
-            $("#business_addr").focus();
+            $("#autocomplete_addr").focus();
             $("#signup_error_message").html(entr_bus_addrS)
             return false;
         } 
