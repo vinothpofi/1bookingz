@@ -10,6 +10,7 @@
 .proListing{min-height: 60vh;}
 .signUpIn .intl-tel-input .country-list{ width: 508px; }
 .signUpIn textarea{     padding-left: 16px; padding-right: 50px; }
+.signUpIn #host_details{ float: left; width: 100%; margin: 0 0 56px; }
 
 /*ScrollBar*/
 .sidebar-scroll {overflow: auto; scrollbar-color: #999 #ccc;scrollbar-width: thin;scrollbar-border-radius: 5px;}
