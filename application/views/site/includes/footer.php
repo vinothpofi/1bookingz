@@ -385,7 +385,7 @@
             <div class="modal-body">
                 <div class="signUpIn">
                     <?php $invite_word = $this->uri->segment(2, 0);
-                    if (!$invite_word == 'invite') {
+                    if ($invite_word != 'invite') {
                         ?>
 
                         <?php if ($facebook_id != '' && $facebook_secert != '') { ?>
