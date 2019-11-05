@@ -384,7 +384,7 @@
             </div>
             <div class="modal-body">
                 <div class="signUpIn">
-                    <?php $invite_word = $this->uri->segment(2, 0);
+                    <?php $invite_word = $this->uri->segment(1);
                     if ($invite_word != 'invite') {
                         ?>
 
@@ -1162,7 +1162,7 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
                     window.location.href = '<?= base_url(); ?>' + redirect_to;
                     $("#signin_success_message").html(data[1]);
                     $("#signin_error_message").html("");
-                    window.location.reload()
+                    window.location.reload();
 
                 }
                 else {

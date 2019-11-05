@@ -154,7 +154,7 @@ class Signupsignin extends MY_Controller
 					} else {
 						$message = "Once an administrator approves it you can login!";
 					}
-					$this->setErrorMessage('success', $message);
+					$this->setErrorMessage('error', $message);
 				
                     echo "Success::$succ_created";
                 }
