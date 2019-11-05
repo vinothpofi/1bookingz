@@ -20,7 +20,7 @@
 			width: 100%;
 		}
 @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
-.guestInfo .rightBlock span{border-radius: 37%; width: 50px;height: 27px;}
+.guestInfo .rightBlock span{border-radius: 50px; width: 50px;height: 27px;}
 .loader {
 	position: fixed;
 	left: 0px;
@@ -1057,5 +1057,6 @@ image=(images[0]) ? images[0] : '';
 		$('.listingResult').removeClass('list-view-listing').addClass('grid-view-listing');
 	});
 
+	$('body').addClass('rental-list-page');
 
 </script>

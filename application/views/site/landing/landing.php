@@ -1247,17 +1247,17 @@ $this->load->view('site/includes/footer');
             responsive: {
                 0: {
                     items: 1,
-                    nav: false,
+                    nav: true,
                     autoplay: true
                 },
                 480: {
                     items: 2,
-                    nav: false,
+                    nav: true,
                     autoplay: true
                 },
                 600: {
                     items: 2,
-                    nav: false,
+                    nav: true,
                     autoplay: true
                 },
                 1000: {
@@ -1276,17 +1276,17 @@ $this->load->view('site/includes/footer');
             responsive: {
                 0: {
                     items: 1,
-                    nav: false,
+                    nav: true,
                     autoplay: true
                 },
                 480: {
                     items: 2,
-                    nav: false,
+                    nav: true,
                     autoplay: true
                 },
                 600: {
                     items: 3,
-                    nav: false,
+                    nav: true,
                     autoplay: true
                 },
                 1000: {
@@ -1493,4 +1493,11 @@ $this->load->view('site/includes/footer');
         }
         
       }
+      </script>
+
+      <script type="text/javascript">
+        $(window).scroll(function () {
+            $('#startDate').data('daterangepicker').hide();
+            $('#endDate').data('daterangepicker').hide();
+        });
       </script>

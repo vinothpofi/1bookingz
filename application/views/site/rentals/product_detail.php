@@ -3011,6 +3011,7 @@ $('form').delegate(':input', 'focus', function() {
 			loop: true,
 
 			margin: 10,
+			nav: true,
 
 			responsiveClass: true,
 
@@ -3028,7 +3029,7 @@ $('form').delegate(':input', 'focus', function() {
 
 					items: 2,
 
-					nav: false
+					nav: true
 
 				},
 
@@ -3036,7 +3037,7 @@ $('form').delegate(':input', 'focus', function() {
 
 					items: 3,
 
-					nav: false
+					nav: true
 
 				},
 
@@ -3778,13 +3779,13 @@ setInterval(function() { makeTimer(); }, 1000);
     slideSpeed: 2000,
     nav: true,
     autoplay: false,
-    dots: false,
+    dots: true,
     loop: false,
     responsiveRefreshRate: 200,
-    navText: [
-      '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
-      '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
-    ]
+    // navText: [
+    //   '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
+    //   '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
+    // ]
   })
     .on("changed.owl.carousel", syncPosition);
 
@@ -3799,14 +3800,32 @@ setInterval(function() { makeTimer(); }, 1000);
     items: 10,
     dots: true,
     nav: true,
-    navText: [
-      '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
-      '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
-    ],
+    // navText: [
+    //   '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
+    //   '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
+    // ],
     smartSpeed: 200,
     slideSpeed: 500,
     slideBy: 4,
-    responsiveRefreshRate: 100
+    responsiveRefreshRate: 100,  
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:6,
+            nav:false
+        },
+        1000:{
+            items:8,
+            nav:true,            
+        },
+        1200:{
+            items:10,
+            nav:true,            
+        }
+    }  
   })
     .on("changed.owl.carousel", syncPosition2);
 
@@ -3862,6 +3881,9 @@ setInterval(function() { makeTimer(); }, 1000);
   });
 });
 
+</script>
+<script type="text/javascript">
+	$('body').addClass('product-detail-page');
 </script>
 
 <?php
