@@ -104,13 +104,48 @@
                                             } else echo "per night"; ?></span>
                                             </div>
                                             <div class="bottom-text">
+												<?php $desc_length = strlen($product_image['description']);
+												if($desc_length > 100){
+													$pro_description = character_limiter($product_image['description'],100);
+												}else{
+													$pro_description =  strip_tags($product_image['description']);
+												} ?>
+												
                                                 <p>
-                                                    Lorem ipsum dolor sit amet, in elit nominati usu. Mei ea vivendo maluisset, hinc graece facilisis pr [more]
+                                                    <?php echo $pro_description; ?>
                                                 </p>
-                                            </div>
+											</div>
                                             <div class="bottom-icons">
-                                                <span class="guest-limit">8</span>
-                                            </div>
+											<?php $list_type_value = $this->product_model->get_listing_child(); 
+												$finalsListing = json_decode($product_image['listings']);
+												foreach ($finalsListing as $listingResult => $FinalValues) {
+													$resultArr[$listingResult] = $FinalValues;		 
+												} 
+												
+												if($list_type_value->num_rows() > 0){
+													foreach($list_type_value->result() as $list_val){
+														 if($resultArr[$list_val->parent_id] != ''){ 
+														 $list_child_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $resultArr[$list_val->parent_id]));
+															
+															if($list_val->type == 'option'){ ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($list_child_value->row()->child_name)); ?>
+																</span>
+															
+															<?php  } elseif($list_val->type == 'text') { ?>
+																<span class="<?= $list_val->name; ?>">
+																	<?php echo stripslashes(ucfirst($resultArr[$list_val->parent_id])); ?>
+																</span>
+															<?php }
+															}else{ ?>
+														
+															  <span class="<?= $list_val->name; ?>"> 0</span>
+														<?php  }?>
+														<?php }
+													}
+												
+											?> 
+											</div>
                                             <div class="clear">
                                                 <div class="starRatingOuter">
                                                     <div class="starRatingInner"

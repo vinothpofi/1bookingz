@@ -11,7 +11,84 @@ if($_SESSION['language_code'] == 'ar') { ?>
    <head>
        <?php  echo $this->config->item('google_verification_code'); ?>
        <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-    <style type="text/css">
+      <?php
+
+
+         /*Setting current url page if user not logged in*/
+         if ($this->session->fc_session_user_id == "") {
+             $current_url = uri_string();
+             $this->session->set_userdata(array('current_page_url' => $current_url));
+         }
+         /*Close*/
+         if ($this->config->item('google_verification')) {
+             echo stripslashes($this->config->item('google_verification'));
+         }
+         if ($this->lang->line('list_your') != '') {
+             $listSpace = stripslashes($this->lang->line('list_your'));
+         } else $listSpace = "RENT A PROPERTY";
+         if ($this->lang->line('create_experience') != '') {
+             $listExprience = stripslashes($this->lang->line('create_experience'));
+         } else $listExprience = "Create Experience";
+         if ($heading == '') {
+             ?>
+      <title>
+         <?php echo $meta_title; ?>
+      </title>
+      <?php
+         } else {
+             ?>
+      <title>
+         <?php echo $heading; ?>
+      </title>
+      <?php }
+         ?>
+      <script type="text/javascript">
+         var IsHomePage = 1;
+         var IsExpriencePage = 0;
+             <?php if ($this->uri->segment(1) != "") { ?>var IsHomePage = 0;<?php }?>
+             <?php if ($current_controller != "experience") { ?>var IsExpriencePage = 1;<?php }?>
+         var BaseURL = '<?php echo base_url();?>';
+         var baseURL = '<?php echo base_url();?>';
+      </script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="<?php echo $meta_title; ?>"/>
+      <meta name="keywords" content="<?php echo $meta_keyword; ?>"/>
+      <meta name="description" content="<?php echo $meta_description; ?>"/>
+      <meta name="robots" content="noindex,nofollow" />
+      <link rel="shortcut icon" type="image/x-icon"
+         href="<?= base_url(); ?>images/logo/<?php echo $this->config->item('fevicon_image'); ?>">
+      <!-- <link href="https://fonts.googleapis.com/css?family=Mukta+Malar:300,400,500" rel="stylesheet"> -->
+      <link rel="stylesheet" href="<?php echo base_url(); ?>css/font-muktamalar.css">
+      <link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap3.3.7.min.css">
+      <!-- Owl Stylesheets -->
+      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.carousel.min.css">
+      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.theme.default.min.css">
+      <?php if($_SESSION['language_code'] == 'ar'){ ?>
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style-arabic.css">
+   <?php } else { ?>
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+   <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/dashboard.css"> -->
+   <?php } ?>
+
+       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+      <!-- script for image croping -->
+      <script src="<?php echo base_url(); ?>js/jquery3.2.1.min.js"></script>
+      <script src="<?php echo base_url(); ?>js/bootstrap3.3.7.min.js"></script>
+      <!-- Owl javascript -->
+      <script src="<?php echo base_url(); ?>assets/owlcarousel/owl.carousel.js"></script>
+      <!-- Location Autocomplete API -->
+      <script
+         src="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http'; ?>://maps.googleapis.com/maps/api/js?key=<?php echo $this->config->item('google_developer_key'); ?>&libraries=places&dummy=.js"></script>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="<?php echo base_url(); ?>css/font-awesome.min.css">
+      <!-- Custom Jquery -->
+      <script src="<?php echo base_url(); ?>js/customJs.js"></script>
+      <link rel="stylesheet" href="<?php echo base_url(); ?>css/google-font.css">
+	     
+      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/intlTelInput.css">
+	  
+	   <style type="text/css">
         .signUpIn .faceBook{
         padding: 11px !important;
             background: #3b65c3 !important;
@@ -184,82 +261,6 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
   }
 }
     </style>
-      <?php
-
-
-         /*Setting current url page if user not logged in*/
-         if ($this->session->fc_session_user_id == "") {
-             $current_url = uri_string();
-             $this->session->set_userdata(array('current_page_url' => $current_url));
-         }
-         /*Close*/
-         if ($this->config->item('google_verification')) {
-             echo stripslashes($this->config->item('google_verification'));
-         }
-         if ($this->lang->line('list_your') != '') {
-             $listSpace = stripslashes($this->lang->line('list_your'));
-         } else $listSpace = "RENT A PROPERTY";
-         if ($this->lang->line('create_experience') != '') {
-             $listExprience = stripslashes($this->lang->line('create_experience'));
-         } else $listExprience = "Create Experience";
-         if ($heading == '') {
-             ?>
-      <title>
-         <?php echo $meta_title; ?>
-      </title>
-      <?php
-         } else {
-             ?>
-      <title>
-         <?php echo $heading; ?>
-      </title>
-      <?php }
-         ?>
-      <script type="text/javascript">
-         var IsHomePage = 1;
-         var IsExpriencePage = 0;
-             <?php if ($this->uri->segment(1) != "") { ?>var IsHomePage = 0;<?php }?>
-             <?php if ($current_controller != "experience") { ?>var IsExpriencePage = 1;<?php }?>
-         var BaseURL = '<?php echo base_url();?>';
-         var baseURL = '<?php echo base_url();?>';
-      </script>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="<?php echo $meta_title; ?>"/>
-      <meta name="keywords" content="<?php echo $meta_keyword; ?>"/>
-      <meta name="description" content="<?php echo $meta_description; ?>"/>
-      <meta name="robots" content="noindex,nofollow" />
-      <link rel="shortcut icon" type="image/x-icon"
-         href="<?= base_url(); ?>images/logo/<?php echo $this->config->item('fevicon_image'); ?>">
-      <!-- <link href="https://fonts.googleapis.com/css?family=Mukta+Malar:300,400,500" rel="stylesheet"> -->
-      <link rel="stylesheet" href="<?php echo base_url(); ?>css/font-muktamalar.css">
-      <link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap3.3.7.min.css">
-      <!-- Owl Stylesheets -->
-      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.carousel.min.css">
-      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.theme.default.min.css">
-      <?php if($_SESSION['language_code'] == 'ar'){ ?>
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style-arabic.css">
-   <?php } else { ?>
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-   <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/dashboard.css"> -->
-   <?php } ?>
-
-       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet">
-       <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-      <!-- script for image croping -->
-      <script src="<?php echo base_url(); ?>js/jquery3.2.1.min.js"></script>
-      <script src="<?php echo base_url(); ?>js/bootstrap3.3.7.min.js"></script>
-      <!-- Owl javascript -->
-      <script src="<?php echo base_url(); ?>assets/owlcarousel/owl.carousel.js"></script>
-      <!-- Location Autocomplete API -->
-      <script
-         src="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http'; ?>://maps.googleapis.com/maps/api/js?key=<?php echo $this->config->item('google_developer_key'); ?>&libraries=places&dummy=.js"></script>
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="<?php echo base_url(); ?>css/font-awesome.min.css">
-      <!-- Custom Jquery -->
-      <script src="<?php echo base_url(); ?>js/customJs.js"></script>
-      <link rel="stylesheet" href="<?php echo base_url(); ?>css/google-font.css">
-	     
-      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/intlTelInput.css">
        <style type="text/css">
            /*body{font-family: Roboto !important;}*/
            body{font-family: 'Montserrat', sans-serif !important;}

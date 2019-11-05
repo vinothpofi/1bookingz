@@ -1144,7 +1144,7 @@ class Seller extends MY_Controller
 			$status = ($mode == '0') ? 'No' : 'Yes';
 			$newdata = array('is_verified' => $status);
 			$condition = array('id' => $user_id);
-			//$this->seller_model->update_details(USERS, $newdata, $condition);
+			$this->seller_model->update_details(USERS, $newdata, $condition);
 			
 			/* Mail function */
 			if($status == 'Yes'){

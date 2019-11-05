@@ -414,6 +414,40 @@ class Rentals extends MY_Controller
 								$rent_image = @implode(',', $images);
 							}
 						}
+						
+						/*Description*/
+						$desc_length = strlen($rentals->description);
+						if($desc_length > 100){
+							$pro_description = character_limiter($rentals->description,100);
+						}else{
+							$pro_description =  strip_tags($rentals->description);
+						}
+						
+						$userDetails_r = $this->user_model->get_all_details(USERS, ['id'=>$this->checkLogin('U')]);
+						$userDetails_group = $userDetails_r->row()->group;
+				
+						$location_card = '';	
+						$list_type_value = $this->product_model->get_listing_child(); 
+						$finalsListing = json_decode($rentals->listings);
+						foreach ($finalsListing as $listingResult => $FinalValues) {
+							$resultArr[$listingResult] = $FinalValues;		 
+						} 
+								
+						if($list_type_value->num_rows() > 0){
+						foreach($list_type_value->result() as $list_val){
+							if($resultArr[$list_val->list_id] != ''){ 
+							$list_child_value = $this->product_model->get_all_details(LISTING_CHILD, array('id' => $resultArr[$list_val->list_id]));
+											
+							if($list_val->type == 'option'){ 
+								 $location_card .= '<span class='.$list_val->name.'>'.stripslashes(ucfirst($list_child_value->row()->child_name)).'</span>';
+							} elseif($list_val->type == 'text') { 
+								 $location_card .= '<span class='.$list_val->name.'>'.stripslashes(ucfirst($resultArr[$list_val->list_id])).'</span>';
+							} }else{ 
+								 $location_card .= '<span class='.$list_val->name.'>0</span>';
+							 }
+						  }
+						}
+				
 						$res_data[$i][0] = ucfirst($rentals->product_title);
 						$res_data[$i][1] = $rentals->latitude;
 						$res_data[$i][2] = $rentals->longitude;
@@ -439,6 +473,9 @@ class Rentals extends MY_Controller
 								$res_data[$i][11] = 'dnn';
 							}
 						$res_data[$i][12] = $rentals->instant_pay;
+						$res_data[$i][13] = $pro_description;
+						$res_data[$i][14] = $userDetails_group;
+						$res_data[$i][15] = $location_card;
 						$i++;
 					}
 				}

@@ -1,3 +1,12 @@
+<?php
+$this->load->view('site/includes/header');
+$currency_result = $this->session->userdata('currency_result');
+$product = $productDetails->row();
+$browser = $_SERVER['HTTP_USER_AGENT'];
+$name_browser = 'Chrome';
+?>
+
+
 <link rel="shortcut icon" type="image/x-icon"
          href="<?= base_url(); ?>images/logo/<?php echo $this->config->item('fevicon_image'); ?>">
 <style type="text/css">
@@ -40,13 +49,7 @@ body {padding-top: 0px;}
 </style>
 
 <div class="loader"></div>
-<?php
-$this->load->view('site/includes/header');
-$currency_result = $this->session->userdata('currency_result');
-$product = $productDetails->row();
-$browser = $_SERVER['HTTP_USER_AGENT'];
-$name_browser = 'Chrome';
-?>
+
 <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
 .loader {
