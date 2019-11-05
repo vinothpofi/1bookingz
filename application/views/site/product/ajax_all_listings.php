@@ -104,11 +104,11 @@
                                             } else echo "per night"; ?></span>
                                             </div>
                                             <div class="bottom-text">
-												<?php $desc_length = strlen($product_image['description']);
+												<?php $desc_length = strlen($CityRowss->description);
 												if($desc_length > 100){
-													$pro_description = character_limiter($product_image['description'],100);
+													$pro_description = character_limiter($CityRowss->description,100);
 												}else{
-													$pro_description =  strip_tags($product_image['description']);
+													$pro_description =  strip_tags($CityRowss->description);
 												} ?>
 												
                                                 <p>
@@ -117,7 +117,7 @@
 											</div>
                                             <div class="bottom-icons">
 											<?php $list_type_value = $this->product_model->get_listing_child(); 
-												$finalsListing = json_decode($product_image['listings']);
+												$finalsListing = json_decode($CityRowss->listings);
 												foreach ($finalsListing as $listingResult => $FinalValues) {
 													$resultArr[$listingResult] = $FinalValues;		 
 												} 
