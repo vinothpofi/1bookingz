@@ -118,7 +118,7 @@ form[name="search_properties"] #mic_pic_list{ position: absolute; top: 10px; rig
 .bottom .price span.number_s {font-size: 16px !important;letter-spacing: 1.5px;color: #cc0000; font-weight: 600; }
 .bottom .price span {font-size: 12px !important;} 
 .bottom .clear {margin-bottom: 0px; padding:10px 0; line-height: 1.9;min-height: 20px; border-top: 1px dashed #ccc; display: none; }
-.bottom .bottom-text{ margin: 10px 0 15px; }
+.bottom .bottom-text{ margin: 10px 0 15px; height: 54px; }
 .bottom .bottom-text p{ font-size: 13px; }
 .bottom .bottom-icons{ margin: 0 0px; height: 26px; padding-top: 10px; border-top: 1px dashed #ccc; }
 .bottom .bottom-icons span:before{ margin-right: 4px; font-weight: 100; }
@@ -274,6 +274,7 @@ p#ajax-load{ width:100%; text-align: center; margin: 20px 0; font-size: 16px; }
 .list-view-listing .card-section{ float: left; }
 .list-view-listing .owl-carousel{ float: left; width: 30%; }
 .list-view-listing .bottom{ float: right; width: 70%; margin-top: 20px; }
+.list-view-listing .bottom .bottom-text{ height: auto; }
 .sliderInMap.list-view-listing .owl-carousel{ width: 100%; }
 .sliderInMap.list-view-listing .bottom{ margin-top: 0; width: 100%; }
 

@@ -41,7 +41,7 @@
 
 				<div class="row listings card-section-bg">
 				<?php foreach ($CityName[$city_name] as $CityRowss) { ?>
-						<div class="col-sm-4 col-md-3">
+						<div class="col-sm-4 col-md-4">
                             <div class="card-section">
 							<div class="owl-carousel show">
 								<div class="item">
