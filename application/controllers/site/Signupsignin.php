@@ -152,13 +152,14 @@ class Signupsignin extends MY_Controller
 						} else {
 							$message = "Once an administrator approves it you can login!";
 						}
+						$this->setErrorMessage('success', $message);
+				
 					}
 					
 					if ($this->lang->line('succ_created') != '') {
 						$succ_created= stripslashes($this->lang->line('succ_created'));
 				    } else $succ_created= "Successfully Account Created"; 
-					$this->setErrorMessage('error', $message);
-				
+					
                     echo "Success::$succ_created";
                 }
 

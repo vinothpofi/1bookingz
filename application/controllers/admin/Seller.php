@@ -1144,8 +1144,48 @@ class Seller extends MY_Controller
 			$status = ($mode == '0') ? 'No' : 'Yes';
 			$newdata = array('is_verified' => $status);
 			$condition = array('id' => $user_id);
-			$this->seller_model->update_details(USERS, $newdata, $condition);
-			$this->setErrorMessage('success', 'Host Verification Changed Successfully');
+			//$this->seller_model->update_details(USERS, $newdata, $condition);
+			
+			/* Mail function */
+			if($status == 'Yes'){
+				$newsid = '73';
+				$template_values = $this->product_model->get_newsletter_template_details($newsid);
+				if ($template_values['sender_name'] == '' && $template_values['sender_email'] == '') {
+					$sender_email = $this->data['siteContactMail'];
+					$sender_name = $this->data['siteTitle'];
+				} else {
+					$sender_name = $template_values['sender_name'];
+					$sender_email = $template_values['sender_email'];
+				}
+				$condition = array(
+					'id' => $user_id
+				);
+				$usrDetails = $this->user_model->get_all_details(USERS, $condition);
+				$uid = $usrDetails->row()->id;
+				$username = $usrDetails->row()->user_name;
+				$email = $usrDetails->row()->email;
+				$email_values = array(
+					'from_mail_id' => $sender_email,
+					'to_mail_id' => $email,
+					'subject_message' => $template_values ['news_subject'],
+					'body_messages' => $message
+				);
+				$reg = array('hostname' => $username,'logo' => $this->data['logo']);
+				$message = $this->load->view('newsletter/Admin - Account verified' . $newsid . '.php', $reg, TRUE);
+				$this->load->library('email');
+				$this->email->from($email_values['from_mail_id'], $sender_name);
+				$this->email->to($email_values['to_mail_id']);
+				$this->email->subject($email_values['subject_message']);
+				$this->email->set_mailtype("html");
+				$this->email->message($message);
+				if ($this->email->send()) {
+					echo "Success";
+				} else {
+					echo $this->email->print_debugger();
+				}
+			}
+					
+			$this->setErrorMessage('success', 'Host Status Changed Successfully');
 			redirect('admin/seller/display_seller_list');
 		}
 	}
