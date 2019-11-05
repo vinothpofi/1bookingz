@@ -127,33 +127,36 @@ class Signupsignin extends MY_Controller
                 /*Set Session Variable*/
                 $usrDetails = $this->user_model->get_all_details(USERS, $condition);
                 if ($usrDetails->num_rows() == '1') {
-                    /* $userdata = array(
-                        'fc_session_user_id' => $usrDetails->row()->id,
-                        'fc_session_user_login_type' => 'normal',
-                        'session_user_email' => $usrDetails->row()->email,
-                        'normal_login' => normal
-                    );
-                    $this->session->set_userdata($userdata);
-                    $datestring = "%Y-%m-%d %h:%i:%s";
-                    $time = time();
-                    $newdata = array(
-                        'last_login_date' => mdate($datestring, $time),
-                        'last_login_ip' => $this->input->ip_address()
-                    );
-                    $condition = array(
-                        'id' => $usrDetails->row()->id
-                    );
-                    $this->user_model->update_details(USERS, $newdata, $condition); */
+					if($usrDetails->row()->group == 'User'){
+						 $userdata = array(
+							'fc_session_user_id' => $usrDetails->row()->id,
+							'fc_session_user_login_type' => 'normal',
+							'session_user_email' => $usrDetails->row()->email,
+							'normal_login' => normal
+						);
+						$this->session->set_userdata($userdata);
+						$datestring = "%Y-%m-%d %h:%i:%s";
+						$time = time();
+						$newdata = array(
+							'last_login_date' => mdate($datestring, $time),
+							'last_login_ip' => $this->input->ip_address()
+						);
+						$condition = array(
+							'id' => $usrDetails->row()->id
+						);
+						$this->user_model->update_details(USERS, $newdata, $condition); 
+					}else if($usrDetails->row()->group == 'Seller'){
 
-					if ($this->lang->line('succ_created') != '') {
-                        $succ_created= stripslashes($this->lang->line('succ_created'));
-                     } else $succ_created= "Successfully Account Created"; 
-					
-					if ($this->lang->line('once_admin_approve_you_login') != '') {
+						if ($this->lang->line('once_admin_approve_you_login') != '') {
 						$message = stripslashes($this->lang->line('once_admin_approve_you_login'));
-					} else {
-						$message = "Once an administrator approves it you can login!";
+						} else {
+							$message = "Once an administrator approves it you can login!";
+						}
 					}
+					
+					if ($this->lang->line('succ_created') != '') {
+						$succ_created= stripslashes($this->lang->line('succ_created'));
+				    } else $succ_created= "Successfully Account Created"; 
 					$this->setErrorMessage('error', $message);
 				
                     echo "Success::$succ_created";
@@ -264,7 +267,7 @@ class Signupsignin extends MY_Controller
                 echo 'Error::Your Account Was Canceled. Please Contact Admin.';exit;
             }
                 
-            }else if($isUserFound->row()->is_verified == 'No'){
+            }else if($isUserFound->row()->group == 'Seller' && $isUserFound->row()->is_verified == 'No'){
 				 echo 'Error::Your Account Was Not Verified. Please Contact Admin.';exit;
 
 			} else {
@@ -444,27 +447,31 @@ class Signupsignin extends MY_Controller
                 );
                 $usrDetails = $this->user_model->get_all_details(USERS, $condition);
                 if ($usrDetails->num_rows() == '1') {
-                    /* $userdata = array(
-                        'fc_session_user_id' => $usrDetails->row()->id,
-                        'session_user_email' => $usrDetails->row()->email,
-                        'fc_session_user_login_type' => 'google'
-                    );
-                    $this->session->set_userdata($userdata);
-                    $datestring = "%Y-%m-%d %h:%i:%s";
-                    $time = time();
-                    $newdata = array(
-                        'last_login_date' => mdate($datestring, $time),
-                        'last_login_ip' => $this->input->ip_address()
-                    );
-                    $condition = array(
-                        'id' => $usrDetails->row()->id
-                    );
-                    $this->user_model->update_details(USERS, $newdata, $condition); */
 					
-					if ($this->lang->line('once_admin_approve_you_login') != '') {
-						$message = stripslashes($this->lang->line('once_admin_approve_you_login'));
-					} else {
-						$message = "Once an administrator approves it you can login!";
+					/***FOR GUEST***/
+					if($usrDetails->row()->group == 'User'){
+						$userdata = array(
+							'fc_session_user_id' => $usrDetails->row()->id,
+							'session_user_email' => $usrDetails->row()->email,
+							'fc_session_user_login_type' => 'google'
+						);
+						$this->session->set_userdata($userdata);
+						$datestring = "%Y-%m-%d %h:%i:%s";
+						$time = time();
+						$newdata = array(
+							'last_login_date' => mdate($datestring, $time),
+							'last_login_ip' => $this->input->ip_address()
+						);
+						$condition = array(
+							'id' => $usrDetails->row()->id
+						);
+						$this->user_model->update_details(USERS, $newdata, $condition); 
+					}else if($usrDetails->row()->group == 'Seller'){
+						if ($this->lang->line('once_admin_approve_you_login') != '') {
+							$message = stripslashes($this->lang->line('once_admin_approve_you_login'));
+						} else {
+							$message = "Once an administrator approves it you can login!";
+						}
 					}
 					$this->setErrorMessage('success', $message);
 					
