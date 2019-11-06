@@ -1142,7 +1142,7 @@ class Seller extends MY_Controller
 			$mode = $this->uri->segment(4, 0);
 			$user_id = $this->uri->segment(5, 0);
 			$status = ($mode == '0') ? 'No' : 'Yes';
-			$newdata = array('is_verified' => $status,'id_verified'=>'Yes');
+			$newdata = array('is_verified' => $status,'id_verified'=>$status);
 			$condition = array('id' => $user_id);
 			$this->seller_model->update_details(USERS, $newdata, $condition);
 			
