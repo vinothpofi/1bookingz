@@ -41,6 +41,7 @@ if ($this->lang->line('NotVerified') != '') {
 				</ul>
 			</div>
 			<div class="width80">
+			<?php if (!empty($userDetails)){ if($userDetails->row()->group == 'User'){ ?>
 				<div class="panel panel-default">
 					<div class="panel-heading"><?php if ($this->lang->line('VerifyyourID') != '') {
 							echo stripslashes($this->lang->line('VerifyyourID'));
@@ -73,6 +74,8 @@ if ($this->lang->line('NotVerified') != '') {
 						</div>
 					</div>
 				</div>
+			<?php } } ?>
+				
 				<div class="panel panel-default" >
 					<div class="panel-heading"><?php if ($this->lang->line('Verifications') != '') {
 							echo stripslashes($this->lang->line('Verifications'));
@@ -93,19 +96,22 @@ if ($this->lang->line('NotVerified') != '') {
 							<img src="<?php echo base_url(); ?>images/<?php echo $eVImage; ?>"
 								 width="25"> <?php echo $eV; ?>
 						</div>
-						<p><?php if ($this->lang->line('PhoneNumberVerification') != '') {
-								echo stripslashes($this->lang->line('PhoneNumberVerification'));
-							} else echo "Email Phone Number Verification"; ?></p>
-						<div class="marginBottom3">
-							<img src="<?php echo base_url(); ?>images/<?php echo $pVImage; ?>"
-								 width="25"> <?php echo $pV; ?>
-						</div>
+						
+						<?php if (!empty($userDetails)){ if($userDetails->row()->group == 'User'){ ?>
+							<p><?php if ($this->lang->line('PhoneNumberVerification') != '') {
+									echo stripslashes($this->lang->line('PhoneNumberVerification'));
+								} else echo "Email Phone Number Verification"; ?></p>
+							<div class="marginBottom3">
+								<img src="<?php echo base_url(); ?>images/<?php echo $pVImage; ?>"
+									 width="25"> <?php echo $pV; ?>
+							</div>
+						<?php } } ?>
+						
 					</div>
 				</div>
+				
+				<?php if (!empty($userDetails)){ if($userDetails->row()->group == 'User'){ ?>
 				<div class="panel panel-default">
-
-
-
 
 					<div class="panel-heading"><?php if ($this->lang->line('PhoneNumberVerification') != '') {
 								echo stripslashes($this->lang->line('PhoneNumberVerification'));
@@ -178,27 +184,29 @@ if ($this->lang->line('NotVerified') != '') {
 					</div>
 				</div>
 
-				    	<div class="phone-number-verify-widget verification_div phoneVer col-sm-12" style="margin: 12px 12px;display: none;">
-						    <p class="message message_sent"></p>
+				<div class="phone-number-verify-widget verification_div phoneVer col-sm-12" style="margin: 12px 12px;display: none;">
+					<p class="message message_sent"></p>
 
-						    <label class="col-sm-12" for="phone_number_verification">Please enter the 6-digit code:</label>
-						    <div class="col-sm-12">
-						    <div class="col-sm-4">
-						    <input type="text" id="mobile_verification_code" class="num">
+					<label class="col-sm-12" for="phone_number_verification">Please enter the 6-digit code:</label>
+					<div class="col-sm-12">
+					<div class="col-sm-4">
+						<input type="text" id="mobile_verification_code" class="num">
+					</div>
+					 <div class="col-sm-4">
+						 <a href="javascript:void(0);" style="margin: 0 ;" class="submitBtn1" onclick="check_phpone_verification()" rel="verify">
+							<?php if($this->lang->line('Verify') != '') { echo stripslashes($this->lang->line('Verify')); } else echo "Verify";?>
+						  </a>
+					  </div> <div class="col-sm-4">
+						  <a style="margin: 0 ;" href="javascript:void(0);" class="submitBtn1" onclick="cancel_verification();">
+							<?php if($this->lang->line('Cancel') != '') { echo stripslashes($this->lang->line('Cancel')); } else echo "Cancel";?>
+						  </a>
 						</div>
-						 <div class="col-sm-4">
-						     <a href="javascript:void(0);" style="margin: 0 ;" class="submitBtn1" onclick="check_phpone_verification()" rel="verify">
-						        <?php if($this->lang->line('Verify') != '') { echo stripslashes($this->lang->line('Verify')); } else echo "Verify";?>
-						      </a>
-						  </div> <div class="col-sm-4">
-						      <a style="margin: 0 ;" href="javascript:void(0);" class="submitBtn1" onclick="cancel_verification();">
-						        <?php if($this->lang->line('Cancel') != '') { echo stripslashes($this->lang->line('Cancel')); } else echo "Cancel";?>
-						      </a>
-						    </div>
-						    
-						</div>
-						<p class="arrive"><?php if($this->lang->line('arrival_text') != '') { echo stripslashes($this->lang->line('arrival_text')); } else echo "If it doesn't arrive, click cancel and try call verification instead.";?></p>
-						</div>
+						
+					</div>
+					<p class="arrive"><?php if($this->lang->line('arrival_text') != '') { echo stripslashes($this->lang->line('arrival_text')); } else echo "If it doesn't arrive, click cancel and try call verification instead.";?></p>
+				</div>
+				<?php } } ?>	
+					
 					
 				<div class="panel panel-default" id="verification_list">
 					<div class="panel-heading"><?php if ($this->lang->line('License_Reg_verification') != '') {
@@ -222,18 +230,14 @@ if ($this->lang->line('NotVerified') != '') {
 								<h3 class="bold-verify"><?php if ($this->lang->line('upload_your_documents') != '') {
 										echo stripslashes($this->lang->line('upload_your_documents'));
 									} else echo "Upload your Documents"; ?>
-									(<?php if ($this->lang->line('goverment_id') != '') {
-										echo stripslashes($this->lang->line('goverment_id'));
-									} else echo "Goverment Id"; ?>)</h3>
-								<div class="passport-verification"><?php if ($this->lang->line('upload_proof') != '') {
-										echo stripslashes($this->lang->line('upload_proof'));
-									} else echo "Upload the picture of your official id such as Passport or Voter ID"; ?></div>
+									</h3>
+								<div class="passport-verification"></div>
 							</div>
 							<p class="msgverif"><?php echo $msg; ?></p>
 							<p id='checkedValue'></p>
 							<form action="<?= base_url(); ?>site/user/upload_id_proof" method="POST" id='form_id'
                                   enctype="multipart/form-data" accept-charset="UTF-8">
-								<ul id="listoption" <?php if ($proofDetails->row()->decline_status == 'Yes') {
+								<ul id="listoption" style="display:none;" <?php if ($proofDetails->row()->decline_status == 'Yes') {
 									'style="display:block;"';
 								} else if ($proofDetails->row()->id_proof_status == 'UnVerified' || $proofDetails->row()->id_proof_status == 'OnRequest' || $proofDetails->row()->id_proof_status == 'Verified') {
 									echo 'style="display:none;"';
@@ -322,9 +326,9 @@ if ($this->lang->line('NotVerified') != '') {
 									<th width="5%"><?php if ($this->lang->line('S.No') != '') {
 											echo stripslashes($this->lang->line('S.No'));
 										} else echo "S.No"; ?></th>
-									<th width="50%"><?php if ($this->lang->line('proof_name') != '') {
+									<?php /* <th width="50%"><?php if ($this->lang->line('proof_name') != '') {
 											echo stripslashes($this->lang->line('proof_name'));
-										} else echo "Proof Name"; ?></th>
+										} else echo "Proof Name"; ?></th> */ ?>
 									<th width="25%"><?php if ($this->lang->line('file') != '') {
 											echo stripslashes($this->lang->line('file'));
 										} else echo "File"; ?></th>
@@ -358,7 +362,7 @@ if ($this->lang->line('NotVerified') != '') {
 									?>
 									<tr>
 										<td><?= $i; ?></td>
-										<td><?= $proof_title; ?></td>
+										<!--<td><?= $proof_title; ?></td>-->
 										<td>
 											<?php
 											if (in_array($file_ext, $img_type)) {
@@ -370,13 +374,13 @@ if ($this->lang->line('NotVerified') != '') {
 												?><a href='<?php echo ID_PROOF_PATH . $proof->proof_file; ?>'
 													 target='_blank'>
 												<img width="50" src="<?= base_url(); ?>images/document.png"
-													 width='100'/> </a>
+													 /> </a>
 												<?php
 											} elseif ($file_ext == $pdf_type) {
 												?><a href='<?php echo ID_PROOF_PATH . $proof->proof_file; ?>'
 													 target='_blank'>
 												<img width="50" src="<?= base_url(); ?>images/document.png"
-													 width='100'/> </a>
+													 /> </a>
 												<?php
 											}
 											?>

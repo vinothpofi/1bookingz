@@ -125,7 +125,7 @@ $lang['Depature_Date']='Depature Date';
 
 $lang['Please_enter_some_message_to_send']='Please enter some message to send'; 
 
-$lang['No verifications yet,To get verify']='No verifications yet,To get verify'; 
+$lang['No verifications yet,To get verify']='No verifications yet'; 
 
 $lang['Phone_Number_Should_be_Valid']='Phone Number Should be Valid'; 
 
@@ -543,7 +543,7 @@ $lang['where_did_your_schooling']='Where did your schooling';
 
 $lang['your_working_place']='Your working place'; 
 
-$lang['err_user_profile_picture']='Image Should be JPEG,JPG,PNG and below 272*272px'; 
+$lang['err_user_profile_picture']='Image Should be JPEG,JPG,PNG'; 
 
 $lang['upload_your_documents']='Upload your Documents'; 
 

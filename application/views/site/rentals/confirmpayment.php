@@ -393,7 +393,7 @@ $creditCard_payment = $creditcard['status'];
                             </div>
 							
 							
-							<div class="panel panel-default" id="wallet_id">
+							<div class="panel panel-default" id="wallet_id" style="display:none;">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" class="collapsed" aria-expanded="false">

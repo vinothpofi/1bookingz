@@ -53,8 +53,9 @@ $tot_dispute_count_is = $dispute_count->num_rows() + $cancel_count->num_rows();
                         echo stripslashes($this->lang->line('Profile'));
                     } else echo "Profile"; ?> </a></li>
             <?php $accountLinks = array('account-payout', 'account-trans', 'account-security', 'account-setting', 'your-wallet'); ?>
-            <li>
-                <a href="<?php echo base_url(); ?>account-payout" <?php if (in_array($this->uri->segment(1), $accountLinks)) { ?> class="active" <?php } ?>><?php if ($this->lang->line('Account') != '') {
+			<?php $account_url = ''; if($userDetails->row()->group == 'User'){ $account_url = 'account-trans'; }else if($userDetails->row()->group == 'Seller'){ $account_url = 'account-payout'; } ?>
+			<li>
+                <a href="<?php echo base_url().$account_url; ?>" <?php if (in_array($this->uri->segment(1), $accountLinks)) { ?> class="active" <?php } ?>><?php if ($this->lang->line('Account') != '') {
                         echo stripslashes($this->lang->line('Account'));
                     } else echo "Account"; ?></a></li>
             <!--<li>

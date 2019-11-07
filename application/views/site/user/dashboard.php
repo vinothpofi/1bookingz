@@ -50,14 +50,16 @@ $currency_result = $this->session->userdata('currency_result');
 										echo stripslashes($this->lang->line('Alerts'));
 									} else echo "Alerts"; ?></div>
 								<div class="panel-body">
-									<?php if ($userDetails->row()->accno == '' AND $userDetails->row()->accname == '' AND $userDetails->row()->bankname == '') {
+									
+									<?php if ($userDetails->row()->group == 'Seller' AND $userDetails->row()->accno == '' AND $userDetails->row()->accname == '' AND $userDetails->row()->bankname == '') {
 										if ($this->lang->line('Pleasetellus') != '') {
 											$anchorText = stripslashes($this->lang->line('Pleasetellus'));
 										} else $anchorText = "Please tell us how to pay you.";
 										echo anchor('account-payout', $anchorText, array());
 									}
+									
 									if ($userDetails->row()->id_verified == 'No') { ?>
-										<div class="divider"></div>
+										
 										<?php if ($this->lang->line('Pleaseconfirm') != '') {
 											echo stripslashes($this->lang->line('Pleaseconfirm'));
 										} else echo "Please confirm your email address by clicking on the link we just emailed you. If you cannot find the email, you can";
@@ -119,7 +121,7 @@ $currency_result = $this->session->userdata('currency_result');
 										if ($this->lang->line('Pleaseverifyyour') != '') {
 											echo stripslashes($this->lang->line('Pleaseverifyyour'));
 										} else echo "Please verify your email address by clicking the link in the message we just sent to:";
-										echo $userDetails->row()->email;
+										echo '&nbsp;'.$userDetails->row()->email.'&nbsp;';
 										if ($this->lang->line('Cantfind') != '') {
 											echo stripslashes($this->lang->line('Cantfind'));
 										} else echo "Can’t find our message? Check your spam folder or resend the confirmation email.";
@@ -134,7 +136,7 @@ $currency_result = $this->session->userdata('currency_result');
 									if ($this->lang->line('No verifications yet,To get verify') != '') {
 										$NoVerified = stripslashes($this->lang->line('No verifications yet,To get verify'));
 									} else {
-										$NoVerified = "No verifications yet,To get verify";
+										$NoVerified = "No verifications yet";
 									}
 									if ($userDetails->row()->id_verified == 'No') {
 										?>

@@ -60,9 +60,10 @@ $currency_result = $this->session->userdata('currency_result');
                                     echo stripslashes($this->lang->line('note'));
                                 } else echo "Note"; ?> : </b><?php if ($this->lang->line('img_type_should') != '') {
                                     echo stripslashes($this->lang->line('img_type_should'));
-                                } else echo "Image type should"; ?> jpg, jpeg, Png  <?php if ($this->lang->line('img_dimension') != '') {
+                                } else echo "Image type should"; ?> jpg, jpeg, Png  
+								<?php /* if ($this->lang->line('img_dimension') != '') {
                                     echo stripslashes($this->lang->line('img_dimension'));
-                                } else echo "And Image dimensions should"; ?> 272*272px.</p>
+                                } else echo "And Image dimensions should"; 272*272px. */ ?> </p>
 								
 								
 								

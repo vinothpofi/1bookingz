@@ -207,10 +207,10 @@
                         'dob_date' => $this->input->post('dob_date'),
                         'dob_year' => $this->input->post('dob_year'),
                         'paypal_email' => $this->input->post('paypal_email'),
-                        's_city' => $this->input->post('s_city'),
+                        'address' => $this->input->post('s_address'),
                         'description' => $this->input->post('description'),
-                        'school' => $this->input->post('school'),
-                        'work' => $this->input->post('work'),
+                        /* 'school' => $this->input->post('school'),
+                        'work' => $this->input->post('work'), */
                         'business_name' => $this->input->post('business_name'),
                         'description' => $this->input->post('business_desc'),
                         'license_number' => $this->input->post('license_no'),
@@ -218,7 +218,7 @@
                         'birthday' => $birthday,
                         'timezone' => $this->input->post('timezone')
                         );
-//                    print_r($updateArr);
+
                     $condition = array('id' => $this->checkLogin('U'));
                     $this->db->set($updateArr)->where($condition)->update(USERS);
                 }

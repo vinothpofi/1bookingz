@@ -3410,7 +3410,8 @@ class User extends MY_Controller
         if ($this->checkLogin('U') == '') {
             redirect(base_url() . 'login');
         } else {
-            $proof_option = $this->input->post('option');
+            //$proof_option = $this->input->post('option');
+            $proof_option = '';
 
             $proof_status = 'P';
                 if(count($_FILES['proof_file']['name'])>0) {
@@ -3635,7 +3636,7 @@ class User extends MY_Controller
         $this->setErrorMessage('success', $message);
     }
 
-    public function change_profile_photo()
+    public function change_profile_photo_hide()
     {
 		//echo '<pre>'.$this->session->userdata('currency_type'); exit;
          
@@ -3694,6 +3695,146 @@ class User extends MY_Controller
         }
         $this->load->view('site/user/photo_video', $this->data);
     }
+	
+	
+	public function getExtension($str)
+	{
+		 $i = strrpos($str,".");
+		 if (!$i) { return ""; }
+		 $l = strlen($str) - $i;
+		 $ext = substr($str,$i+1,$l);
+		 return $ext;
+	}
+	
+	public function change_profile_photo()
+    {
+		//echo '<pre>'.$this->session->userdata('currency_type'); exit;
+        $this->data['heading'] = 'Upload your profile picture1';
+        $this->data['errors'] = '';
+        $this->data['success'] = '';
+       /*  if ($_POST) {
+            $config ['overwrite'] = FALSE;
+            $config ['encrypt_name'] = TRUE;
+            $config ['allowed_types'] = 'jpg|jpeg|gif|png';
+            $config ['max_size'] = 2000000;
+            $config ['max_width'] = '272';
+            $config ['max_height'] = '272';
+            $config ['upload_path'] = './images/users';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('upload-file')) {
+                $imgDetailsd = $this->upload->data();
+                if ($imgDetailsd['image_width'] == '272' && $imgDetailsd['image_height'] == '272') {
+                    // Compress
+                    $source_photo = './images/users/' . $imgDetailsd['file_name'] . '';
+                    $dest_photo = './images/users/' . $imgDetailsd['file_name'];
+                    $this->compress($source_photo, $dest_photo, $this->config->item('image_compress_percentage'));
+                    // End Compress
+                    $imgDetails = array('image' => $imgDetailsd ['file_name'], 'loginUserType' => 'normal');
+                    $condition = array('id' => $this->checkLogin('U'));
+                    $dataArrMrg = $imgDetails;
+                    //echo $imgDetailsd ['file_ext']; die;
+                    if ($imgDetailsd ['file_ext'] == '.jpg' || $imgDetailsd ['file_ext'] == '.jpeg' || $imgDetailsd ['file_ext'] == '.png') {
+                        $this->user_model->update_details(USERS, $dataArrMrg, $condition);
+                        if ($this->lang->line('Your Profile Picture Is Updated Successfully.') != '') {
+                            $message = stripslashes($this->lang->line('Your Profile Picture Is Updated Successfully.'));
+                        } else {
+                            $message = "Your Profile Picture Is Updated Successfully.";
+                        }
+                        $this->data['success'] = $message;
+                    } else {
+                        $this->data['errors'] = 'Enter valid image!';
+                    }
+                } else {
+                    if ($this->lang->line('err_user_profile_picture') != '') {
+                        $err_message = stripslashes($this->lang->line('err_user_profile_picture'));
+                    } else {
+                        $err_message = "Image Should be JPEG,JPG,PNG and below 272*272px";
+                    }
+                    $this->data['errors'] = $err_message;
+                }
+            } else {
+                if ($this->lang->line('err_user_profile_picture') != '') {
+                    $err_message = stripslashes($this->lang->line('err_user_profile_picture'));
+                } else {
+                    $err_message = "Image Should be JPEG,JPG,PNG and below 272*272px";
+                }
+                $this->data['errors'] = $err_message;
+            }
+        } */
+		
+		
+		/*Upload Image*/
+		if ($_POST) {
+			$image = stripslashes($_FILES['upload-file']['name']);
+			$uploadedfile = $_FILES['upload-file']['tmp_name'];
+		
+			if($image){
+				
+				$filename = stripslashes($_FILES['upload-file']['name']);
+				$extension = $this->getExtension($filename);
+				$extension = strtolower($extension);
+				$filename = time().$_FILES['upload-file']['name'].".".$extension;
+				
+				if (($extension != "jpg") && ($extension != "jpeg") && ($extension != "png")) {
+					
+					if ($this->lang->line('err_user_profile_picture') != '') {
+                        $err_message = stripslashes($this->lang->line('err_user_profile_picture'));
+                    } else {
+                        $err_message = "Image Should be JPEG,JPG,PNG";
+                    }
+					$this->data['errors'] = $err_message;
+					redirect(base_url() . 'photo-video');
+				} else {
+					$size = filesize($_FILES['upload-file']['tmp_name']);
+				}
+				
+				if ($size > 2000000) {
+					$this->data['errors'] = 'You have exceeded the size limit!';
+					redirect(base_url() . 'photo-video');
+				}
+				if ($extension == "jpg" || $extension == "jpeg") {
+					$uploadedfile = $_FILES['upload-file']['tmp_name'];
+					$src = imagecreatefromjpeg($uploadedfile);
+					
+				} else if ($extension == "png") {
+					$uploadedfile = $_FILES['upload-file']['tmp_name'];
+					$src = imagecreatefrompng($uploadedfile);
+					
+				} else {
+					$src = imagecreatefromgif($uploadedfile);
+				}
+				
+				list($width, $height) = getimagesize($uploadedfile);
+				$newwidth = 272;
+				$newheight = 272;
+				$tmp = imagecreatetruecolor($newwidth, $newheight);
+				imagecopyresampled($tmp, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+				$user_filename = "images/users/" . $filename;
+				imagejpeg($tmp, $user_filename, 100);
+				imagedestroy($src);
+				imagedestroy($tmp);	
+				
+				$imgDetails = array('image' => $filename);
+				$condition = array('id' => $this->checkLogin('U'));
+				$dataArrMrg = $imgDetails;
+				$this->user_model->update_details(USERS, $dataArrMrg, $condition);
+				if ($this->lang->line('Your Profile Picture Is Updated Successfully.') != '') {
+					$message = stripslashes($this->lang->line('Your Profile Picture Is Updated Successfully.'));
+				} else {
+					$message = "Your Profile Picture Is Updated Successfully.";
+				}
+				$this->data['success'] = $message;
+				redirect(base_url() . 'photo-video');
+			}
+			else
+			{
+				$this->data['errors'] = 'Please upload valid image!';
+			}
+			
+		}	
+        $this->load->view('site/user/photo_video', $this->data);
+    }
+
 
     /* Inbox message code added by muhammed 28-11-2014 */
     public function inbox1()

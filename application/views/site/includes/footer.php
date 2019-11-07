@@ -1095,9 +1095,8 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
                 var data = result.split("::");
                 var resp = "Success";
                 if (data[0].trim() == resp) {
-                    //var redirect_to = $('#to_url_value').val();
-                    //window.location.href = '<?= base_url(); ?>' + redirect_to;
-                    window.location.href = '<?= base_url(); ?>';
+                    var redirect_to = $('#to_url_value').val();
+                    window.location.href = '<?= base_url(); ?>' + redirect_to;
                     $("#signup_success_message").html(data[1])
                     $("#signup_error_message").html("");
                     window.location.reload();

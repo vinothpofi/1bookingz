@@ -41,7 +41,13 @@ $currency_result = $this->session->userdata('currency_result');
                 </div>
                 <div class="width80">
                     <?php echo form_open('site/user_settings/update_profile', array('class' => 'marginBottom2',"id"=>"update_profile")); ?>
-                    <div class="panel panel-default">
+					
+					<?php $group_type = ''; if (!empty($userDetails)) {
+                            $group_type = $userDetails->row()->group;
+                    } ?>
+					<input type="hidden" id="group_type" value="<?= $group_type; ?>">
+					
+					<div class="panel panel-default">
                         <div class="panel-heading"><?php if ($this->lang->line('Profile') != '') {
                                 echo stripslashes($this->lang->line('Profile'));
                             } else echo "Profile"; ?></div>
@@ -59,7 +65,12 @@ $currency_result = $this->session->userdata('currency_result');
                                     if (!empty($userDetails)) {
                                         $firstName = $userDetails->row()->firstname;
                                     }
-                                    echo form_input('firstname', $firstName, array('placeholder' => $enterfname,'id'=>'firstname'));
+									if($firstName == '' || $firstName == 'undefined'){
+										 echo form_input('firstname', $firstName, array('placeholder' => $enterfname,'id'=>'firstname'));
+									}else{
+										 echo form_input('firstname', $firstName, array('placeholder' => $enterfname,'id'=>'firstname','readonly'=>'readonly'));
+									}
+									
                                     ?>
 
                                     <small id="firstname_err" style="font-size: 12px;color: red;display: none;"></small>
@@ -78,7 +89,11 @@ $currency_result = $this->session->userdata('currency_result');
                                     if (!empty($userDetails)) {
                                         $lastname = $userDetails->row()->lastname;
                                     }
-                                    echo form_input('lastname', $lastname, array('placeholder' => $enterlname));
+									if($lastname == '' || $lastname == 'undefined'){
+										echo form_input('lastname', $lastname, array('placeholder' => $enterlname));
+									}else{
+										echo form_input('lastname', $lastname, array('placeholder' => $enterlname,'readonly'=>'readonly'));
+									}
                                     ?>
                                     <p><?php if ($this->lang->line('Thisisonlyshared') != '') {
                                             echo stripslashes($this->lang->line('Thisisonlyshared'));
@@ -242,7 +257,7 @@ $currency_result = $this->session->userdata('currency_result');
                                         $enterbusinaddr= stripslashes($this->lang->line('Enter_business_address'));
                                     } else $enterbusinaddr ='Enter Business Address';
                                     if (!empty($userDetails)) $userbusinessaddr = $userDetails->row()->business_address;
-                                    echo form_input(array('name' => 'business_address','id'=>'autocomplete_addr','type' => 'text', 'placeholder' => $enterbusinaddr, 'value' => $userbusinessaddr,'rows'=>3));
+                                    echo form_input(array('name' => 'business_address','id'=>'autocomplete_addr','type' => 'text', 'placeholder' => $enterbusinaddr, 'value' => $userbusinessaddr));
                                     ?>
 									<small id="business_address_err" style="font-size: 12px;color: red;display: none;"></small>
                                 </div>
@@ -265,21 +280,25 @@ $currency_result = $this->session->userdata('currency_result');
                                     ?>
                                 </div>
                             </div>
-                            <div class="formList" style="display:none;">
-                                <label><?php if ($this->lang->line('WhereYouLive') != '') {
-                                        echo stripslashes($this->lang->line('WhereYouLive'));
-                                    } else echo "Where You Live"; ?></label>
+							<?php if (!empty($userDetails)) if($userDetails->row()->group == 'User'){ ?>
+                            <div class="formList" style="">
+                                <label><?php if ($this->lang->line('Address') != '') {
+                                        echo stripslashes($this->lang->line('Address'));
+                                    } else echo "Address"; ?> * </label>
                                 <div class="right">
                                     <?php
-                                    $s_city = "";
-                                    if ($this->lang->line('Enter your Place') != '') {
-                                        $place= stripslashes($this->lang->line('Enter your Place'));
-                                    } else $place="Enter your Place"; 
-                                    if (!empty($userDetails)) $s_city = $userDetails->row()->s_city;
-                                    echo form_input('s_city', $s_city, array('placeholder' => $place));
+                                    $s_address = "";
+                                    if ($this->lang->line('EnterAddress') != '') {
+                                        $place= stripslashes($this->lang->line('EnterAddress'));
+                                    } else $place="Enter Address"; 
+                                    if (!empty($userDetails)) $s_address = $userDetails->row()->address;
+                                    echo form_input(array('name' =>'s_address','id'=>'autocomplete_addr','class'=>'s_address','type' => 'text', 'placeholder' => $place, 'value' => $s_address));
                                     ?>
+									<small id="address_err" style="font-size: 12px;color: red;display: none;"></small>
                                 </div>
                             </div>
+							<?php } ?>
+							
                             <div class="formList noMargin" style="display:none;">
                                 <label><?php if ($this->lang->line('DescribeYourself') != '') {
                                         echo stripslashes($this->lang->line('DescribeYourself'));
@@ -307,44 +326,8 @@ $currency_result = $this->session->userdata('currency_result');
                                         } else echo "Tell them about you: Do you have a life motto?"; ?></p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><?php if ($this->lang->line('Optional') != '') {
-                                echo stripslashes($this->lang->line('Optional'));
-                            } else echo "Optional"; ?></div>
-                        <div class="panel-body">
-                            <div class="formList">
-                                <label><?php if ($this->lang->line('School') != '') {
-                                        echo stripslashes($this->lang->line('School'));
-                                    } else echo "School"; ?></label>
-                                <div class="right">
-                                    <?php
-                                    $school = "";
-                                    if ($this->lang->line('where_did_your_schooling') != '') {
-                                        $schoolPlaceholder = stripslashes($this->lang->line('where_did_your_schooling'));
-                                    } else $schoolPlaceholder = "Where did your schooling";
-                                    if (!empty($userDetails)) $school = $userDetails->row()->school;
-                                    echo form_input('school', $school, array('placeholder' => $schoolPlaceholder,'maxLength'=>'40'));
-                                    ?>
-                                </div>
-                            </div>
-                            <div class="formList">
-                                <label><?php if ($this->lang->line('Work') != '') {
-                                        echo stripslashes($this->lang->line('Work'));
-                                    } else echo "Work"; ?></label>
-                                <div class="right">
-                                    <?php
-                                    $work = "";
-                                    if ($this->lang->line('your_working_place') != '') {
-                                        $workPlaceholder = stripslashes($this->lang->line('your_working_place'));
-                                    } else $workPlaceholder = "Your working place";
-                                    if (!empty($userDetails)) $work = $userDetails->row()->work;
-                                    echo form_input('work', $work, array('placeholder' => $workPlaceholder,'maxLength'=>'40'));
-                                    ?>
-                                </div>
-                            </div>
-                            <div class="formList">
+							
+							 <div class="formList">
                                 <label><?php if ($this->lang->line('TimeZone') != '') {
                                         echo stripslashes($this->lang->line('TimeZone'));
                                     } else echo "Time Zone"; ?> </label>
@@ -1009,6 +992,46 @@ $currency_result = $this->session->userdata('currency_result');
                                             } else echo "Add More"; ?></a></div>
                                 </div>
                             </div>
+							
+                        </div>
+                    </div>
+					
+					
+                    <div class="panel panel-default" style="display:none;">
+                        <div class="panel-heading"><?php if ($this->lang->line('Optional') != '') {
+                                echo stripslashes($this->lang->line('Optional'));
+                            } else echo "Optional"; ?></div>
+                        <div class="panel-body">
+                            <div class="formList">
+                                <label><?php if ($this->lang->line('School') != '') {
+                                        echo stripslashes($this->lang->line('School'));
+                                    } else echo "School"; ?></label>
+                                <div class="right">
+                                    <?php
+                                    $school = "";
+                                    if ($this->lang->line('where_did_your_schooling') != '') {
+                                        $schoolPlaceholder = stripslashes($this->lang->line('where_did_your_schooling'));
+                                    } else $schoolPlaceholder = "Where did your schooling";
+                                    if (!empty($userDetails)) $school = $userDetails->row()->school;
+                                    echo form_input('school', $school, array('placeholder' => $schoolPlaceholder,'maxLength'=>'40'));
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="formList">
+                                <label><?php if ($this->lang->line('Work') != '') {
+                                        echo stripslashes($this->lang->line('Work'));
+                                    } else echo "Work"; ?></label>
+                                <div class="right">
+                                    <?php
+                                    $work = "";
+                                    if ($this->lang->line('your_working_place') != '') {
+                                        $workPlaceholder = stripslashes($this->lang->line('your_working_place'));
+                                    } else $workPlaceholder = "Your working place";
+                                    if (!empty($userDetails)) $work = $userDetails->row()->work;
+                                    echo form_input('work', $work, array('placeholder' => $workPlaceholder,'maxLength'=>'40'));
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -1109,6 +1132,8 @@ $currency_result = $this->session->userdata('currency_result');
             var business_name = $("#business_name").val(); 
             var license_no = $("#license_no").val();
             var business_address = $("#autocomplete_addr").val();
+            var cus_address = $(".s_address").val();
+            var group_type = $("#group_type").val();
 			var error = true;
 			
             if(first_name == ''){
@@ -1128,45 +1153,61 @@ $currency_result = $this->session->userdata('currency_result');
                 //$('#update_profile').submit();
             }
 			
-			 if(business_name == ''){
-				$('#business_name_err').show();
-				$('#business_name_err').html('Enter Your Business Name');
-				$('html, body').animate({
-					'scrollTop' : $("#business_name_err").position().top
-				});
-				error = false;
-				//return false;
-            } else{
-                $('#business_name_err').hide();
-                $('#business_name_err').html('');
-            }
+			if(group_type == 'Seller'){
+				 if(business_name == ''){
+					$('#business_name_err').show();
+					$('#business_name_err').html('Enter Your Business Name');
+					$('html, body').animate({
+						'scrollTop' : $("#business_name_err").position().top
+					});
+					error = false;
+					//return false;
+				} else{
+					$('#business_name_err').hide();
+					$('#business_name_err').html('');
+				}
+				
+				if(license_no == ''){
+					$('#license_no_err').show();
+					$('#license_no_err').html('Enter Your License Number');
+					$('html, body').animate({
+						'scrollTop' : $("#license_no_err").position().top
+					});
+					error = false;
+					//return false;
+				} else{
+					$('#license_no_err').hide();
+					$('#license_no_err').html('');
+				}
+				
+				if(business_address == ''){
+					$('#business_address_err').show();
+					$('#business_address_err').html('Enter Your Business Address');
+					$('html, body').animate({
+						'scrollTop' : $("#business_address_err").position().top
+					});
+					error = false;
+					//return false;
+				} else{
+					$('#business_address_err').hide();
+					$('#business_address_err').html('');
+				}
+			}
 			
-			if(license_no == ''){
-				$('#license_no_err').show();
-				$('#license_no_err').html('Enter Your License Number');
-				$('html, body').animate({
-					'scrollTop' : $("#license_no_err").position().top
-				});
-				error = false;
-				//return false;
-            } else{
-                $('#license_no_err').hide();
-                $('#license_no_err').html('');
-            }
+			if(group_type == 'User'){  
+				if(cus_address == ''){ 
+					$('#address_err').show();
+					$('#address_err').html('Enter Your Address');
+					$('html, body').animate({
+						'scrollTop' : $("#address_err").position().top
+					});
+					error = false;
+				} else{
+					$('#address_err').hide();
+					$('#address_err').html('');
+				}
+			}
 			
-			if(business_address == ''){
-				$('#business_address_err').show();
-				$('#business_address_err').html('Enter Your Business Address');
-				$('html, body').animate({
-					'scrollTop' : $("#business_address_err").position().top
-				});
-				error = false;
-				//return false;
-            } else{
-                $('#business_address_err').hide();
-                $('#business_address_err').html('');
-            }
-		
 			if(!error){
 				return false;
 			}else{

@@ -1,4 +1,4 @@
 <?php 
-$config['payment_0'] = 'a:4:{s:2:"id";s:1:"1";s:12:"gateway_name";s:10:"Paypal IPN";s:8:"settings";s:86:"a:2:{s:4:"mode";s:7:"sandbox";s:14:"merchant_email";s:25:"kumarkailash075@gmail.com";}";s:6:"status";s:6:"Enable";}'; 
+$config['payment_0'] = 'a:4:{s:2:"id";s:1:"1";s:12:"gateway_name";s:10:"Paypal IPN";s:8:"settings";s:86:"a:2:{s:4:"mode";s:7:"sandbox";s:14:"merchant_email";s:25:"kumarkailash075@gmail.com";}";s:6:"status";s:7:"Disable";}'; 
 $config['payment_1'] = 'a:4:{s:2:"id";s:1:"3";s:12:"gateway_name";s:6:"Stripe";s:8:"settings";s:152:"a:3:{s:4:"mode";s:7:"sandbox";s:10:"secret_key";s:32:"sk_test_fNBeLuZ2wcS16LzhxlniPh5y";s:15:"publishable_key";s:32:"pk_test_WS94A1CpBZjMOOFHhpoa6FJn";}";s:6:"status";s:6:"Enable";}'; 
-$config['payment_2'] = 'a:4:{s:2:"id";s:1:"4";s:12:"gateway_name";s:11:"Credit Card";s:8:"settings";s:113:"a:3:{s:4:"mode";s:7:"sandbox";s:12:"merchantcode";s:11:"4aRF6Ucp3Hx";s:11:"merchantkey";s:16:"7KcQ5bNe95Q76L9d";}";s:6:"status";s:6:"Enable";}';  ?>
+$config['payment_2'] = 'a:4:{s:2:"id";s:1:"4";s:12:"gateway_name";s:11:"Credit Card";s:8:"settings";s:113:"a:3:{s:4:"mode";s:7:"sandbox";s:12:"merchantcode";s:11:"4aRF6Ucp3Hx";s:11:"merchantkey";s:16:"7KcQ5bNe95Q76L9d";}";s:6:"status";s:7:"Disable";}';  ?>
