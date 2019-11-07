@@ -273,6 +273,8 @@ class Signupsignin extends MY_Controller
 
 			} else {
                 if ($isUserFound->num_rows() == '1') {
+					
+					$group = $isUserFound->row()->group;
                     $userdata = array(
                         'fc_session_user_id' => $isUserFound->row()->id,
                         'fc_session_user_login_type' => 'normal',
@@ -311,7 +313,7 @@ class Signupsignin extends MY_Controller
                    // $this->setErrorMessage('success',$succ);
 
                 //redirect(base_url());
-                    echo "Success::$succ"; 
+                    echo "Success::$succ::$group"; 
                 }
             }
         }
