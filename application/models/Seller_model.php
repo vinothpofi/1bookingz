@@ -34,7 +34,7 @@ class Seller_model extends My_Model
 	}
 	
 	public function get_all_seller_details_Proof($condition){
-	   
+	  
 		$this->db->select('u.*,uid.id_proof_status');
 		$this->db->from(USERS.' as u');
 		$this->db->join(ID_PROOF.' as uid',"uid.user_id=u.id","left");

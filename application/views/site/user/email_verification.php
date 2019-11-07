@@ -207,7 +207,7 @@ if ($this->lang->line('NotVerified') != '') {
 				</div>
 				<?php } } ?>	
 					
-					
+				<?php if (!empty($userDetails)){ if($userDetails->row()->group == 'Seller'){ ?>
 				<div class="panel panel-default" id="verification_list">
 					<div class="panel-heading"><?php if ($this->lang->line('License_Reg_verification') != '') {
 									   echo stripslashes($this->lang->line('License_Reg_verification'));
@@ -421,6 +421,7 @@ if ($this->lang->line('NotVerified') != '') {
 						?>
 					</div>
 				</div>
+				<?php } } ?>
 			</div>
 		</div>
 	</div>

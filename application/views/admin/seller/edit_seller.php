@@ -775,7 +775,7 @@ $(document).ready(function () {
 									<table border="1px" width="100%">
 										<tr>
 											<th width="25%">S.No</th>
-											<th width="25%"> Proof Type</th>
+											<!--<th width="25%"> Proof Type</th>-->
 											<th width="25%">ID Proof</th>
 											<th width="25%">Status</th>
 										</tr>
@@ -800,18 +800,18 @@ $(document).ready(function () {
 												if (in_array($file_ext[1], $img_formats))    /*check the file is image or not*/ {
 													?>
 													<td><?php echo $i; ?></td>
-													<td>
+													<!--<td>
 														<?php
-														$proof_title = '';
+														/* $proof_title = '';
 														if ($post->proof_type == '1')
 															$proof_title = "Passport";
 														elseif ($post->proof_type == '2')
 															$proof_title = "Voter ID";
 														elseif ($post->proof_type == '3')
 															$proof_title = "Driving Licence";
-														echo $proof_title;
+														echo $proof_title; */
 														?>
-													</td>
+													</td>-->
 													<td>
 														<img src="<?php if ($post->proof_file == '') {
 															echo base_url() . 'images/proofs/proof.png';

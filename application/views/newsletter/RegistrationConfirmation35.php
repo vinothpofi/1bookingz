@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Welcome Message</title>
 </head><body><div class="container" style="margin: 30px auto; max-width: 70%; font-family: 'Circular',Helvetica,Arial,sans-serif; color: #484848; line-height: 1.4; font-size: 18px;">
-<div><img src="<?php echo base_url(); ?>images/logo/<?php echo $logo; ?>" alt="" /></div>
+<div><img style="width: 110px;" src="<?php echo base_url(); ?>images/logo/<?php echo $logo; ?>" alt="" /></div>
 <div>
 <h1 style="font-size: 20px;"><span>Hi </span><?php echo $username; ?>,</h1>
 <div>Welcome to Homestaydnn!. Please confirm your email to get started.</div>

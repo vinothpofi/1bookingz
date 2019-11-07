@@ -175,6 +175,7 @@ class Seller extends MY_Controller
 				$sellersList = $this->seller_model->get_all_seller_details_Proof($condition);
 
 			}
+			
 			$totalData = $sellersList->num_rows();
 			$totalFiltered = $totalData;
 

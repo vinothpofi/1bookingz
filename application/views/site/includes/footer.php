@@ -1157,8 +1157,10 @@ if ($this->lang->line('pls_entr_business_addr') != '') {
                 //Success::Successfully Logged In
                 if (data[0].trim() == resp) {
 
-                    var redirect_to = $('#to_url_value').val();
+                    var redirect_to = $('#to_url_value').val();alert(redirect_to);
                     window.location.href = '<?= base_url(); ?>' + redirect_to;
+					
+					
                     $("#signin_success_message").html(data[1]);
                     $("#signin_error_message").html("");
                     window.location.reload();

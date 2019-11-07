@@ -3264,10 +3264,10 @@ class User extends MY_Controller
         }
         if ($this->uri->segment(2) == 'verify-mail') {
             $userid = $this->session->userdata('fc_session_user_id');
-            $id_verified = "Yes";
+           /*  $id_verified = "Yes";
             $this->db->where('id', $userid);
             $this->db->set('id_verified', $id_verified);
-            $this->db->update('fc_users');
+            $this->db->update('fc_users'); */
             $this->send_verify_mail($this->data ['userDetails']);
             if ($this->lang->line('Verification request sent. Renters team will in contact with you shortly.') != '') {
                 $message = stripslashes($this->lang->line('Verification request sent. Renters team will in contact with you shortly.'));
@@ -3288,9 +3288,54 @@ class User extends MY_Controller
         $this->data['proofDetails'] = $this->user_model->ExecuteQuery($existCheck);
         $this->load->view('site/user/email_verification', $this->data);
     }
-
+	
+	
+	public function send_verify_mail($userDetails = '')
+    {
+      
+         /*============ Mail For User =================*/
+                $newsid = '35';
+                $template_values = $this->product_model->get_newsletter_template_details($newsid);
+                if ($template_values['sender_name'] == '' && $template_values['sender_email'] == '') {
+                    $sender_email = $this->data['siteContactMail'];
+                    $sender_name = $this->data['siteTitle'];
+                } else {
+                    $sender_name = $template_values['sender_name'];
+                    $sender_email = $template_values['sender_email'];
+                }
+                $uid = $userDetails->row()->id;
+                $username = $userDetails->row()->user_name;
+                $randStr = $this->get_rand_str('10');
+                $cfmurl = base_url() . 'site/user/confirm_verify/' . $uid . "/" . $randStr . "/confirmation";
+                $logo_mail = $this->data['logo'];
+                $reg = array('username' => $username, 'cfmurl' => $cfmurl, 'email_title' => $sender_name, 'logo' => $logo_mail);
+                $message = $this->load->view('newsletter/RegistrationConfirmation' . $newsid . '.php', $reg, TRUE);
+                $email_values = array(
+                    'from_mail_id' => $sender_email,
+                    'to_mail_id' => $userDetails->row()->email,
+                    'subject_message' => $template_values ['news_subject'],
+                    'body_messages' => $message
+                );
+                //send mail
+                $this->load->library('email');
+                $this->email->from($email_values['from_mail_id'], $sender_name);
+                $this->email->to($email_values['to_mail_id']);
+                $this->email->subject($email_values['subject_message']);
+                $this->email->set_mailtype("html");
+                $this->email->message($message);
+				
+                try {
+                    $this->email->send();
+                    $returnStr ['msg'] = 'Successfully registered';
+                    $returnStr ['success'] = '1';
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+                /*============ End For User =================*/
+    }
+	
     /*Verification part*/
-    public function send_verify_mail($userDetails = '')
+    public function send_verify_mail_hide($userDetails = '')
     {
         // echo "<script>alert('hi')</script>";die;
         $uid = $userDetails->row()->id;
