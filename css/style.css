@@ -95,7 +95,8 @@ body:not(.preloader-site) header.posHeader {border-bottom: 1px solid #eee;backgr
 /*Home Page By Balaji*/
 .rowSpace {margin-top: 60px;}
 /*.banner-container{ margin-top: 80px; }*/
-.banner-container-bg {background-repeat: no-repeat;width: 100%;height: 100vh;background-size: cover;background-position: center; background-attachment: fixed; }
+.banner-container-bg {background-repeat: no-repeat;width: 100%;height: 100vh;background-size: cover;background-position: center; background-attachment: fixed; position: relative; }
+.banner-container-bg:before{ position: absolute; background: #000; opacity: 0.4; top: 0; left: 0; content: ''; width: 100%; height: 100%; }
 #search_result_form .form-field:first-child{ width: 100% !important; }
 #search_result_form .form-field:last-child{ width: auto; }
 #search_result_form .form-field input#autocomplete{ width: 100%;}
@@ -549,6 +550,7 @@ p.text-success , p.text-danger{margin:10px 0px 20px !important;}
 .formList .right select{padding:0 19px 0 16px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100%;}
 .multiselect.dropdown-toggle:active, .multiselect.dropdown-toggle:focus, .multiselect.dropdown-toggle:hover{color: #cc0000 !important;}
 .Rating label{cursor: pointer;}
+#verification_list table tr td img{ max-height: inherit; }
 /*inbox*/
 #booking_number_filter{}
 #booking_number_filter .checkbox_select{width: 180px;margin: 10px 0px;}
@@ -739,7 +741,7 @@ select#dispute_status {
 	padding: 8px 16px;
 }
 .passport-verification {
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 .fileStyle {
@@ -1345,7 +1347,7 @@ button#list_submit {
 .searchForm { background-color: #f9f8f7;padding: 20px 20px;}
 .banner-form h1 
 {
-	font-size: 50px; text-shadow: 1px 1px 3px rgba(68,68,68,0.5); text-transform: uppercase;
+	font-size: 50px; /*text-shadow: 1px 1px 3px rgba(68,68,68,0.5);*/ text-transform: uppercase;
 	font-weight: 700;
 	margin: 0 0 10px;
 	color: #fff;
