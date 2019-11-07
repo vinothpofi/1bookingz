@@ -241,11 +241,9 @@ if ($adminList->slider == "on") {
                <!--  <label><?php if ($this->lang->line('date') != '') { echo stripslashes($this->lang->line('date')); } else {
                     echo $this->lang->line("Date"); } ?></label> -->
 				<div class="input-left">
-				   <label><?php //if($this->lang->line('check_in') != ''){ echo stripslashes($this->lang->line('check_in')); } else { echo $this->lang->line('check_in'); } ?></label>
 					<input type="text" id="startDate" readonly="readonly" placeholder="<?php if($this->lang->line('check_in') != ''){ echo stripslashes($this->lang->line('check_in')); } else { echo $this->lang->line('check_in'); } ?>" name="checkin">
 				</div>
 				<div class="input-right">
-					<label><!-- <?php if($this->lang->line('check_out') != ''){ echo stripslashes($this->lang->line('check_out')); } else { echo $this->lang->line('check_out'); } ?> --></label>
 					<input type="text" id="endDate" readonly="readonly" placeholder="<?php if($this->lang->line('check_out') != ''){ echo stripslashes($this->lang->line('check_out')); } else { echo $this->lang->line('check_out'); } ?>" name="checkout">
 				</div>
 			</div>
