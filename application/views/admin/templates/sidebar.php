@@ -189,7 +189,7 @@ if ($currentPage == '') {
                     <!---Rep -->
                 <?php }
                 if ($allPrev == '1') { ?>
-                    <li>
+                    <li style="display:none;">
                         <a href="admin/rep/display_rep_dashboard" <?php if ($currentUrl == 'rep') {
                             echo 'class="active"';
                         } ?>><span class="nav_icon users"></span>Representatives<span

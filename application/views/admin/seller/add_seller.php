@@ -161,7 +161,7 @@ $(document).ready(function () {
 					?>
 					<div id="tab1">
 						<ul>							
-							<li>
+							<li style="display:none;">
 								<div class="form_grid_12">
 									<?php
 										$commonclass = array('class' => 'field_title');

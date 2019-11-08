@@ -2401,6 +2401,7 @@ $lang['Enter_your_business_desc']='Enter Your Business Description';
 $lang['Enter_license_number']='Enter Your License Number'; 
 $lang['Enter_business_address']='Enter Your Business Address'; 
 $lang['once_admin_approve_you_login']='Once an administrator approves it you can login!'; 
+$lang['Business_details']='Business Details'; 
 
 
 

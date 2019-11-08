@@ -65,11 +65,9 @@ $currency_result = $this->session->userdata('currency_result');
                                     if (!empty($userDetails)) {
                                         $firstName = $userDetails->row()->firstname;
                                     }
-									if($firstName == '' || $firstName == 'undefined'){
-										 echo form_input('firstname', $firstName, array('placeholder' => $enterfname,'id'=>'firstname'));
-									}else{
-										 echo form_input('firstname', $firstName, array('placeholder' => $enterfname,'id'=>'firstname','readonly'=>'readonly'));
-									}
+									
+									echo form_input('firstname', $firstName, array('placeholder' => $enterfname,'id'=>'firstname'));
+									
 									
                                     ?>
 
@@ -89,11 +87,9 @@ $currency_result = $this->session->userdata('currency_result');
                                     if (!empty($userDetails)) {
                                         $lastname = $userDetails->row()->lastname;
                                     }
-									if($lastname == '' || $lastname == 'undefined'){
-										echo form_input('lastname', $lastname, array('placeholder' => $enterlname));
-									}else{
-										echo form_input('lastname', $lastname, array('placeholder' => $enterlname,'readonly'=>'readonly'));
-									}
+									
+									echo form_input('lastname', $lastname, array('placeholder' => $enterlname));
+									
                                     ?>
                                     <p><?php if ($this->lang->line('Thisisonlyshared') != '') {
                                             echo stripslashes($this->lang->line('Thisisonlyshared'));

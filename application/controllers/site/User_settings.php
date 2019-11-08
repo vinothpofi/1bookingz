@@ -671,12 +671,13 @@
             $this->data['rental_counts'] = $this->user_model->get_all_details(PRODUCT, array('user_id' => $userid));
            // echo $this->data['rental_counts']->num_rows();exit;
             $this->data ['rentalDetail'] = $this->cms_model->get_dashboard_list($userid, Publish);
-
-            if ($this->data['experienceExistCount'] > 0) {
+			
+            /* if ($this->data['experienceExistCount'] > 0) {
                 $this->data['exp_counts'] = $this->user_model->get_all_details(EXPERIENCE, array('user_id' => $userid));
                 $this->data ['expDetail'] = $this->experience_model->get_experiences_list($userid);
                 $this->data ['Exp_ReviewDetails'] = $this->experience_model->get_experiences_review_aboutyou1($userid);
-            }
+            } */
+			
             $this->data['languages'] = $this->cms_model->get_all_details(LANGUAGES_KNOWN, array());
             $this->data['verifyid'] = $this->cms_model->get_all_details(USERS, array('id' => $userid));
             $this->data['WishListCat'] = $this->product_model->get_list_details_wishlist($userid);
@@ -696,7 +697,10 @@
             } else {
                 $this->data ['Properties_WishList'] = $this->product_model->get_products_wishlist('0');
             }
-            $this->data ['experiences_list_details'] = $experiences_list_details = $this->product_model->get_list_details_wishlist($userid);
+			
+			
+			
+           /*  $this->data ['experiences_list_details'] = $experiences_list_details = $this->product_model->get_list_details_wishlist($userid);
             foreach ($experiences_list_details->result() as $list) {
                 $exp_id[] = $list->experience_id;
             }
@@ -704,7 +708,8 @@
             $searchArr1 = array_filter(explode(',', $exp_String));
             $searchArr = array_unique($searchArr1);
             $this->data ['Experiences_WishList'] =0;
-             $this->data['experiences_wishlist_image'] = 0;
+            $this->data['experiences_wishlist_image'] = 0;
+			 
             if ($this->data['experienceExistCount'] > 0) {
             if (count($searchArr) > 0) {
                 foreach ($searchArr as $searchphotoid) {
@@ -715,7 +720,8 @@
             } else {
                 $this->data ['Experiences_WishList'] = $this->product_model->get_experiences_wishlist('0');
             }
-            }
+            } */
+			
             $this->load->view('site/user/display_user_profile', $this->data);
         }
 

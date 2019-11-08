@@ -179,6 +179,7 @@ $this->load->view('admin/templates/header.php');
 											var state = $(evt).parents('li').prev().find('select option:selected').text();
 											var city = $(evt).val();
 											address = city + ',' + state + ',' + country;
+											$("#City_address").val(address);
 											var map = new GMap2(document.getElementById("map"));
 											map.addControl(new GSmallMapControl());
 											map.addControl(new GMapTypeControl());

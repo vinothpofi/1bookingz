@@ -109,7 +109,7 @@ $(document).ready(function () {
 								'value' => $seller_details->row()->rep_code
                             ));
 							?>
-							<li>
+							<li style="display:none;">
 								<div class="form_grid_12">
 									<?php
 									$commonclass = array('class' => 'field_title');

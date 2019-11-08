@@ -143,7 +143,7 @@ class City extends MY_Controller
 			$city_name_ar = $this->input->post('name_ar');
 			$City_address = $this->input->post('City_address');
 			$google_map_api = $this->config->item('google_developer_key');
-			$bing_map_api = $this->config->item('bing_developer_key');
+			$bing_map_api = $this->config->item('bing_developer_key'); 
 			$address_details = $this->get_address_bound(str_replace(' ', '+', $City_address), $google_map_api, $bing_map_api);
 			$minLat = $address_details['minLat'];
 			$minLong = $address_details['minLong'];
