@@ -475,7 +475,7 @@ $lang['err_enter_summary']='Please Enter Summary';
 
 $lang['request_to_book']='Request to Book'; 
 
-$lang['instant_pay']='Instant Pay'; 
+$lang['instant_pay']='Book Now'; 
 
 $lang['charecters_only']='Characters Only'; 
 
