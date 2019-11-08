@@ -276,6 +276,7 @@ $currency_result = $this->session->userdata('currency_result');
                                     ?>
                                 </div>
                             </div>
+							
 							<?php if (!empty($userDetails)) if($userDetails->row()->group == 'User'){ ?>
                             <div class="formList" style="">
                                 <label><?php if ($this->lang->line('Address') != '') {

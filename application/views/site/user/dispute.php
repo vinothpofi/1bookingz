@@ -43,20 +43,28 @@ $currency_result = $this->session->userdata('currency_result');
 				<div class="row">
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs responsiveNav">
+						
+							<?php if($userDetails->row()->group == 'Seller') { ?>
 							<li class="active"><a data-toggle="tab"
 												  href="#menu1"><?php if ($this->lang->line('Dispute_About_You') != '') {
 										echo stripslashes($this->lang->line('Dispute_About_You'));
 									} else echo "Dispute About You"; ?><span class="badge"><?php if($dispute_count != 0){echo ' '.$dispute_count;} ?></span></a></a></li>
+							<?php } ?>
+							
+							<?php if($userDetails->row()->group == 'User') { ?>
 							<li><a data-toggle="tab"
 								   onclick="window.location.href='<?php echo base_url(); ?>display-dispute1'"
 								   href="<?php echo base_url(); ?>display-dispute1"><?php if ($this->lang->line('Dispute_By_You') != '') {
 										echo stripslashes($this->lang->line('Dispute_By_You'));
 									} else echo "Dispute By You"; ?></a></li>
+							<?php } ?>		
+									
 							<li><a data-toggle="tab"
 								   onclick="window.location.href='<?php echo base_url(); ?>cancel-booking-dispute'"
 								   href="<?php echo base_url(); ?>cancel-booking-dispute"><?php if ($this->lang->line('cancel_booking_by_you') != '') {
 										echo stripslashes($this->lang->line('cancel_booking_by_you'));
 									} else echo "Cancel booking by you"; ?></a></li>
+									
 							<li><a data-toggle="tab"
 								   onclick="window.location.href='<?php echo base_url(); ?>display-dispute2'"
 								   href="<?php echo base_url(); ?>display-dispute2"><?php if ($this->lang->line('cancel_booking') != '') {

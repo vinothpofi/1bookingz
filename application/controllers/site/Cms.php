@@ -307,15 +307,18 @@ class Cms extends MY_Controller
         if ($this->checkLogin('U') == '') {
             redirect(base_url());
         } else {
-             $dispute_count = $this->user_model->get_all_details(DISPUTE,array('disputer_id'=>$this->data['loginCheck'],'status'=>'Pending','cancel_status'=>0));
-     $cancel_count = $this->user_model->get_all_details(DISPUTE,array('disputer_id'=>$this->data['loginCheck'],'status'=>'Pending','cancel_status'=>1));
+			
+		$checkUser = $this->user_model->get_all_details(USERS, array('id'=>$this->checkLogin('U')));
+		
+		if($checkUser->row()->group == 'Seller'){
+        $dispute_count = $this->user_model->get_all_details(DISPUTE,array('disputer_id'=>$this->data['loginCheck'],'status'=>'Pending','cancel_status'=>0));
+		$cancel_count = $this->user_model->get_all_details(DISPUTE,array('disputer_id'=>$this->data['loginCheck'],'status'=>'Pending','cancel_status'=>1));
 
-//}
-$this->data['tot_dispute_count_is'] = $dispute_count->num_rows() + $cancel_count->num_rows();
+		$this->data['tot_dispute_count_is'] = $dispute_count->num_rows() + $cancel_count->num_rows();
 
-$this->data['dispute_count'] = $dispute_count->num_rows();
+		$this->data['dispute_count'] = $dispute_count->num_rows();
 
-$this->data['cancel_count'] = $cancel_count->num_rows();
+		$this->data['cancel_count'] = $cancel_count->num_rows();
             if ($this->uri->segment(3) == 'completed') {
                 $this->data ['enable_complete_popup'] = 'yes';
             }
@@ -424,6 +427,10 @@ $this->data['cancel_count'] = $cancel_count->num_rows();
             $condition = array('user_id' => $this->checkLogin('U'));
             $this->data['IDproof_status'] = $this->cms_model->get_all_details(ID_PROOF, $condition);
             $this->load->view('site/user/dashboard-listing', $this->data);
+		  
+		  }	else {
+			redirect(base_url());  
+		  }
         }
     }
 
