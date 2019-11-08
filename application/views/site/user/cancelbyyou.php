@@ -20,15 +20,22 @@ $currency_result = $this->session->userdata('currency_result');
 						<a href="<?php echo base_url(); ?>verification" <?php if ($this->uri->segment(1) == 'verification') { ?> class="active" <?php } ?>><?php if ($this->lang->line('TrustandVerification') != '') {
 								echo stripslashes($this->lang->line('TrustandVerification'));
 							} else echo "Trust and Verification"; ?></a></li>
+							
+					<?php $review_link = ''; if(!empty($userDetails)) { if($userDetails->row()->group == 'Seller') { $review_link = 'display-review'; }else if($userDetails->row()->group == 'User'){  $review_link = 'display-review1'; } } ?>
+
 					<li>
-						<a href="<?php echo base_url(); ?>display-review" <?php if ($this->uri->segment(1) == 'display-review') { ?> class="active" <?php } ?>><?php if ($this->lang->line('Reviews') != '') {
+						<a href="<?php echo base_url().$review_link; ?>" <?php if ($this->uri->segment(1) == 'display-review') { ?> class="active" <?php } ?>><?php if ($this->lang->line('Reviews') != '') {
 								echo stripslashes($this->lang->line('Reviews'));
 							} else echo "Reviews"; ?></a></li>
-					<?php $disputeLinks = array('display-dispute', 'display-dispute1', 'cancel-booking-dispute', 'display-dispute2'); ?>
+					<?php 
+					$dispute_link = ''; if(!empty($userDetails)) { if($userDetails->row()->group == 'Seller') { $dispute_link = 'display-dispute'; }else if($userDetails->row()->group == 'User'){  $dispute_link = 'display-dispute1'; } } 
+					$disputeLinks = array('display-dispute', 'display-dispute1', 'cancel-booking-dispute', 'display-dispute2'); ?>
+					
 					<li>
-						<a href="<?php echo base_url(); ?>display-dispute" <?php if (in_array($this->uri->segment(1), $disputeLinks)) { ?> class="active" <?php } ?>><?php if ($this->lang->line('Dispute/Cancel') != '') {
+						<a href="<?php echo base_url().$dispute_link; ?>" <?php if (in_array($this->uri->segment(1), $disputeLinks)) { ?> class="active" <?php } ?>><?php if ($this->lang->line('Dispute/Cancel') != '') {
 								echo stripslashes($this->lang->line('Dispute/Cancel'));
 							} else echo "Dispute/Cancel"; ?> <span class="badge"><?php if($tot_dispute_count_is != 0) {echo ' '.$tot_dispute_count_is;} ?></span></a></li>
+					
 					<li>
 						<a href="users/show/<?php echo $userDetails->row()->id; ?>"><?php if ($this->lang->line('ViewProfile') != '') {
 								echo stripslashes($this->lang->line('ViewProfile'));
@@ -39,16 +46,22 @@ $currency_result = $this->session->userdata('currency_result');
 				<div class="row">
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs responsiveNav">
+							<?php if($userDetails->row()->group == 'Seller') { ?>
 							<li><a data-toggle="tab"
 								   onclick="window.location.href='<?php echo base_url(); ?>display-dispute'"
 								   href="<?php echo base_url(); ?>display-dispute"><?php if ($this->lang->line('Dispute_About_You') != '') {
 										echo stripslashes($this->lang->line('Dispute_About_You'));
 									} else echo "Dispute About You"; ?><span class="badge"><?php if($dispute_count != 0){echo ' '.$dispute_count;} ?></span></a></li>
+							<?php } ?>
+							
+							<?php if($userDetails->row()->group == 'User') { ?>
 							<li><a data-toggle="tab"
 								   onclick="window.location.href='<?php echo base_url(); ?>display-dispute1'"
 								   href="<?php echo base_url(); ?>display-dispute1"><?php if ($this->lang->line('Dispute_By_You') != '') {
 										echo stripslashes($this->lang->line('Dispute_By_You'));
 									} else echo "Dispute By You"; ?></a></li>
+							<?php } ?>
+							
 							<li><a data-toggle="tab"
 								   onclick="window.location.href='<?php echo base_url(); ?>cancel-booking-dispute'"
 								   href="<?php echo base_url(); ?>cancel-booking-dispute"><?php if ($this->lang->line('cancel_booking_by_you') != '') {

@@ -191,6 +191,26 @@ $currency_result = $this->session->userdata('currency_result');
                                 </div>
                             </div>
 							
+							<?php if (!empty($userDetails)) if($userDetails->row()->group == 'User'){ ?>
+                            <div class="formList" style="">
+                                <label><?php if ($this->lang->line('Address') != '') {
+                                        echo stripslashes($this->lang->line('Address'));
+                                    } else echo "Address"; ?> * </label>
+                                <div class="right">
+                                    <?php
+                                    $s_address = "";
+                                    if ($this->lang->line('EnterAddress') != '') {
+                                        $place= stripslashes($this->lang->line('EnterAddress'));
+                                    } else $place="Enter Address"; 
+                                    if (!empty($userDetails)) $s_address = $userDetails->row()->address;
+                                    echo form_input(array('name' =>'s_address','id'=>'autocomplete_addr','class'=>'s_address','type' => 'text', 'placeholder' => $place, 'value' => $s_address));
+                                    ?>
+									<small id="address_err" style="font-size: 12px;color: red;display: none;"></small>
+                                </div>
+                            </div>
+							<?php } ?>
+							
+							
 							<?php if (!empty($userDetails)) if($userDetails->row()->group == 'Seller'){ ?>
 							<div class="formList">
                                 <label><?php if ($this->lang->line('signup_business_name') != '') {
@@ -276,25 +296,6 @@ $currency_result = $this->session->userdata('currency_result');
                                     ?>
                                 </div>
                             </div>
-							
-							<?php if (!empty($userDetails)) if($userDetails->row()->group == 'User'){ ?>
-                            <div class="formList" style="">
-                                <label><?php if ($this->lang->line('Address') != '') {
-                                        echo stripslashes($this->lang->line('Address'));
-                                    } else echo "Address"; ?> * </label>
-                                <div class="right">
-                                    <?php
-                                    $s_address = "";
-                                    if ($this->lang->line('EnterAddress') != '') {
-                                        $place= stripslashes($this->lang->line('EnterAddress'));
-                                    } else $place="Enter Address"; 
-                                    if (!empty($userDetails)) $s_address = $userDetails->row()->address;
-                                    echo form_input(array('name' =>'s_address','id'=>'autocomplete_addr','class'=>'s_address','type' => 'text', 'placeholder' => $place, 'value' => $s_address));
-                                    ?>
-									<small id="address_err" style="font-size: 12px;color: red;display: none;"></small>
-                                </div>
-                            </div>
-							<?php } ?>
 							
                             <div class="formList noMargin" style="display:none;">
                                 <label><?php if ($this->lang->line('DescribeYourself') != '') {
