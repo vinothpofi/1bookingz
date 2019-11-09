@@ -31,8 +31,10 @@ $currency_result = $this->session->userdata('currency_result');
                   } else echo "Host cancellation"; ?></a>
                 
                 </li>
+				
+				<?php $dispute_link = ''; if(!empty($userDetails)) { if($userDetails->row()->group == 'Seller') { $dispute_link = 'display-dispute'; }else if($userDetails->row()->group == 'User'){  $dispute_link = 'display-dispute1'; } } ?> 
                 <li>
-						<a href="<?php echo base_url(); ?>display-dispute" <?php if (in_array($this->uri->segment(1), $disputeLinks)) { ?> class="active" <?php } ?>><?php if ($this->lang->line('Dispute/Cancel') != '') {
+						<a href="<?php echo base_url().$dispute_link; ?>" <?php if (in_array($this->uri->segment(1), $disputeLinks)) { ?> class="active" <?php } ?>><?php if ($this->lang->line('Dispute/Cancel') != '') {
 								echo stripslashes($this->lang->line('Dispute/Cancel'));
 							} else echo "Dispute/Cancel"; ?> <span class="badge"><?php if($tot_dispute_count_is != 0) {echo ' '.$tot_dispute_count_is;} ?></span></a></li>
 					   
