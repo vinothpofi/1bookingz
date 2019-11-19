@@ -4103,7 +4103,7 @@ class User extends MY_Controller
             }
         /*===========Booking info SMS to host=============*/ 
         /*Mail to Guest*/
-        $this->data['user_details'] = $this->user_model->get_all_details(USERS, array('id' => $this->checkLogin('U')));
+       /*  $this->data['user_details'] = $this->user_model->get_all_details(USERS, array('id' => $this->checkLogin('U')));
         $user_email = $this->data['user_details']->row()->email;
         $message = $this->load->view('newsletter/BookInffo_guest.php', $User_Booking_info, TRUE);
         $user_email_values = array('mail_type' => 'html', 'from_mail_id' => $sender_email, 'mail_name' => $sender_name, 'to_mail_id' => $user_email, 'subject_message' => $template_values['news_subject'], 'body_messages' => $message);
@@ -4126,7 +4126,8 @@ class User extends MY_Controller
             $this->email->send();
         } catch (Exception $e) {
             echo $e->getMessage();
-        }
+        } */
+		
         $user_id = $this->uri->segment(4);
         if ($this->lang->line('Congratulation on your booking!! The host will reply you soon.') != '') {
             $message = stripslashes($this->lang->line('Congratulation on your booking!! The host will reply you soon.'));

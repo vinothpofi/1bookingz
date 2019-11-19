@@ -1676,7 +1676,7 @@ div#timer span {
 
 								if ($product->user_id > 0 && $product->user_id != '') {
 
-									echo ' '.ucfirst($product->firstname);
+									echo ' '.ucfirst($product->business_name);
 
 								} else {
 

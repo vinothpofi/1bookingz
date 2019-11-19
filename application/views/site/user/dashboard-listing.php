@@ -174,7 +174,30 @@ $currency_result = $this->session->userdata('currency_result');
                                                 }
                                                 ?>
                                             </td>
-                                            <td>
+											
+											<td>
+	
+											 <?php if ($total_steps != 0) { ?>
+                                                    <a href="<?php echo base_url() . "manage_listing/" . $row->id; ?>"><?php echo $total_steps . ' '; ?><?php if ($this->lang->line('stepstolist') != '') {
+                                                            echo stripslashes($this->lang->line('stepstolist'));
+                                                        } else echo "steps to list"; ?></a>
+                                                <?php } else if($row->status == 'Publish'){ ?>
+												
+											
+															
+												<a class=""
+												   href="<?php echo base_url(); ?>site/product/change_product_status/0/<?php echo $row->id; ?>"><?php if ($this->lang->line('click to unpublish') != '') {
+														echo stripslashes($this->lang->line('click_to_unpublish'));
+													} else echo "Click To UnPublish"; ?></a>
+												<?php }else if($row->status == 'UnPublish'){ ?>
+													<a class=""
+												   href="<?php echo base_url(); ?>site/product/change_product_status/1/<?php echo $row->id; ?>"><?php if ($this->lang->line('click_to_publish') != '') {
+														echo stripslashes($this->lang->line('click_to_publish'));
+													} else echo "Click To Publish"; ?></a>
+												<?php } ?>
+											</td>
+											
+                                            <td style="display:none;">
                                                 <?php if ($total_steps != 0) { ?>
                                                     <a href="<?php echo base_url() . "manage_listing/" . $row->id; ?>"><?php echo $total_steps . ' '; ?><?php if ($this->lang->line('stepstolist') != '') {
                                                             echo stripslashes($this->lang->line('stepstolist'));

@@ -40,6 +40,7 @@ class Product extends MY_Controller
                 $this->data['Steps_title'] = $this->product_model->get_selected_fields_records('id', PRODUCT, ' where id=' . $id . ' and product_title =""');
                 $this->data['Steps_price'] = $this->product_model->get_selected_fields_records('id', PRODUCT, ' where id=' . $id . ' and price ="0.00"');
                 $this->data['Steps_calendar'] = $this->product_model->get_selected_fields_records('id', PRODUCT_BOOKING, ' where product_id=' . $id . ' and datefrom ="0000-00-00" and dateto="0000-00-00"');
+                //$this->data['Steps_calendar'] = $this->product_model->get_selected_fields_records('id', PRODUCT, ' where id=' . $id . ' and calendar_checked =""');
                 $this->data['Steps_img'] = $this->product_model->get_selected_fields_records('id', PRODUCT_PHOTOS, ' where product_id=' . $id);
                 $this->data['Steps_ament'] = $this->product_model->get_selected_fields_records('id', PRODUCT, ' where id=' . $id . ' and list_name =""');
                 $this->data['Steps_address'] = $this->product_model->get_selected_fields_records('id,lat', PRODUCT_ADDRESS_NEW, ' where productId=' . $id);
@@ -59,6 +60,7 @@ class Product extends MY_Controller
                 } else {
                     $this->data['Steps_count4'] = 1;
                 }
+				
                 if ($this->data['Steps_ament']->num_rows() > 0) {
                     $this->data['Steps_count5'] = 1;
                 }
@@ -72,8 +74,17 @@ class Product extends MY_Controller
                 if ($this->data['Steps_cancel']->num_rows() > 0) {
                     $this->data['Steps_count8'] = 1;
                 }
+			
                 $this->data['Steps_tot'] = $this->data['Steps_count1'] + $this->data['Steps_count2'] + $this->data['Steps_count3'] + $this->data['Steps_count4'] + $this->data['Steps_count5'] + $this->data['Steps_count6'] + $this->data['Steps_count7'] + $this->data['Steps_count8'];
-            }
+				
+				/* if($this->data['Steps_tot'] == 0){
+					$this->product_model->update_details(PRODUCT,['status' => 'Publish'],['id' => $id]);
+				}else{
+					$this->product_model->update_details(PRODUCT,['status' => 'UnPublish'],['id' => $id]);
+				}  */
+				
+				
+			}
             /*Close- Calculating completed steps*/
             $this->data ['hosting_commission_status'] = $this->product_model->get_all_details(COMMISSION, array('commission_type' => 'Host Listing'));
             $condition = array('user_id' => $this->checkLogin('U'));
@@ -6094,6 +6105,23 @@ $client->account->messages->create(array(
        // }
 
     }
+	
+	 public function change_product_status()
+    {
+        if ($this->checkLogin('U') == '') {
+             redirect(base_url());
+        } else {
+            $mode = $this->uri->segment(4, 0);
+            $product_id = $this->uri->segment(5, 0);
+            $status = ($mode == '0') ? 'UnPublish' : 'Publish';
+            $newdata = array('status' => $status);
+            $condition = array('id' => $product_id);
+            $this->product_model->update_details(PRODUCT, $newdata, $condition);
+            $this->setErrorMessage('success', 'Status Changed Successfully');
+            redirect('listing/all');
+        }
+    }
+	
 }
 /*End of file product.php */
 /* Location: ./application/controllers/site/product.php */

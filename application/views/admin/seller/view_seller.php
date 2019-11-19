@@ -87,7 +87,7 @@ $this->load->view('admin/templates/header.php');
 										</div>
 									</div>
 								</li>
-								<li>
+								<!--<li>
 									<div class="form_grid_12">
 										<?php										
 											echo form_label('I Am ','gender', $commonclass);	
@@ -124,7 +124,7 @@ $this->load->view('admin/templates/header.php');
 											?>
 										</div>
 									</div>
-								</li>
+								</li>-->
 
 								<li>
 									<div class="form_grid_12">
@@ -145,7 +145,7 @@ $this->load->view('admin/templates/header.php');
 										</div>
 									</div>
 								</li>
-								<li>
+								<!--<li>
 									<div class="form_grid_12">
 										<?php										
 										echo form_label('Where You Live','s_city',$commonclass);
@@ -215,6 +215,86 @@ $this->load->view('admin/templates/header.php');
 											if ($seller_details->row()->work != '') 
 											{
 												echo $seller_details->row()->work;
+											} 
+											else 
+											{
+												echo "----";
+											}
+											?>
+										</div>
+									</div>
+								</li>-->
+								
+								<li>
+									<div class="form_grid_12">
+										<?php										
+										echo form_label('Business Name','business_name', $commonclass);	
+								    	?>
+										<div class="form_input">
+											<?php
+											if ($seller_details->row()->business_name != '') 
+											{
+												echo $seller_details->row()->business_name;
+											} 
+											else 
+											{
+												echo "----";
+											}
+											?>
+										</div>
+									</div>
+								</li>
+								
+								<li>
+									<div class="form_grid_12">
+										<?php										
+										echo form_label('short Business Description','description', $commonclass);	
+								    	?>
+										<div class="form_input">
+											<?php
+											if ($seller_details->row()->description != '') 
+											{
+												echo $seller_details->row()->description;
+											} 
+											else 
+											{
+												echo "----";
+											}
+											?>
+										</div>
+									</div>
+								</li>
+								
+								<li>
+									<div class="form_grid_12">
+										<?php										
+										echo form_label('Real Estate License number','license_number', $commonclass);	
+								    	?>
+										<div class="form_input">
+											<?php
+											if ($seller_details->row()->license_number != '') 
+											{
+												echo $seller_details->row()->license_number;
+											} 
+											else 
+											{
+												echo "----";
+											}
+											?>
+										</div>
+									</div>
+								</li>
+								
+								<li>
+									<div class="form_grid_12">
+										<?php										
+										echo form_label('Business Address','business_address', $commonclass);	
+								    	?>
+										<div class="form_input">
+											<?php
+											if ($seller_details->row()->business_address != '') 
+											{
+												echo $seller_details->row()->business_address;
 											} 
 											else 
 											{

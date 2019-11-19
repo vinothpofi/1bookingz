@@ -1213,7 +1213,7 @@ public function get_all_cancelled_users()
 		pa.country,pa.state,pa.city,pa.zip as post_code,pa.address,pa.lat as latitude,pa.lang as longitude, 
 		pf.feature,pf.google_map,pf.add_feature,pf.rentals_policy,pf.trams_condition,pf.confirm_email,pf.order_email,pf.invoice_template,
 		pb.datefrom,pb.dateto,pb.expiredate,u.languages_known,u.firstname,u.created as user_created,u.id as user_id,u.s_city,u.s_district,u.s_state,u.response_rate,u.description as description1,u.phone_no,u.group,u.s_phone_no,u.about,u.email as RenterEmail,u.image as thumbnail, u.about, u.loginUserType, pa.country as Country_name, pa.state as State_name,
-		pa.city as CityName, c.child_name, u.host_status,u.status as host_login_status,u.id_verified');
+		pa.city as CityName, c.child_name, u.host_status,u.status as host_login_status,u.id_verified,u.business_name');
 		$this->db->from(PRODUCT . ' as p');
 		$this->db->join(PRODUCT_ADDRESS_NEW . ' as pa', "pa.productId=p.id", "LEFT");
 		$this->db->join(PRODUCT_FEATURES . ' as pf', "pf.product_id=p.id", "LEFT");
